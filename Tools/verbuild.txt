@@ -1,0 +1,54 @@
+	
+	VERBUILD - The Version Number Build Tool for Developers
+	----------------------------------------------------------------------------------
+		
+		How to apply VERBUILD in your Project.
+		
+		First of all, Create your Project or Open your Project already existence.
+		 
+		 1. Open .rc file and Cut VERSIONINFO block and paste it into .rc2 file.
+		    (the .rc2 file may be located in RES Folder)
+		    if .rc2 does not exist,you create it manually (blank) by using any text editor.
+		    if new created .rc2 is not a member of Project files, add to Project.
+		    and above of line 'VS_VERSION_INFO VERSIONINFO' in .rc2 file,
+		    add #include "VersionNo.h" ( it is not exists yet).
+     
+     2. To create initial 'VersionNo.h' in the same directory as your Project. 
+		    run at command line prompt as:
+		     'verbuild VersionNo.h -c'
+     
+     3. Add VERBUILD to Project Build-Event instead of VS macro or script.
+		    In Project setting, select All Configurations,
+		    In the Command Line field under Post-Build Event(after build),
+		    add as following or with your modified own parameters,
+
+		     verbuild VersionNo.h *.*.*.+ -d2005 -xFp -b1.0.0.0 -e10.30.9999.100 -s
+		     -> it means that daily basis from 2005(-d2005),
+		        minimum us 1.0.0.0(-b),
+		        maximum is 10.30.9999.100(-e),
+		        increasing part 'D' of A.B.C.D Format(*.*.*.+),
+		        file version is equal to full version(-xF),
+		        product version is self increasing(-xp),
+		        if overflow minimum or maximum, shift each part of A.B.C.D(-s)
+		        but,in daily basis mode,the part 'C' is fixed by daily information.
+		        when 'D' is overflow,with except 'C',and then 'B' will be increased.
+		     -> e.g) the result version number like as '10.1.2303.5' with -d option.
+		             the result version number like as '10.1.1000.5' without -d option.
+		             
+		        To decode the part 'C' ,2303 what means,just run as following,
+		        verbuild -n2303 -d2005
+		        
+		        If with shift option and overflow part 'D',it will shift as following,
+		        e.g) maximum value of part 'D' is 5 by given -e99.99.2000.5 option,
+		             In daily basis mode,
+		             '10.1.2303.5'    -> '10.2.2303.0'
+		             In normal mode,
+		             '10.1.1000.5'    -> '10.1.1001.0'
+            As result,if each part of A.B.C.D met own maximum and overflows,
+            it will be set by minimum value(-b option) and shift 1 toward left part.
+    
+     4. To use version information in your any source codes,
+		    also add #include "VersionNo.h" to your source and then use preprocessors!
+		
+	Thanks,
+	krkim(Kyung Rae Kim).
