@@ -389,5 +389,4 @@ public:
 	}
 };
 
-#define SC SimConnect::Instance()
 
