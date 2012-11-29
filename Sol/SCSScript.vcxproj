@@ -68,6 +68,8 @@
     <ClInclude Include="..\Src\PCH.h" />
     <ClInclude Include="..\Src\ScriptEngine\ScriptEngine.h" />
     <ClInclude Include="..\Src\SimConnectWrapper.h" />
+    <ClInclude Include="..\Src\SimHelpers.h" />
+    <ClInclude Include="..\Src\SimVars.h" />
     <ClInclude Include="..\Src\SoundEngine\SoundEngine.h" />
     <ClInclude Include="..\Src\SoundEngine\SoundEngineSound.h" />
     <ClInclude Include="..\Src\SoundEngine\SoundEngineWavReader.h" />
@@ -243,6 +245,7 @@
     </ClCompile>
     <ClCompile Include="..\Src\ScriptEngine\ScriptEngine.cpp" />
     <ClCompile Include="..\Src\SimConnectWrapper.cpp" />
+    <ClCompile Include="..\Src\SimVars.cpp" />
     <ClCompile Include="..\Src\SoundEngine\SoundEngine.cpp" />
     <ClCompile Include="..\Src\SoundEngine\SoundEngineSound.cpp" />
     <ClCompile Include="..\Src\SoundEngine\SoundEngineWavReader.cpp" />
@@ -266,10 +269,12 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -301,7 +306,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\ext\Prepar3D;..\ext\as;$(DXSDK_DIR)\include;$(BOOST_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ext\Prepar3D;..\ext\as;..\ext\DirectX\include;$(BOOST_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SCSSCRIPT_EXPORTS;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -320,7 +325,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\lib\x86;..\Ext\Prepar3D</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Ext\DirectX\lib\x86;..\Ext\Prepar3D</AdditionalLibraryDirectories>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -330,7 +336,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\ext\Prepar3D;..\ext\as;$(DXSDK_DIR)\include;$(BOOST_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ext\Prepar3D;..\ext\as;..\ext\DirectX\include;$(BOOST_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SCSSCRIPT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <StructMemberAlignment>Default</StructMemberAlignment>
@@ -348,7 +354,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\lib\x86;..\Ext\Prepar3D</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Ext\DirectX\lib\x86;..\Ext\Prepar3D</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>..\Tools\verbuild.exe ..\Res\VersionNo.h *.*.*.+ -d2012 -xFp -b0.0.0.1 -e10.30.9999.100 -s</Command>

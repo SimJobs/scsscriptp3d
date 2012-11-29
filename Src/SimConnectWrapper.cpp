@@ -70,10 +70,8 @@ extern void CALLBACK fnSimConnectDispatchExt(SIMCONNECT_RECV* pData,DWORD cbData
 
 SimConnect::SimConnect() : simConnect(nullptr)
 {
-	simTick18.id=TICK18;
-	simElapsedSeconds.id=ELAPSED_SECONDS;
-	simTick18Prev=0;
-	timeoutBeforeStartUpdate=5;
+	simTick18=0;
+	timeoutBeforeStartUpdate=1;
 }
 
 SimConnect::~SimConnect()
@@ -171,6 +169,8 @@ bool SimConnect::Init(HWND windowHandle)
 		panel_window_close_ident(IDENT_MAIN_PANEL);
 		m_AlreadyLoaded=true;
 	} 
+
+	InitVars();
 
 	return true;
 }
@@ -271,18 +271,17 @@ void SimConnect::fnSimConnectDispatch(SIMCONNECT_RECV *pData,DWORD cbData)
 			SIMCONNECT_RECV_EVENT_FRAME  *evt = (SIMCONNECT_RECV_EVENT_FRAME *)pData;
 
 			switch(evt->uEventID) {
-				case EVENT_SIM_FRAME:
+				case EVENT_SIM_FRAME: {
 					simFrameRate=evt->fFrameRate;
 					simSpeed=evt->fSimSpeed;
-					lookup_var(&simTick18);
-					if(simTick18.var_value.n>simTick18Prev) {
-						lookup_var(&simElapsedSeconds);
-						if(simElapsedSeconds.var_value.n>timeoutBeforeStartUpdate) {
+					double curTick18=GetC(TICK18);
+					if(curTick18>simTick18) {
+						if(GetC(ELAPSED_SECONDS)>timeoutBeforeStartUpdate) {
 							Update();
 						}
 					}
-					simTick18Prev=simTick18.var_value.n;
-				break;
+					simTick18=curTick18;
+				}break;
 				case EVENT_SIM_PAUSEFRAME:
 					simPauseFrameRate=evt->fFrameRate;
 					simPauseSpeed=evt->fSimSpeed;

@@ -268,15 +268,13 @@ enum DATA_REQUEST_ID
 	REQUEST_AMBIENT_TEMPERATURE						= DEFINITION_AMBIENT_TEMPERATURE					,
 };													
 
-class SimConnect
+class SimConnect : public SimVars
 {
 private:
 	boost::shared_ptr<Application>	application;
 
-	MODULE_VAR						simTick18;
-	MODULE_VAR						simElapsedSeconds;
-	FLOAT64							simTick18Prev;
-	FLOAT64							timeoutBeforeStartUpdate;
+	double							simTick18;
+	double							timeoutBeforeStartUpdate;
 
 	HANDLE							simConnect;
 

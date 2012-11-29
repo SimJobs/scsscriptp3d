@@ -24,7 +24,7 @@
 
 class SimConnect;
 
-class Application
+class Application 
 {
 private:
 	SimConnect* simConnect;

@@ -123,6 +123,8 @@ extern HMODULE gHModule;
 
 using namespace SCSScript;
 
+#include "SimHelpers.h"
+#include "SimVars.h"
 #include "Application.h"
 #include "SimConnectWrapper.h"
 

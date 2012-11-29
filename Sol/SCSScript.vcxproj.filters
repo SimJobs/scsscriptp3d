@@ -207,6 +207,12 @@
     <ClInclude Include="..\Src\SimConnectWrapper.h">
       <Filter>Src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\SimVars.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SimHelpers.h">
+      <Filter>Src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Lib\DateTime.cpp">
@@ -366,6 +372,9 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\SimConnectWrapper.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SimVars.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
