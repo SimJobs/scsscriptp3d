@@ -44,7 +44,7 @@ extern void CALLBACK fnSimConnectDispatchExt(SIMCONNECT_RECV* pData,DWORD cbData
 			}
 			if(!found) {
 				SimConnect_AddToDataDefinition(pMyHandle->simConnect, pMyHandle->definitionSimObjects[j].DefineID, pMyHandle->definitionSimObjects[j].DatumName, pMyHandle->definitionSimObjects[j].UnitsName, pMyHandle->definitionSimObjects[j].DatumType);
-				strcpy_s(pMyHandle->alreadyDefined[pMyHandle->alreadyDefinedCount++],pMyHandle->definitionSimObjects[j].DatumName);
+				Strcpy(pMyHandle->alreadyDefined[pMyHandle->alreadyDefinedCount++],pMyHandle->definitionSimObjects[j].DatumName);
 			}
 		}
 	}
@@ -204,13 +204,13 @@ void SimConnect::fnSimConnectDispatch(SIMCONNECT_RECV *pData,DWORD cbData)
 			SIMCONNECT_RECV_EVENT_FILENAME *evt = (SIMCONNECT_RECV_EVENT_FILENAME*)pData;
 			switch(evt->uEventID) {
 				case EVENT_FLIGHT_SAVE:
-					strcpy_s(savedFileName,MAX_PATH,evt->szFileName);
+					Strcpy(savedFileName,MAX_PATH,evt->szFileName);
 				break;
 				case EVENT_FLIGHT_LOAD:
-					strcpy_s(loadedFileName,MAX_PATH,evt->szFileName);
+					Strcpy(loadedFileName,MAX_PATH,evt->szFileName);
 				break;
 				case EVENT_SIM_FLIGHTPLAN_ACTIVATED:
-					strcpy_s(flightPlanActivated,MAX_PATH,evt->szFileName);
+					Strcpy(flightPlanActivated,MAX_PATH,evt->szFileName);
 				break;
 			}
 		}break;
