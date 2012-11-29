@@ -268,7 +268,7 @@ enum DATA_REQUEST_ID
 	REQUEST_AMBIENT_TEMPERATURE						= DEFINITION_AMBIENT_TEMPERATURE					,
 };													
 
-class SimConnect : public SimVars
+class SimConnect : public SimVars, public Helpers::Singleton<SimConnect>
 {
 private:
 	boost::shared_ptr<Application>	application;
@@ -348,8 +348,8 @@ public:
 	void AddToDataDefinition(SIMCONNECT_DATA_DEFINITION_ID DefineID, const char *DatumName, const char *UnitsName, SIMCONNECT_DATATYPE DatumType = SIMCONNECT_DATATYPE_FLOAT64) {
 		definitionSimObjects[definitionSimObjectsCount].DefineID=DefineID;
 		definitionSimObjects[definitionSimObjectsCount].DatumType=DatumType;
-		strcpy_s(definitionSimObjects[definitionSimObjectsCount].DatumName,BUFSIZ,DatumName);
-		strcpy_s(definitionSimObjects[definitionSimObjectsCount].UnitsName,BUFSIZ,UnitsName);
+		Strcpy(definitionSimObjects[definitionSimObjectsCount].DatumName,BUFSIZ,DatumName);
+		Strcpy(definitionSimObjects[definitionSimObjectsCount].UnitsName,BUFSIZ,UnitsName);
 		definitionSimObjectsCount++;
 	};
 
@@ -388,4 +388,6 @@ public:
 		addingRequests=false;
 	}
 };
+
+#define SC SimConnect::Instance()
 
