@@ -27,82 +27,86 @@ class XMLDimUnits
 public:
 	static void Init();
 
-	static ENUM m_Boolean		;
-	static ENUM m_Celsius		;
-	static ENUM m_Degrees		;
-	static ENUM m_Feet          ;
-	static ENUM m_FeetPerSecond	;
-	static ENUM m_Kg			;
-	static ENUM m_KgPerSecond	;
-	static ENUM m_Km			;
-	static ENUM m_KmPerHour		;
-	static ENUM m_Knots			;
-	static ENUM m_Meters		;
-	static ENUM m_MeterPerSecond;
-	static ENUM m_Number		;
-	static ENUM m_Percent		;
-	static ENUM m_Radians		;
-	static ENUM m_Fahrenheit	;
+	static ENUM boolean			;
+	static ENUM celsius			;
+	static ENUM degrees			;
+	static ENUM feet			;
+	static ENUM feetPerSecond	;
+	static ENUM kg				;
+	static ENUM kgPerSecond		;
+	static ENUM km				;
+	static ENUM kmPerHour		;
+	static ENUM knots			;
+	static ENUM meters			;
+	static ENUM meterPerSecond	;
+	static ENUM number			;
+	static ENUM percent			;
+	static ENUM radians			;
+	static ENUM fahrenheit		;
 
 protected:
-	static bool m_bEnumsInitialised;
+	static bool enumsInitialized;
 };
 
 class XMLNamedVar
 {
-public:
-	XMLNamedVar(const char *name, bool unregister_after_use=false);
-	~XMLNamedVar(void);
-
-	bool   GetBoolean		() { return (unsigned)get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Number          ) != 0; };
-	double GetCelsius		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Celsius         );      };
-	double GetDegrees		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Degrees         );      };
-	double GetFeetPerSec	() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_FeetPerSecond	);      };
-	double GetKm			() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Km              );      };
-	double GetKmPerHour		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_KmPerHour		);      };
-	double GetKnots			() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Knots           );      };
-	double GetMeters		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Meters          );      };
-	double GetMeterPerSec	() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_MeterPerSecond	);      };
-	double GetNumber		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Number          );      };
-	double GetPercent		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Percent         );      };
-	double GetRadians		() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Radians			);      };
-	double GetFahrenheit	() { return (double)  get_named_variable_typed_value( m_VarID, XMLDimUnits::m_Fahrenheit		);      };
-
-	void SetBoolean			(bool     value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Number				); };
-	void SetCelsius			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Celsius			); };
-	void SetDegrees			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Degrees			); };
-	void SetFeetPerSec		(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_FeetPerSecond		); };
-	void SetKg				(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Kg					); };
-	void SetKgPerSec		(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_KgPerSecond		); };
-	void SetKm				(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Km					); };
-	void SetKmPerHour		(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_KmPerHour			); };
-	void SetMeterPerSec		(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_MeterPerSecond		); };
-	void SetKnots			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_KmPerHour			); };
-	void SetMeters			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Knots				); };
-	void SetNumber			(int      value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Number				); };
-	void SetNumber			(unsigned value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Number				); };
-	void SetNumber			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Number				); };
-	void SetPercent			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Percent			); };
-	void SetRadians			(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Radians			); };
-	void SetFahrenheit		(double   value) { set_named_variable_typed_value( m_VarID, (FLOAT64)value, XMLDimUnits::m_Fahrenheit			); };
-
 protected:
-	ID   m_VarID;
-	bool m_bUnregisterAfterUse;
+	ID   varID;
+	bool unregisterAfterUse;
+
+public:
+	XMLNamedVar(const Char* name,bool unregister_after_use=false);
+	~XMLNamedVar();
+
+	bool   GetBoolean		() { return (unsigned)get_named_variable_typed_value( varID, XMLDimUnits::number          ) != 0; };
+	double GetCelsius		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::celsius         );      };
+	double GetDegrees		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::degrees         );      };
+	double GetFeetPerSec	() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::feetPerSecond	);      };
+	double GetKm			() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::km              );      };
+	double GetKmPerHour		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::kmPerHour		);      };
+	double GetKnots			() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::knots           );      };
+	double GetMeters		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::meters          );      };
+	double GetMeterPerSec	() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::meterPerSecond	);      };
+	double GetNumber		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::number          );      };
+	double GetPercent		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::percent         );      };
+	double GetRadians		() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::radians			);      };
+	double GetFahrenheit	() { return (double)  get_named_variable_typed_value( varID, XMLDimUnits::fahrenheit		);      };
+
+	void SetBoolean			(bool     value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::number				); };
+	void SetCelsius			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::celsius			); };
+	void SetDegrees			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::degrees			); };
+	void SetFeetPerSec		(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::feetPerSecond		); };
+	void SetKg				(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::kg					); };
+	void SetKgPerSec		(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::kgPerSecond		); };
+	void SetKm				(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::km					); };
+	void SetKmPerHour		(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::kmPerHour			); };
+	void SetMeterPerSec		(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::meterPerSecond		); };
+	void SetKnots			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::kmPerHour			); };
+	void SetMeters			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::knots				); };
+	void SetNumber			(int      value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::number				); };
+	void SetNumber			(unsigned value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::number				); };
+	void SetNumber			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::number				); };
+	void SetPercent			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::percent			); };
+	void SetRadians			(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::radians			); };
+	void SetFahrenheit		(double   value) { set_named_variable_typed_value( varID, (FLOAT64)value, XMLDimUnits::fahrenheit			); };
 };
 
 class SimVar
 {
+protected:
+	GAUGE_TOKEN varID;
+	MODULE_VAR	token;
+
 public:
 	SimVar(GAUGE_TOKEN id);
 
-	inline double GetN()	{ lookup_var(&m_Token); return m_Token.var_value.n;	}
-	inline ENUM   GetE()	{ lookup_var(&m_Token); return m_Token.var_value.e;	}
-	inline FLAGS  GetF()	{ lookup_var(&m_Token); return m_Token.var_value.f;	}
-	inline VAR32  GetD()	{ lookup_var(&m_Token); return m_Token.var_value.d;	}
-	inline BOOL   GetB()	{ lookup_var(&m_Token); return m_Token.var_value.b;	}
-	inline VAR32  GetO()	{ lookup_var(&m_Token); return m_Token.var_value.o;	}
-	inline PVOID  GetP()	{ lookup_var(&m_Token); return m_Token.var_value.p;	}
+	inline double GetN()	{ lookup_var(&token); return token.var_value.n;	}
+	inline ENUM   GetE()	{ lookup_var(&token); return token.var_value.e;	}
+	inline FLAGS  GetF()	{ lookup_var(&token); return token.var_value.f;	}
+	inline VAR32  GetD()	{ lookup_var(&token); return token.var_value.d;	}
+	inline BOOL   GetB()	{ lookup_var(&token); return token.var_value.b;	}
+	inline VAR32  GetO()	{ lookup_var(&token); return token.var_value.o;	}
+	inline PVOID  GetP()	{ lookup_var(&token); return token.var_value.p;	}
 
 	bool   GetBoolean		() { return (unsigned)GetN() != 0; };
 	double GetDegrees		() { return (double)  GetN();      };
@@ -122,55 +126,51 @@ public:
 	double GetFahrenheit	() { return (double)  CELSIUS_TO_FAHRENHEIT(GetCelsius());      };
 
 	double Get(ENUM e) { 
-		if(e==XMLDimUnits::m_Boolean		) return GetBoolean();
-		if(e==XMLDimUnits::m_Celsius		) return GetCelsius();		
-		if(e==XMLDimUnits::m_Degrees		) return GetDegrees();		
-		if(e==XMLDimUnits::m_Feet			) return GetFeet();			
-		if(e==XMLDimUnits::m_FeetPerSecond	) return GetFeetPerSec();	
-		if(e==XMLDimUnits::m_Kg			) return GetKg();			
-		if(e==XMLDimUnits::m_KgPerSecond	) return GetKgPerSec();		
-		if(e==XMLDimUnits::m_Km			) return GetKm();			
-		if(e==XMLDimUnits::m_KmPerHour		) return GetKmPerHour();		
-		if(e==XMLDimUnits::m_Knots			) return GetKnots();			
-		if(e==XMLDimUnits::m_Meters		) return GetMeters();		
-		if(e==XMLDimUnits::m_MeterPerSecond) return GetMeterPerSec();	
-		if(e==XMLDimUnits::m_Number		) return GetNumber();		
-		if(e==XMLDimUnits::m_Percent		) return GetPercent();		
-		if(e==XMLDimUnits::m_Radians		) return GetRadians();		
-		if(e==XMLDimUnits::m_Fahrenheit	) return GetFahrenheit();		
+		if(e==XMLDimUnits::boolean		) return GetBoolean();
+		if(e==XMLDimUnits::celsius		) return GetCelsius();		
+		if(e==XMLDimUnits::degrees		) return GetDegrees();		
+		if(e==XMLDimUnits::feet			) return GetFeet();			
+		if(e==XMLDimUnits::feetPerSecond) return GetFeetPerSec();	
+		if(e==XMLDimUnits::kg			) return GetKg();			
+		if(e==XMLDimUnits::kgPerSecond	) return GetKgPerSec();		
+		if(e==XMLDimUnits::km			) return GetKm();			
+		if(e==XMLDimUnits::kmPerHour	) return GetKmPerHour();		
+		if(e==XMLDimUnits::knots		) return GetKnots();			
+		if(e==XMLDimUnits::meters		) return GetMeters();		
+		if(e==XMLDimUnits::meterPerSecond)return GetMeterPerSec();	
+		if(e==XMLDimUnits::number		) return GetNumber();		
+		if(e==XMLDimUnits::percent		) return GetPercent();		
+		if(e==XMLDimUnits::radians		) return GetRadians();		
+		if(e==XMLDimUnits::fahrenheit	) return GetFahrenheit();		
 		return 0;
 	};
-
-protected:
-	GAUGE_TOKEN m_VarID;
-	MODULE_VAR	m_Token;
 };
 
 class SimVars
 {
 private:
-	bool						m_StdTokensInited;
-	std::auto_ptr<SimVar>		m_StdTokens[C_GAUGE_TOKEN];
+	bool						stdTokensInited;
+	std::auto_ptr<SimVar>		stdTokens[C_GAUGE_TOKEN];
 	
 public:
 	SimVars() {
-		m_StdTokensInited=false;
+		stdTokensInited=false;
 		InitVars();
 	}
 
 	void InitVars() {
-		if(m_StdTokensInited)
+		if(stdTokensInited)
 			return;
 
 		for(int i=MODULE_VAR_NONE+1;i<C_GAUGE_TOKEN;i++) {
-			m_StdTokens[i]=std::auto_ptr<SimVar>(new SimVar((GAUGE_TOKEN)i));
+			stdTokens[i]=std::auto_ptr<SimVar>(new SimVar((GAUGE_TOKEN)i));
 		}
 
-		m_StdTokensInited=true;
+		stdTokensInited=true;
 	}
 
-	inline double GetC(GAUGE_TOKEN var,ENUM e=XMLDimUnits::m_Number)			{ return m_StdTokens[var]->Get(e);		}
-	inline FLAGS  GetCF(GAUGE_TOKEN var)										{ return m_StdTokens[var]->GetF();		}
-	inline PVOID  GetCP(GAUGE_TOKEN var)										{ return m_StdTokens[var]->GetP();		}
+	inline double GetC(GAUGE_TOKEN var,ENUM e=XMLDimUnits::number)	{ return stdTokens[var]->Get(e);		}
+	inline FLAGS  GetCF(GAUGE_TOKEN var)							{ return stdTokens[var]->GetF();		}
+	inline PVOID  GetCP(GAUGE_TOKEN var)							{ return stdTokens[var]->GetP();		}
 };
 
