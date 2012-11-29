@@ -28,24 +28,23 @@ class Application
 {
 private:
 	SimConnect* simConnect;
-
-	String	panelCustomParameter;
-	String	m_RootPath;
-	String	m_ConfigFile;
-	String	m_ScriptsPath;
-	String	m_MediaPath;
-	String	m_StartupScript;
-	String	m_SaveLoadSection;
-	bool	m_ShowDebugConsole;
-	bool	m_ConsoleActivated;
-	bool	m_ReloadScriptsOnEyeReset;
-	bool	m_CheckForSimQuiet;
-	bool	m_CheckForSimPaused;
-	bool	m_RunFirstTime;
-	DWORD	m_WaitTimeForScript;
-	int		m_Muted[2];
-	int		m_Paused[2];
-	bool	m_Installed;
+	String		panelCustomParameter;
+	String		rootPath;
+	String		configFile;
+	String		scriptsPath;
+	String		mediaPath;
+	String		startupScript;
+	String		saveLoadSection;
+	bool		showDebugConsole;
+	bool		consoleActivated;
+	bool		reloadScriptsOnEyeReset;
+	bool		checkForSimQuiet;
+	bool		checkForSimPaused;
+	bool		runFirstTime;
+	DWORD		waitTimeForScript;
+	int			muted[2];
+	int			paused[2];
+	bool		installed;
 
 public:
 	Application();

@@ -38,13 +38,13 @@ void Application::SetPanelCustomParameter(const String& str)
 	GetModuleFileNameA(NULL,temp,MAX_PATH);
 	Helpers::ExtractPath(temp);
 	Helpers::CheckForBackSlash(temp);
-	m_RootPath.assign(temp);
+	rootPath.assign(temp);
 
-	m_ConfigFile=m_RootPath+panelCustomParameter;
+	configFile=rootPath+panelCustomParameter;
 
-	if(!Helpers::FileExists(m_ConfigFile)) {
+	if(!Helpers::FileExists(configFile)) {
 		char buf[BUFSIZ];
-		Sprintf(buf,"Config file %s not found.",m_ConfigFile.c_str());
+		Sprintf(buf,"Config file %s not found.",configFile.c_str());
 		LOG.Write(buf);
 		throw Exception(buf);
 		//MessageBoxA(NULL,buf,"Critical error!",0);
@@ -52,33 +52,33 @@ void Application::SetPanelCustomParameter(const String& str)
 
 	ReadConfig();
 
-	simConnect->scriptEngine->PreInstall(m_ScriptsPath,m_StartupScript,m_WaitTimeForScript);
-	simConnect->soundEngine->PreInstall(m_MediaPath);
+	simConnect->scriptEngine->PreInstall(scriptsPath,startupScript,waitTimeForScript);
+	simConnect->soundEngine->PreInstall(mediaPath);
 
-	if(m_ShowDebugConsole&&!m_ConsoleActivated) {
-		m_ConsoleActivated=(AllocConsole()!=0);
+	if(showDebugConsole&&!consoleActivated) {
+		consoleActivated=(AllocConsole()!=0);
 	}
 
-	m_RunFirstTime=true;
+	runFirstTime=true;
 
-	m_Muted[0]=m_Muted[1]=simConnect->soundMaster;
-	m_Paused[0]=m_Paused[1]=simConnect->simPaused;
+	muted[0]=muted[1]=simConnect->soundMaster;
+	paused[0]=paused[1]=simConnect->simPaused;
 
-	m_Installed=true;
+	installed=true;
 }
 
 bool Application::Init(SimConnect* simconnect)
 {
 	simConnect=simconnect;
 
-	m_ShowDebugConsole=false;
-	m_ConsoleActivated=false;
-	m_ReloadScriptsOnEyeReset=false;
-	m_CheckForSimQuiet=false;
-	m_CheckForSimPaused=false;
-	m_Installed=false;
+	showDebugConsole=false;
+	consoleActivated=false;
+	reloadScriptsOnEyeReset=false;
+	checkForSimQuiet=false;
+	checkForSimPaused=false;
+	installed=false;
 
-	m_RunFirstTime=false;
+	runFirstTime=false;
 
 	//RegisterScriptFunctions();
 
@@ -87,31 +87,31 @@ bool Application::Init(SimConnect* simconnect)
 
 void Application::DeInit()
 {
-	m_RunFirstTime=false;
-	if(m_ShowDebugConsole&&m_ConsoleActivated) {
-		m_ConsoleActivated=(FreeConsole()==0);
+	runFirstTime=false;
+	if(showDebugConsole&&consoleActivated) {
+		consoleActivated=(FreeConsole()==0);
 	}
 }
 
 void Application::Update()
 {
-	if(!m_Installed)
+	if(!installed)
 		return;
 
-	if(m_RunFirstTime) {
+	if(runFirstTime) {
 		simConnect->scriptEngine->CompileScriptFinal();
-		//ImportTable.pPanels->send_key_event(KEY_THROTTLE_FULL,0);
-		//ImportTable.pPanels->send_key_event(KEY_THROTTLE_CUT,0);
+		send_key_event(KEY_THROTTLE_FULL,0);
+		send_key_event(KEY_THROTTLE_CUT,0);
 		simConnect->scriptEngine->ExecuteScript("void OnStartup()");
 		//m_SaveLoadEngine->Load();
 		//m_AutopilotEngine->Load();
-		m_RunFirstTime=false;
+		runFirstTime=false;
 	}
 
 	CheckSimMuteFlag();
 	CheckSimPauseFlag();
 
-	if(m_Paused[0])
+	if(paused[0])
 		return;
 
 	simConnect->scriptEngine->ExecuteScript("void OnUpdate()");
@@ -120,43 +120,43 @@ void Application::Update()
 
 void Application::CheckSimMuteFlag()
 {
-	m_Muted[0]=simConnect->soundMaster;
-	if(m_Muted[0]!=m_Muted[1]) {
-		if(m_CheckForSimQuiet) {
-			if(m_Muted[0]) {
+	muted[0]=simConnect->soundMaster;
+	if(muted[0]!=muted[1]) {
+		if(checkForSimQuiet) {
+			if(muted[0]) {
 				simConnect->soundEngine->UnMuteAll();
 			} else {
 				simConnect->soundEngine->MuteAll();
 			}
 		}
-		m_Muted[1]=m_Muted[0];
+		muted[1]=muted[0];
 	}
 }
 
 void Application::CheckSimPauseFlag()
 {
-	m_Paused[0]=simConnect->simPaused;
-	if(m_Paused[0]!=m_Paused[1]) {
-		if(m_CheckForSimPaused) {
-			if(m_Paused[0]) {
+	paused[0]=simConnect->simPaused;
+	if(paused[0]!=paused[1]) {
+		if(checkForSimPaused) {
+			if(paused[0]) {
 				simConnect->soundEngine->UnPauseAll();
 			} else {
 				simConnect->soundEngine->PauseAll();
 			}
 		}
-		m_Paused[1]=m_Paused[0];
+		paused[1]=paused[0];
 	}
 }
 
 void Application::ReadConfig()
 {
-	m_WaitTimeForScript			= Helpers::FromString<int>(   IniFile::GetValue("ScriptWaitTime"          ,"Debug"   ,m_ConfigFile));
-	m_ShowDebugConsole			= Helpers::ParseStringForBool(IniFile::GetValue("DebugConsole"            ,"Debug"   ,m_ConfigFile));
-	m_ReloadScriptsOnEyeReset	= Helpers::ParseStringForBool(IniFile::GetValue("ReloadScriptsOnEyeReset" ,"Debug"   ,m_ConfigFile));
-	m_CheckForSimQuiet			= Helpers::ParseStringForBool(IniFile::GetValue("CheckForSimQuiet"        ,"Sound"   ,m_ConfigFile));
-	m_CheckForSimPaused			= Helpers::ParseStringForBool(IniFile::GetValue("CheckForSimPaused"       ,"Sound"   ,m_ConfigFile));
-	m_MediaPath					= m_RootPath+				  IniFile::GetValue("MediaPath"               ,"General" ,m_ConfigFile)+"\\";
-	m_ScriptsPath				= m_RootPath+				  IniFile::GetValue("ScriptPath"              ,"General" ,m_ConfigFile)+"\\";
-	m_StartupScript				=							  IniFile::GetValue("MainScript"			  ,"General" ,m_ConfigFile);
-	m_SaveLoadSection			=							  IniFile::GetValue("SaveSection"             ,"SaveLoad",m_ConfigFile);
+	waitTimeForScript		= Helpers::FromString<int>(   IniFile::GetValue("ScriptWaitTime"          ,"Debug"   ,configFile));
+	showDebugConsole		= Helpers::ParseStringForBool(IniFile::GetValue("DebugConsole"            ,"Debug"   ,configFile));
+	reloadScriptsOnEyeReset	= Helpers::ParseStringForBool(IniFile::GetValue("ReloadScriptsOnEyeReset" ,"Debug"   ,configFile));
+	checkForSimQuiet		= Helpers::ParseStringForBool(IniFile::GetValue("CheckForSimQuiet"        ,"Sound"   ,configFile));
+	checkForSimPaused		= Helpers::ParseStringForBool(IniFile::GetValue("CheckForSimPaused"       ,"Sound"   ,configFile));
+	mediaPath				= rootPath+					  IniFile::GetValue("MediaPath"               ,"General" ,configFile)+"\\";
+	scriptsPath				= rootPath+					  IniFile::GetValue("ScriptPath"              ,"General" ,configFile)+"\\";
+	startupScript			=							  IniFile::GetValue("MainScript"			  ,"General" ,configFile);
+	saveLoadSection			=							  IniFile::GetValue("SaveSection"             ,"SaveLoad",configFile);
 }
