@@ -123,7 +123,7 @@ public:
 	double GetRadians		() { return (double)  GetN();      };
 	double GetPercent		() { return (double)  GetN();      };
 	double GetCelsius		() { return (double)  GetN();      };
-	double GetFahrenheit	() { return (double)  CELSIUS_TO_FAHRENHEIT(GetCelsius());      };
+	double GetFahrenheit	() { return (double)  MeasureHelpers::CelsiusToFahrenheit(GetCelsius()); };
 
 	double Get(ENUM e) { 
 		if(e==XMLDimUnits::boolean		) return GetBoolean();

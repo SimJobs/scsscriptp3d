@@ -22,84 +22,104 @@
 
 #pragma once
 
-#define		PI									3.1415926535897932384626433832795		//circle number
+class MeasureHelpers
+{
+public:
+	static const double Pi;
+	static const double TicksPerSecond;
+	static const double FsLatFactor;
+	static const double FsLonFactor;
+	static const double LatDivider;
+	static const double LonDivider;
+	static const double FuelLevelPercent;
+	static const double RadiansDegreeFactor;
+	static const double MeterFeetFactor;
+	static const double KilometerNmMileFactor;
+	static const double PoundKilogramFactor;
+	static const double MeterPerSecondKnotFactor;
+	static const double GallonLitreFactor;
+	static const double InchHgPsiFactor;
+	static const double LbsKilogramFactor;
+	static const double PsiPsfFactor;
 
-#define		TICKS_PER_SEC						18
+	static double FeetToMeter(double val)					{ return val/MeterFeetFactor; }
+	static double MeterToFeet(double val)					{ return val*MeterFeetFactor; }
 
-#define		FS_LAT_FACTOR						111130.555557
-#define		FS_LON_FACTOR						781874935307.40
-#define		LAT_DIVIDER 						40007000.0
-#define		LON_DIVIDER 						281474976710656.0
-#define		FUEL_LEVEL_PCT						83886.08
-#define		RADIANS_TO_DEGREE_FACTOR			(180.0/PI)
-#define		METER_FEET_FACTOR					3.28084
-#define		KILOMETER_NM_MILE_FACTOR			0.54
-#define		POUND_KILOGRAM_FACTOR				0.453592
-#define		METER_PER_SECOND_KNOT_FACTOR		1.944
-#define		GALLON_LITRE_FACTOR					3.785
-#define		INCH_HG_PSI_FACTOR					(.4912)
-#define		LBS_KILOGRAMM_FACTOR				2.2046
+	static double NauticMileToMeter(double val)				{ return val*(1000.0/KilometerNmMileFactor); } 
+	static double MeterToNauticMile(double val)				{ return val*(KilometerNmMileFactor/1000.0); }
 
-//useful conversion macros
-#define		FEET_TO_METER( val )				( ( val )/METER_FEET_FACTOR )
-#define		METER_TO_FEET( val )				( ( val )*METER_FEET_FACTOR )
+	static double PoundToKilogram(double pound)				{ return pound*PoundKilogramFactor; }
+	static double KilogramToPound(double kilogram)			{ return kilogram/PoundKilogramFactor; }
 
-#define		NAUTIC_MILE_TO_METER( val )			( ( val )*(1000.0/KILOMETER_NM_MILE_FACTOR) )
-#define		METER_TO_NAUTIC_MILE( val )			( ( val )*(KILOMETER_NM_MILE_FACTOR/1000.0) )
+	static double PoundToMetricTon(double pound)			{ return PoundKilogramFactor*pound/1000.0; } 
+	static double MetricTonToPound(double ton)				{ return (ton*1000.0)/PoundKilogramFactor; }
 
-#define		POUND_TO_KILOGRAM( pound )			( ( pound ) *  POUND_KILOGRAM_FACTOR )
-#define		KILOGRAM_TO_POUND( kilogram )		( ( kilogram ) /  POUND_KILOGRAM_FACTOR )
+	static double MeterPerSecondToKnot(double val)			{ return val*MeterPerSecondKnotFactor; }
+	static double KnotToMeterPerSecond(double val)			{ return val/MeterPerSecondKnotFactor; }
 
-#define		POUND_TO_METRIC_TON( pound )		( POUND_KILOGRAM_FACTOR*(pound)/1000.0 )
-#define		METRIC_TON_TO_POUND( ton )			( (( ton )* 1000.0)/POUND_KILOGRAM_FACTOR )
+	static double LitreToGallon(double litre)				{ return litre/GallonLitreFactor; }
+	static double GallonToLitre(double gallon)				{ return gallon*GallonLitreFactor; }
 
-#define		METER_PER_SECOND_TO_KNOT( val )		( ( val )*METER_PER_SECOND_KNOT_FACTOR )
-#define		KNOT_TO_METER_PER_SECOND( val )		( ( val )/METER_PER_SECOND_KNOT_FACTOR )
+	static double PsiToPsf(double press)					{ return PsiPsfFactor*press; }
+	static double PsfToPsi(double press)					{ return press/PsiPsfFactor; }
 
-#define		LITRE_TO_GALLON( litre )			( (litre)/GALLON_LITRE_FACTOR )
-#define		GALLON_TO_LITRE( gallon )			( (gallon)*GALLON_LITRE_FACTOR )
+	static double InchHgToPsi(double press)					{ return press*InchHgPsiFactor; }
+	static double PsiToInchHg(double press)					{ return press/InchHgPsiFactor; }
 
-#define		PSI_TO_PSF(press)	(144.0*(press))
-#define		PSF_TO_PSI(press)	((press)/144.0)
+	static double InchHgToPsf(double press)					{ return press*InchHgPsiFactor*PsiPsfFactor; }
+	static double PsfToInchHg(double press)					{ return press/InchHgPsiFactor/PsiPsfFactor; }
 
-#define		INCH_HG_TO_PSI(press)	((press)*INCH_HG_PSI_FACTOR)
-#define		PSI_TO_INCH_HG(press)	((press)/INCH_HG_PSI_FACTOR)
+	static double FahrenheitToCelsius(double fahrenheit)	{ return 5.0/9.0*(fahrenheit-32.0); }
+	static double CelsiusToFahrenheit(double celsius)		{ return 32.0+9.0/5.0*celsius; }
 
-#define		INCH_HG_TO_PSF(press)	((press)*INCH_HG_PSI_FACTOR*144.0)
-#define		PSF_TO_INCH_HG(press)	((press)/INCH_HG_PSI_FACTOR/144.0)
-//temperature conversions
-#define		FAHRENHEIT_TO_CELSIUS( fahrenheit )	( 5.0/9.0*((fahrenheit)-32.0) )
-#define		CELSIUS_TO_FAHRENHEIT( celsius )	( 32.0+9.0/5.0*(celsius) )
+	static double CelsiusToKelvin(double celsius)			{ return celsius+273.15; }
+	static double KelvinToCelsius(double kelvin)			{ return kelvin-273.15; }
 
-#define		CELSIUS_TO_KELVIN( celsius )		( (celsius)+273.15 )
-#define		KELVIN_TO_CELSIUS( kelvin )			( (kelvin)-273.15 )
+	static double RankineToKelvin(double rankine)			{ return 5.0/9.0*rankine; }
+	static double KelvinToRankine(double kelvin)			{ return 9.0/5.0*kelvin; }
 
-#define		RANKINE_TO_KELVIN( rankine )		( 5.0/9.0*(rankine) )
-#define		KELVIN_TO_RANKINE( kelvin )			( 9.0/5.0*(kelvin) )
+	static double RankineToFahrenheit(double rankine)		{ return rankine-459.67; }
+	static double FahrenheitToRankine(double fahrenheit)	{ return fahrenheit+459.67; }
 
-#define		RANKINE_TO_FAHRENHEIT( rankine )	( (rankine)-459.67 )
-#define		FAHRENHEIT_TO_RANKINE( fahrenheit )	( (fahrenheit)+459.67 )
+	static double CelsiusToRankine(double celsius)			{ return FahrenheitToRankine(CelsiusToFahrenheit(celsius)); } 
+	static double RankineToCelsius(double rankine)			{ return FahrenheitToCelsius(RankineToFahrenheit(rankine)); }
 
-#define		CELSIUS_TO_RANKINE( celsius )		( FAHRENHEIT_TO_RANKINE(CELSIUS_TO_FAHRENHEIT(celsius)) )
-#define		RANKINE_TO_CELSIUS( rankine )		( FAHRENHEIT_TO_CELSIUS(RANKINE_TO_FAHRENHEIT(rankine)) )
+	static double FsLatitudeDegrees(double val)				{ return val/FsLatFactor; }	//FS latitude conversion to degrees latitude (north positive,south negative)
+	static double FsLongitudeDegrees(double val)			{ return (val>140737488355332)?val/FsLonFactor-360.0:val/FsLonFactor; }	//FS longitude conversion to degrees longitude (east positive,west negative)
 
-// flightsimulator related conversion macros
-#define		FS_LATITUDE_DEG( val )	 (( val )/FS_LAT_FACTOR)		//FS latitude conversion to degrees latitude (north positive,south negative)
-#define		FS_LONGITUDE_DEG( val )	 ( ( val ) > 140737488355332) ? ( val )/FS_LON_FACTOR-360.0 : ( val )/FS_LON_FACTOR	//FS longitude conversion to degrees longitude (east positive,west negative)
+	static double FsVerticalSpeedFeet(double val)			{ return MeterToFeet(val/256.0)*60.0; } //FS vertical speed in feet/min from 1/256 m/sec
 
-#define		FS_VSPD_FT( val)		(METER_TO_FEET((val)/256.0)*60.0)//FS vertical speed in feet/min from 1/256 m/sec
+	static double FsGroundAltFeet(double val)				{ return MeterToFeet(val/256.0); } //ground altittude in feet
+	static double FsPlaneAltFeet(double val)				{ return MeterToFeet(val); } //plane altitude in feet
+	static double FsMach(double val)						{ return val*3.2/65536.0; }
 
-#define		FS_GROUND_ALT_FT(val)	(METER_TO_FEET((val)/256.0))	//ground altittude in feet
-#define		FS_PLANE_ALT_FT(val)	(METER_TO_FEET(val))			//plane altitude in feet
-#define		FS_MACH(val)			(val*3.2/65536.0)
-//trigonometric functions in degrees instead of radians
-#define		DEG_SIN( val )	sin( ( val )/RADIANS_TO_DEGREE_FACTOR)					//sinus in degrees
-#define		DEG_COS( val )	cos( ( val )/RADIANS_TO_DEGREE_FACTOR)					//cosine in degrees
-#define		DEG_TAN( val )	tan( ( val )/RADIANS_TO_DEGREE_FACTOR)					//tangens in degrees
-#define		DEG_ASIN( val )	RADIANS_TO_DEGREE_FACTOR * asin(( val ))				//arcsinus in degrees
-#define		DEG_ACOS( val )	RADIANS_TO_DEGREE_FACTOR * acos(( val ))				//arccosine in degrees
-#define		DEG_ATAN( val )	RADIANS_TO_DEGREE_FACTOR * atan(( val ))				//arctangens in degrees
-#define		DEG_ATAN2( val1 ,val2 )	RADIANS_TO_DEGREE_FACTOR * atan2( val1,val2 )	//atan2 in degrees
+	static double DegreesSin(double val)					{ return sin(val/RadiansDegreeFactor); }			//sinus in degrees
+	static double DegreesCos(double val)					{ return cos(val/RadiansDegreeFactor); }			//cosine in degrees
+	static double DegreesTan(double val)					{ return tan(val/RadiansDegreeFactor); }			//tangens in degrees
+	static double DegreesAsin(double val)					{ return RadiansDegreeFactor*asin(val); }			//arcsinus in degrees
+	static double DegreesAcos(double val)					{ return RadiansDegreeFactor*acos(val); }			//arccosine in degrees
+	static double DegreesAtan(double val)					{ return RadiansDegreeFactor*atan(val); }			//arctangens in degrees
+	static double DegreesAtan2(double val1,double val2)		{ return RadiansDegreeFactor*atan2(val1,val2); }	//atan2 in degrees
 
-#define		LBS_TO_KG(val)	POUND_TO_KILOGRAM((val))
-#define		KG_TO_LBS(val)	KILOGRAM_TO_POUND((val))
+	static double LbsToKg(double val)						{ return PoundToKilogram(val); }
+	static double KgToLbs(double val)						{ return KilogramToPound(val); }
+};
+
+const double MeasureHelpers::Pi							= 3.1415926535897932384626433832795;
+const double MeasureHelpers::TicksPerSecond				= 18;
+const double MeasureHelpers::FsLatFactor				= 111130.555557;
+const double MeasureHelpers::FsLonFactor				= 781874935307.40;
+const double MeasureHelpers::LatDivider					= 40007000.0;
+const double MeasureHelpers::LonDivider					= 281474976710656.0;
+const double MeasureHelpers::FuelLevelPercent			= 83886.08;
+const double MeasureHelpers::RadiansDegreeFactor		= 180.0/Pi;
+const double MeasureHelpers::MeterFeetFactor			= 3.28084;
+const double MeasureHelpers::KilometerNmMileFactor		= 0.54;
+const double MeasureHelpers::PoundKilogramFactor		= 0.453592;
+const double MeasureHelpers::MeterPerSecondKnotFactor	= 1.944;
+const double MeasureHelpers::GallonLitreFactor			= 3.785;
+const double MeasureHelpers::InchHgPsiFactor			= 0.4912;
+const double MeasureHelpers::LbsKilogramFactor			= 2.2046;
+const double MeasureHelpers::PsiPsfFactor				= 144.0;
+
+
