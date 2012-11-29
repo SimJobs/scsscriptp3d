@@ -44,7 +44,7 @@ void Application::SetPanelCustomParameter(const String& str)
 
 	if(!Helpers::FileExists(m_ConfigFile)) {
 		char buf[BUFSIZ];
-		sprintf_s(buf,"Config file %s not found.",m_ConfigFile.c_str());
+		Sprintf(buf,"Config file %s not found.",m_ConfigFile.c_str());
 		LOG.Write(buf);
 		throw Exception(buf);
 		//MessageBoxA(NULL,buf,"Critical error!",0);
