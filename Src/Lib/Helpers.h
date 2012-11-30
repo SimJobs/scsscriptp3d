@@ -260,6 +260,30 @@ namespace SCSScript
 			return v;
 		}
 
+		inline void GetStringFromResource(String file,UINT id,String& ret,String def)
+		{
+			HANDLE hExe;
+			CHAR sz[160];
+
+			hExe = LoadLibraryA(file.c_str()); 
+
+			if(hExe == NULL) { 
+				ret=def;
+				return;
+			} 
+			if(!LoadStringA((HINSTANCE)hExe,id,sz,sizeof(sz))) {
+				ret=def;
+				return;
+			}
+
+			if(!FreeLibrary((HINSTANCE)hExe)) { 
+				ret=def;
+				return;
+			} 
+
+			ret.assign(sz);
+		}
+
 	}
 }
 

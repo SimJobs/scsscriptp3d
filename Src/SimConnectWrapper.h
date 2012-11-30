@@ -273,6 +273,8 @@ class SimConnect : public SimVars, public Helpers::Singleton<SimConnect>
 private:
 	boost::shared_ptr<Application>	application;
 
+	HWND							windowHandle;
+
 	double							simTick18;
 	double							timeoutBeforeStartUpdate;
 
@@ -330,6 +332,7 @@ public:
 	~SimConnect();
 
 	bool Init(HWND windowHandle);
+	void InitAll();
 	void DeInit();
 	void Update();
 

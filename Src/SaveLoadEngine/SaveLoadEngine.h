@@ -22,16 +22,30 @@
 
 #pragma once
 
+class SimConnect;
+
 namespace SCSScript
 {
 	namespace SaveLoadEngine
 	{
 		class SaveLoadEngine : boost::noncopyable
 		{
+		private:
+			SimConnect* simConnect;
+			String		rootPath;
+			String		saveSection;
+			String		m_PrevoiusFlight;
+			String		m_UIGeneratedFlight;
+			Char		m_LoadFileName[MAX_BUFFER_LENGTH];
+			Char		m_SaveFileName[MAX_BUFFER_LENGTH];
+
+			void	PrepareSimSaveFiles();
+			void	SaveLoadCheck();
+
 		public:
-			void	Init();
+			void	Init(SimConnect* simconnect);
 			void	DeInit();
-			void	PreInstall(const String& simpath,boost::shared_ptr<ScriptEngine::ScriptEngine> se,const String& savesection);
+			void	PreInstall(const String& simpath,const String& savesection);
 			void	Load();
 			void	Save(const String& name);
 			void	Update();

@@ -78,10 +78,21 @@ SimConnect::~SimConnect()
 {
 }
 
-bool SimConnect::Init(HWND windowHandle)
+void SimConnect::InitAll()
+{
+	soundEngine->Init(windowHandle);
+	scriptEngine->Init();
+	saveLoadEngine->Init(this);
+	autopilotEngine->Init();
+	application->Init(this);
+}
+
+bool SimConnect::Init(HWND windowhandle)
 {
 	if(simConnect)
 		return true;
+
+	windowHandle=windowhandle;
 
 	addingDefinitions=false;
 	addingRequests=false;
@@ -130,7 +141,7 @@ bool SimConnect::Init(HWND windowHandle)
 
 	soundEngine->Init(windowHandle);
 	scriptEngine->Init();
-	saveLoadEngine->Init();
+	saveLoadEngine->Init(this);
 	autopilotEngine->Init();
 	application->Init(this);
 

@@ -57,7 +57,7 @@ void Application::SetPanelCustomParameter(const String& str)
 
 	simConnect->scriptEngine->PreInstall(scriptsPath,startupScript,waitTimeForScript);
 	simConnect->soundEngine->PreInstall(mediaPath);
-	simConnect->saveLoadEngine->PreInstall(rootPath,simConnect->scriptEngine,saveLoadSection);
+	simConnect->saveLoadEngine->PreInstall(rootPath,saveLoadSection);
 	simConnect->autopilotEngine->PreInstall();
 
 	if(showDebugConsole&&!consoleActivated) {
