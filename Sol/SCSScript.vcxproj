@@ -68,6 +68,7 @@
     <ClInclude Include="..\Src\Lib\WriterASCII.h" />
     <ClInclude Include="..\Src\PCH.h" />
     <ClInclude Include="..\Src\SaveLoadEngine\SaveLoadEngine.h" />
+    <ClInclude Include="..\Src\ScripEngineFunctions.h" />
     <ClInclude Include="..\Src\ScriptEngine\ScriptEngine.h" />
     <ClInclude Include="..\Src\SimConnectWrapper.h" />
     <ClInclude Include="..\Src\SimHelpers.h" />

@@ -228,6 +228,9 @@
     <ClInclude Include="..\Src\AutopilotEngine\AutopilotEngine.h">
       <Filter>Src\AutopilotEngine</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\ScripEngineFunctions.h">
+      <Filter>Src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Lib\DateTime.cpp">

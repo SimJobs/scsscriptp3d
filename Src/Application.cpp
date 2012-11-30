@@ -192,6 +192,42 @@ bool Application::fnKeyHandler(ID32 event,UINT32 evdata)
 	return true;
 }
 
+#include "ScripEngineFunctions.h"
+
 void Application::RegisterScriptFunctions()
 {
+	// System
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void Print(string& in)"					,asFUNCTION(PrintStr)				,asCALL_CDECL);
+
+	// Sound
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void PlaySound(string& in)"				,asFUNCTION(sndPlay)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void StopSound(string& in)"				,asFUNCTION(sndStop)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void MuteSound(string& in)"				,asFUNCTION(sndMute)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void UnMuteSound(string& in)"				,asFUNCTION(sndUnMute)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void PauseSound(string& in)"				,asFUNCTION(sndPause)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void UnPauseSound(string& in)"			,asFUNCTION(sndUnPause)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void PlaySoundIfNotPlay(string& in)"		,asFUNCTION(sndPlayIfNotPlaying)	,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("bool IsSoundPlaying(string& in)"			,asFUNCTION(sndIsPlaying)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("int GetSoundVolume(string& in)"			,asFUNCTION(sndGetVolume)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void SetSoundVolume(string& in,int& in)"	,asFUNCTION(sndSetVolume)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void MuteAllSounds()"						,asFUNCTION(sndMuteAll)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void UnMuteAllSounds()"					,asFUNCTION(sndUnMuteAll)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void PauseAllSounds()"					,asFUNCTION(sndPauseAll)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void UnPauseAllSounds()"					,asFUNCTION(sndUnPauseAll)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void StopSoundIfPlay(string &in)"			,asFUNCTION(sndStopIfPlaying)		,asCALL_CDECL);
+
+	// Sim
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalProperty("int SimKeyPressed"						,&gKeyPressed);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalProperty("int SimKeyData"							,&gKeyData);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("double GetCToken(int &in)"				,asFUNCTION(GetCToken)				,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("double GetNamedVar(string &in)"			,asFUNCTION(GetNamedVar)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void SetNamedVar(string &in,double &in)"	,asFUNCTION(SetNamedVar)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("int GetNamedVarBoolReset(string &in)"		,asFUNCTION(GetNamedVarBoolReset)	,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("int GetViewMode()"						,asFUNCTION(GetViewMode)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void SetSimEvent(int &in,int &in)"		,asFUNCTION(SetSimEvent)			,asCALL_CDECL);
+
+	// Save load
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("void SaveVar(string &in,double &in)"		,asFUNCTION(SaveVariable)			,asCALL_CDECL);
+	simConnect->scriptEngine->GetEngine()->RegisterGlobalFunction("double LoadVar(string &in)"				,asFUNCTION(LoadVariable)			,asCALL_CDECL);
+
 }
