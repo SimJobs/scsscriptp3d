@@ -22,6 +22,9 @@
 
 #include "PCH.h"
 
+ID32    gKeyPressed=KEY_NULL;
+UINT32  gKeyData=0;
+
 Application::Application() : simConnect(nullptr)
 {
 }
@@ -54,6 +57,8 @@ void Application::SetPanelCustomParameter(const String& str)
 
 	simConnect->scriptEngine->PreInstall(scriptsPath,startupScript,waitTimeForScript);
 	simConnect->soundEngine->PreInstall(mediaPath);
+	simConnect->saveLoadEngine->PreInstall(rootPath,simConnect->scriptEngine,saveLoadSection);
+	simConnect->autopilotEngine->PreInstall();
 
 	if(showDebugConsole&&!consoleActivated) {
 		consoleActivated=(AllocConsole()!=0);
@@ -63,6 +68,8 @@ void Application::SetPanelCustomParameter(const String& str)
 
 	muted[0]=muted[1]=simConnect->soundMaster;
 	paused[0]=paused[1]=simConnect->simPaused;
+
+	StartKey();
 
 	installed=true;
 }
@@ -80,13 +87,15 @@ bool Application::Init(SimConnect* simconnect)
 
 	runFirstTime=false;
 
-	//RegisterScriptFunctions();
+	RegisterScriptFunctions();
 
 	return true;
 }
 
 void Application::DeInit()
 {
+	StopKey();
+
 	runFirstTime=false;
 	if(showDebugConsole&&consoleActivated) {
 		consoleActivated=(FreeConsole()==0);
@@ -103,10 +112,13 @@ void Application::Update()
 		send_key_event(KEY_THROTTLE_FULL,0);
 		send_key_event(KEY_THROTTLE_CUT,0);
 		simConnect->scriptEngine->ExecuteScript("void OnStartup()");
-		//m_SaveLoadEngine->Load();
-		//m_AutopilotEngine->Load();
+		simConnect->saveLoadEngine->Load();
+		simConnect->autopilotEngine->Load();
 		runFirstTime=false;
 	}
+
+	simConnect->saveLoadEngine->Update();
+	simConnect->autopilotEngine->Update();
 
 	CheckSimMuteFlag();
 	CheckSimPauseFlag();
@@ -159,4 +171,27 @@ void Application::ReadConfig()
 	scriptsPath				= rootPath+					  IniFile::GetValue("ScriptPath"              ,"General" ,configFile)+"\\";
 	startupScript			=							  IniFile::GetValue("MainScript"			  ,"General" ,configFile);
 	saveLoadSection			=							  IniFile::GetValue("SaveSection"             ,"SaveLoad",configFile);
+}
+
+bool Application::fnKeyHandler(ID32 event,UINT32 evdata)
+{
+	gKeyPressed=event;
+	gKeyData=evdata;
+	switch(event) {
+		case KEY_SITUATION_RESET:
+			simConnect->saveLoadEngine->Load();
+		break;
+		case KEY_EYEPOINT_RESET:
+			if(reloadScriptsOnEyeReset) {
+				simConnect->scriptEngine->CompileScriptFinal();
+				simConnect->scriptEngine->ExecuteScript("void OnStartup()");
+				LOG.Write("Script reloaded.\n");
+			}
+		break;
+	}
+	return true;
+}
+
+void Application::RegisterScriptFunctions()
+{
 }

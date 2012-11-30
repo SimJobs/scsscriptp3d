@@ -57,6 +57,7 @@
     <ClInclude Include="..\Res\resource.h" />
     <ClInclude Include="..\Res\VersionNo.h" />
     <ClInclude Include="..\Src\Application.h" />
+    <ClInclude Include="..\Src\AutopilotEngine\AutopilotEngine.h" />
     <ClInclude Include="..\Src\Lib\DateTime.h" />
     <ClInclude Include="..\Src\Lib\Exception.h" />
     <ClInclude Include="..\Src\Lib\Helpers.h" />
@@ -66,9 +67,11 @@
     <ClInclude Include="..\Src\Lib\VersionInfo.h" />
     <ClInclude Include="..\Src\Lib\WriterASCII.h" />
     <ClInclude Include="..\Src\PCH.h" />
+    <ClInclude Include="..\Src\SaveLoadEngine\SaveLoadEngine.h" />
     <ClInclude Include="..\Src\ScriptEngine\ScriptEngine.h" />
     <ClInclude Include="..\Src\SimConnectWrapper.h" />
     <ClInclude Include="..\Src\SimHelpers.h" />
+    <ClInclude Include="..\Src\SimKey.h" />
     <ClInclude Include="..\Src\SimVars.h" />
     <ClInclude Include="..\Src\SoundEngine\SoundEngine.h" />
     <ClInclude Include="..\Src\SoundEngine\SoundEngineSound.h" />
@@ -232,6 +235,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Src\Application.cpp" />
+    <ClCompile Include="..\Src\AutopilotEngine\AutopilotEngine.cpp" />
     <ClCompile Include="..\Src\Gauge.cpp" />
     <ClCompile Include="..\Src\Lib\DateTime.cpp" />
     <ClCompile Include="..\Src\Lib\IniFile.cpp" />
@@ -243,8 +247,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Src\SaveLoadEngine\SaveLoadEngine.cpp" />
     <ClCompile Include="..\Src\ScriptEngine\ScriptEngine.cpp" />
     <ClCompile Include="..\Src\SimConnectWrapper.cpp" />
+    <ClCompile Include="..\Src\SimKey.cpp" />
     <ClCompile Include="..\Src\SimVars.cpp" />
     <ClCompile Include="..\Src\SoundEngine\SoundEngine.cpp" />
     <ClCompile Include="..\Src\SoundEngine\SoundEngineSound.cpp" />

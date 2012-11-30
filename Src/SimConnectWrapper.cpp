@@ -124,10 +124,14 @@ bool SimConnect::Init(HWND windowHandle)
 
 	soundEngine		=boost::shared_ptr<SoundEngine::SoundEngine>(new SoundEngine::SoundEngine());
 	scriptEngine	=boost::shared_ptr<ScriptEngine::ScriptEngine>(new ScriptEngine::ScriptEngine());
+	saveLoadEngine	=boost::shared_ptr<SaveLoadEngine::SaveLoadEngine>(new SaveLoadEngine::SaveLoadEngine());
+	autopilotEngine	=boost::shared_ptr<AutopilotEngine::AutopilotEngine>(new AutopilotEngine::AutopilotEngine());
 	application		=boost::shared_ptr<Application>(new Application());
 
 	soundEngine->Init(windowHandle);
 	scriptEngine->Init();
+	saveLoadEngine->Init();
+	autopilotEngine->Init();
 	application->Init(this);
 
 	HRESULT hr=SimConnect_Open(&simConnect,"SCSScript",windowHandle,0,0,0);
@@ -183,6 +187,8 @@ void SimConnect::DeInit()
 	}
 
 	application->DeInit();
+	autopilotEngine->DeInit();
+	saveLoadEngine->DeInit();
 	scriptEngine->DeInit();
 	soundEngine->DeInit();
 }

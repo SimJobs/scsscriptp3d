@@ -22,43 +22,20 @@
 
 #pragma once
 
-class SimConnect;
-
-class Application  : public SimKey
+class SimKey
 {
 private:
-	SimConnect* simConnect;
-	String		panelCustomParameter;
-	String		rootPath;
-	String		configFile;
-	String		scriptsPath;
-	String		mediaPath;
-	String		startupScript;
-	String		saveLoadSection;
-	bool		showDebugConsole;
-	bool		consoleActivated;
-	bool		reloadScriptsOnEyeReset;
-	bool		checkForSimQuiet;
-	bool		checkForSimPaused;
-	bool		runFirstTime;
-	DWORD		waitTimeForScript;
-	int			muted[2];
-	int			paused[2];
-	bool		installed;
+	friend bool FSAPI fnSimKeyHnd(ID32 event,UINT32 evdata,PVOID userdata);
+	bool	started;
+
+protected:
+	virtual bool fnKeyHandler(ID32 event,UINT32 evdata)=0;
 
 public:
-	Application();
-	~Application();
-
-	bool Init(SimConnect* simconnect);
-	void DeInit();
-	void Update();
-	void ReadConfig();
-	void SetPanelCustomParameter(const String& str);
-	void CheckSimMuteFlag();
-	void CheckSimPauseFlag();
-	void RegisterScriptFunctions();
-	bool fnKeyHandler(ID32 event,UINT32 evdata);
+	SimKey();
+	virtual ~SimKey();
+	void StartKey();
+	void StopKey();
+	bool IsStarted(){return started;};
 };
-
 

@@ -298,8 +298,10 @@ protected:
 	void fnSimConnectDispatch(SIMCONNECT_RECV* pData,DWORD cbData);
 
 public:
-	boost::shared_ptr<SoundEngine::SoundEngine>		soundEngine;
-	boost::shared_ptr<ScriptEngine::ScriptEngine>	scriptEngine;
+	boost::shared_ptr<SoundEngine::SoundEngine>			soundEngine;
+	boost::shared_ptr<ScriptEngine::ScriptEngine>		scriptEngine;
+	boost::shared_ptr<SaveLoadEngine::SaveLoadEngine>	saveLoadEngine;
+	boost::shared_ptr<AutopilotEngine::AutopilotEngine>	autopilotEngine;
 
 	bool							quitSignalCatch;
 

@@ -119,12 +119,23 @@ extern HMODULE gHModule;
 #include "ScriptEngine/ScriptEngine.h"
 
 //////////////////////////////////////////////////////////////////////////
+// Save/load engine
+
+#include "SaveLoadEngine/SaveLoadEngine.h"
+
+//////////////////////////////////////////////////////////////////////////
+// Autopilot engine
+
+#include "AutopilotEngine/AutopilotEngine.h"
+
+//////////////////////////////////////////////////////////////////////////
 // Logic
 
 using namespace SCSScript;
 
 #include "SimHelpers.h"
 #include "SimVars.h"
+#include "SimKey.h"
 #include "Application.h"
 #include "SimConnectWrapper.h"
 

@@ -25,6 +25,12 @@
     <Filter Include="Ext\Prepar3D">
       <UniqueIdentifier>{8971df20-cf60-4db0-a9af-42954103b2dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\SaveLoadEngine">
+      <UniqueIdentifier>{aadabe0a-269a-4e83-876b-094f2ef5c4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\AutopilotEngine">
+      <UniqueIdentifier>{198f09e1-8ba4-443d-99b6-c9d1b191d107}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Res\resource.h">
@@ -213,6 +219,15 @@
     <ClInclude Include="..\Src\SimHelpers.h">
       <Filter>Src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\SimKey.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SaveLoadEngine\SaveLoadEngine.h">
+      <Filter>Src\SaveLoadEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AutopilotEngine\AutopilotEngine.h">
+      <Filter>Src\AutopilotEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Lib\DateTime.cpp">
@@ -376,6 +391,15 @@
     </ClCompile>
     <ClCompile Include="..\Src\SimVars.cpp">
       <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SimKey.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SaveLoadEngine\SaveLoadEngine.cpp">
+      <Filter>Src\SaveLoadEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AutopilotEngine\AutopilotEngine.cpp">
+      <Filter>Src\AutopilotEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
