@@ -39,28 +39,28 @@ namespace SCSScript
 			String tmp;
 			tmp=rootPath;
 			tmp+=SIM_LANG_MODULE;
-			Helpers::GetStringFromResource(tmp,UI_GENERATEDFLIGHT_STRING_RES,m_UIGeneratedFlight,SIM_FLT_GENERATED);
-			m_UIGeneratedFlight+="."+SIM_FLT_EXTENSION;
-			Helpers::GetStringFromResource(tmp,PREVIOUSFLIGHT_STRING_RES,m_PrevoiusFlight,SIM_FLT_PREVIOUS);
-			m_PrevoiusFlight+="."+SIM_FLT_EXTENSION;
+			Helpers::GetStringFromResource(tmp,UI_GENERATEDFLIGHT_STRING_RES,UIGeneratedFlight,SIM_FLT_GENERATED);
+			UIGeneratedFlight+="."+SIM_FLT_EXTENSION;
+			Helpers::GetStringFromResource(tmp,PREVIOUSFLIGHT_STRING_RES,prevoiusFlight,SIM_FLT_PREVIOUS);
+			prevoiusFlight+="."+SIM_FLT_EXTENSION;
 		}
 
 		void SaveLoadEngine::SaveLoadCheck()
 		{
 			if(simConnect->savedFileName[0]!='\0') {
-				Strcpy(m_SaveFileName,MAX_BUFFER_LENGTH,simConnect->savedFileName);
+				Strcpy(saveFileName,MAX_BUFFER_LENGTH,simConnect->savedFileName);
 				simConnect->savedFileName[0]='\0';
-				Char* a=strrchr(m_SaveFileName,'\\')+1;
-				if(_stricoll(a,m_UIGeneratedFlight.c_str())) {
-					Save(m_SaveFileName);
+				Char* a=strrchr(saveFileName,'\\')+1;
+				if(_stricoll(a,UIGeneratedFlight.c_str())) {
+					Save(saveFileName);
 				}
 			}
 			
 			if(simConnect->loadedFileName[0]!='\0') {
-				Strcpy(m_LoadFileName,MAX_BUFFER_LENGTH,simConnect->loadedFileName);
+				Strcpy(loadFileName,MAX_BUFFER_LENGTH,simConnect->loadedFileName);
 				simConnect->loadedFileName[0]='\0';
-				Char* a=strrchr(m_LoadFileName,'\\')+1;
-				if(_stricoll(a,m_UIGeneratedFlight.c_str())) {
+				Char* a=strrchr(loadFileName,'\\')+1;
+				if(_stricoll(a,UIGeneratedFlight.c_str())) {
 					//simConnect->InitAll();
 					Load();
 				}
@@ -71,10 +71,10 @@ namespace SCSScript
 		{
 			simConnect=simconnect;
 
-			m_PrevoiusFlight	= "";
-			m_UIGeneratedFlight	= "";
-			m_LoadFileName[0]	= '\0';
-			m_SaveFileName[0]	= '\0';
+			prevoiusFlight	= "";
+			UIGeneratedFlight	= "";
+			loadFileName[0]	= '\0';
+			saveFileName[0]	= '\0';
 
 			PrepareSimSaveFiles();
 		}
@@ -109,13 +109,13 @@ namespace SCSScript
 		{
 			char tmp[MAX_BUFFER_LENGTH];
 			Sprintf(tmp,"%f",val);
-			WritePrivateProfileStringA(saveSection.c_str(),nv,tmp,m_SaveFileName);
+			WritePrivateProfileStringA(saveSection.c_str(),nv,tmp,saveFileName);
 		}
 
 		double SaveLoadEngine::LoadVar(Char* nv)
 		{
 			char tmp[MAX_BUFFER_LENGTH];
-			GetPrivateProfileStringA(saveSection.c_str(),nv,"-1234567890",tmp,MAX_BUFFER_LENGTH,m_SaveFileName);
+			GetPrivateProfileStringA(saveSection.c_str(),nv,"-1234567890",tmp,MAX_BUFFER_LENGTH,saveFileName);
 			return boost::lexical_cast<double>(tmp);
 		}
 	}

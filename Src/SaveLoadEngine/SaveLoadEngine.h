@@ -32,12 +32,12 @@ namespace SCSScript
 		{
 		private:
 			SimConnect* simConnect;
-			String		rootPath;
-			String		saveSection;
-			String		m_PrevoiusFlight;
-			String		m_UIGeneratedFlight;
-			Char		m_LoadFileName[MAX_BUFFER_LENGTH];
-			Char		m_SaveFileName[MAX_BUFFER_LENGTH];
+			String	rootPath;
+			String	saveSection;
+			String	prevoiusFlight;
+			String	UIGeneratedFlight;
+			Char	loadFileName[MAX_BUFFER_LENGTH];
+			Char	saveFileName[MAX_BUFFER_LENGTH];
 
 			void	PrepareSimSaveFiles();
 			void	SaveLoadCheck();
