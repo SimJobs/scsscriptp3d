@@ -1,0 +1,41 @@
+<Gauge Name="134 TVG 1" Version="1.0">
+	<Image Name="it_back.bmp" Luminous="Yes" ImageSize="220,220,0,0" />
+	<Element>
+		<Position X="110" Y="155"/>
+		<Image Name="it_needle2.bmp" Luminous="Yes" ImageSize="55,55,0,0" >
+			<Axis X="27" Y="27" />	
+		</Image>
+		<Rotate>
+			<Value Minimum="0" Maximum="900">(L:IT on,bool) (L:PO500, bool) (L:PO4500,enum) 0 != || &amp;&amp; if{ (A:General eng2 exhaust gas temperature, celsius) } els{ 0 } </Value>
+			<Failures>
+				<SYSTEM_ENGINE Action="1"/>
+			</Failures>
+			<Nonlinearity>
+			<Item Value="0" Degrees="-180"/>
+			<Item Value="10" Degrees="0"/>
+			</Nonlinearity>
+		</Rotate>
+	</Element>
+	<Element>
+		<Position X="110" Y="110"/>
+		<Image Name="it_needle1.bmp" Luminous="Yes" ImageSize="9, 79, 0, 0" >
+			<Axis X="5" Y="79" />	
+		</Image>
+		<Rotate>
+			<Value Minimum="3" Maximum="9">(L:IT on,bool) (L:PO500, bool) (L:PO4500,enum) 0 != || &amp;&amp; if{ (L:IT control,bool) if{ 6 } els{ (A:General eng2 exhaust gas temperature, celsius) 100 / } } els{ 3 } </Value>
+			<Failures>
+				<SYSTEM_ENGINE Action="1"/>
+			</Failures>
+			<Nonlinearity>
+			<Item Value="3" Degrees="-129"/>
+			<Item Value="4" Degrees="-85"/>
+			<Item Value="5" Degrees="-42"/>
+			<Item Value="6" Degrees="0"/>
+			<Item Value="7" Degrees="42"/>
+			<Item Value="8" Degrees="85"/>
+			<Item Value="9" Degrees="129"/>
+			</Nonlinearity>
+			<Delay DegreesPerSecond="130"/>
+		</Rotate>
+	</Element>
+</Gauge>

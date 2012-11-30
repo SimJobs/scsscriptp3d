@@ -1,0 +1,8 @@
+<Gauge Name="Pilot Icon" Version="1.0">
+   <Image Name="icon_u.bmp"/>
+   <Mouse>
+      <Tooltip ID="">Pilot's panel</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>10002 (&gt;K:PANEL_ID_CLOSE)</Click>
+   </Mouse>
+</Gauge>

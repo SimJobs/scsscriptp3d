@@ -1,0 +1,9 @@
+<Gauge Name="APU Stop" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+
+   <Mouse>
+      <Tooltip ID="">APU Stop</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>0 (>K:TOGGLE_AFTERBURNER2) (L:APU RPM, enum) 1 &gt; if{ 2 (>L:APU Starter,enum) }</Click>
+   </Mouse>
+</Gauge>

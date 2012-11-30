@@ -1,0 +1,145 @@
+<Gauge Name="NAS-1 Wind Controller" Version="1.0">
+   <Image Name="ZW_back.bmp" Luminous="Yes" ImageSizes="160,160,0,0"/>
+
+   <Element>
+      <Position X="80" Y="80"/>
+      <Image Name="ZW_scale.bmp" Luminous="Yes" ImageSizes="160,160,0,0">
+         <Axis X="80" Y="81"/>
+      </Image>
+      <Rotate>
+         <Value>2 pi * (L:NAS1 WC Course, radians) - </Value>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+
+   <Element>
+      <Position X="80" Y="80"/>
+      <Image Name="ZW_angle.bmp" Luminous="Yes" ImageSizes="9,56,0,0">
+         <Axis X="5" Y="56"/>
+      </Image>
+      <Rotate>
+         <Value>
+            2 pi *
+            (L:NAS1 WC Course, radians) -             
+            (L:NAS1 WC NavWind Angle, radians) +
+         </Value>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   
+   <Element>
+      <Position X="80" Y="80"/>
+      <Image Name="ZW_Speed.bmp" Luminous="Yes" ImageSizes="42,49,0,0">
+         <Axis X="21" Y="28"/>
+      </Image>
+      <Rotate>
+         <Value>(L:NAS1 WC NavWind Speed, kilometer/hour)</Value>
+         <Nonlinearity>
+            <Item Value="0"   Degrees="-160"/>
+            <Item Value="50"  Degrees="-90" />
+            <Item Value="100" Degrees="0"   />
+            <Item Value="150" Degrees="90"  />
+            <Item Value="200" Degrees="160" />
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+
+   <Mouse>
+      <Area Left="0" Top="0">
+        <Tooltip>Course %((L:NAS1 WC Course, degree))%!03.0f! deg WindAngle %((L:NAS1 WC NavWind Angle, degree))%!03.0f! deg WindSpeed %((L:NAS1 WC NavWind Speed, kilometer/hour))%!03.0f!km/h</Tooltip>
+      </Area>
+
+      <Area Left="0" Top="60" Width="25" Height="40">
+        <Cursor Type="DownArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC Course, degree) -- (>L:NAS1 WC Course, degree)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC Course, degree) 10 - (>L:NAS1 WC Course, degree)
+          }
+          (L:NAS1 WC Course, degree) 0 &lt; if{
+            (L:NAS1 WC Course, degree) 360 + (>L:NAS1 WC Course, degree)
+          }
+          </Click>
+      </Area>
+      
+      <Area Left="135" Top="60" Width="25" Height="40">
+        <Cursor Type="UpArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC Course, degree) ++ (>L:NAS1 WC Course, degree)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC Course, degree) 10 + (>L:NAS1 WC Course, degree)
+          }
+          (L:NAS1 WC Course, degree) 359 &gt; if{
+            (L:NAS1 WC Course, degree) 360 - (>L:NAS1 WC Course, degree) 
+          }
+        </Click>
+      </Area>
+      
+
+      <Area Left="26" Top="60" Width="25" Height="40">
+        <Cursor Type="DownArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC NavWind Angle, degree) -- (>L:NAS1 WC NavWind Angle, degree) 
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC NavWind Angle, degree) 10 - (>L:NAS1 WC NavWind Angle, degree) 
+          }
+          (L:NAS1 WC NavWind Angle, degree) 0 &lt; if{
+            (L:NAS1 WC NavWind Angle, degree) 360 + (>L:NAS1 WC NavWind Angle, degree) 
+          }
+        </Click>
+      </Area>
+      
+      <Area Left="109" Top="60" Width="25" Height="40">
+        <Cursor Type="UpArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC NavWind Angle, degree) ++ (>L:NAS1 WC NavWind Angle, degree)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC NavWind Angle, degree) 10 + (>L:NAS1 WC NavWind Angle, degree)
+          }
+          (L:NAS1 WC NavWind Angle, degree) 359 &gt; if{
+            (L:NAS1 WC NavWind Angle, degree) 360 - (>L:NAS1 WC NavWind Angle, degree)
+          }
+        </Click>
+      </Area>
+
+      
+      <Area Left="59" Top="60" Width="20" Height="40">
+        <Cursor Type="DownArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC NavWind Speed, kilometer/hour) -- (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC NavWind Speed, kilometer/hour) 10 - (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+          (L:NAS1 WC NavWind Speed, kilometer/hour) 0 &lt; if{ 
+            0 (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+        </Click>
+      </Area>
+      
+      <Area Left="80" Top="60" Width="20" Height="40">
+        <Cursor Type="UpArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 WC NavWind Speed, kilometer/hour) ++ (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 WC NavWind Speed, kilometer/hour) 10 + (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+          (L:NAS1 WC NavWind Speed, kilometer/hour) 200 &gt; if{ 
+            200 (>L:NAS1 WC NavWind Speed, kilometer/hour)
+          }
+        </Click>
+      </Area>
+   </Mouse>
+</Gauge>

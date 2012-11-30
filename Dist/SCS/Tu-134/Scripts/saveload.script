@@ -1,0 +1,205 @@
+const string[] Variables={
+    "bat sw1"                    ,
+    "bat sw2"                    ,
+    "at master"                  ,
+    "at on"                      ,
+    "window heat"                ,
+    "IV switch"                  ,
+    "KS8 Mode Selector"          ,
+    "KS8 Course Selector"        ,
+    "KS8 Hemisphere Switch"      ,
+    "KS8 GyroUnit Switch"        ,
+    "KS8 Latitude Selector"      ,
+    "KS8 Coord Button"           ,
+    "NAS1 ANUAP mode"            ,
+    "Light Bright"               ,
+    "Light nav"                  ,
+    "Light panel"                ,
+    "Light beacon"               ,
+    "Light ret"                  ,
+    "NAS1 Counters Switch"       ,
+    "NAS1 Mode Switch"           ,
+    "Net sw"                     ,
+    "PSP mode"                   ,
+    "PO4500"                     ,
+    "PT1500"                     ,
+    "NKP4 switch"                ,
+    "POS Eng1"                   ,
+    "POS Eng2"                   ,
+    "POS Wing"                   ,
+    "Pitot2 heat"                ,
+    "PPS on"                     ,
+    "FS Left auto"               ,
+    "FS auto"                    ,
+    "FS Right auto"              ,
+    "FS st1"                     ,
+    "FS st3"                     ,
+    "USH_md1"                    ,
+    "USH_md2"                    ,
+    "AP_BankH"                   ,
+    "bok ready"                  ,
+    "AP bok on"                  ,
+    "prod ready"                 ,
+    "AP prod on"                 ,
+    "AP_KAp"                     ,
+    "AP_GAp"                     ,
+    "AP_kv"                      ,
+    "AP KV"                      ,
+    "AP_PitcH"                   ,
+    "AP_STU_M"                   ,
+    "AP_Master"                  ,
+    "AP_bokP"                    ,
+    "AP_prodP"                   ,
+    "NKP Course Selector"        ,
+    "USH MagVar Selector"        ,
+    "KS8 Primary Course Signal"  ,
+    "KS8 Secondary Course Signal",
+    "APU air"                    ,
+    "APU Ready"                  ,
+    "APU Starter"                ,
+    "APU RPM"                    ,
+    "APU mode"                   ,
+    "APU Power"                  ,
+    "APU Heat"                   ,
+    "APU Gen"                    ,
+    "APU Fail"                   ,
+    "Eng Selector"               ,
+    "Eng1 Start"                 ,
+    "Eng2 Start"                 ,
+    "Eng1 mode"                  ,
+    "Eng2 mode"                  ,
+    "Eng ISO"                    ,
+    "EV control"                 ,
+    "DC volts"                   ,
+    "PT volts"                   ,
+    "PO double"                  ,
+    "NAS1 SAU mode"              ,
+    "NAS1 Map Angle"             ,
+    "NAS1 V coordinate"          ,
+    "NAS1 S coordinate"          ,
+    "NAS1 WC Course"             ,
+    "NAS1 WC NavWind Angle"      ,
+    "NAS1 WC NavWind Speed"      ,
+    "STU Kurs"                   ,
+    "STU ZK"                     ,
+    "STU VOR"                    ,
+    "STU Glis"                   ,
+    "TM pos"                     ,
+    "UVID_Cover"                 ,
+    "UVID_Cov"                   ,
+    "NKP Course"                 ,
+    "ANU Course Signal"          ,
+    "Landcourse"                 ,
+    "Glidepath"                  ,
+    "AP Alt hold"                ,
+    "KMP1_hdg"                   ,
+    "KMP2_hdg"                   ,
+    "AT speed"                   ,
+    "AP GA"                      ,
+    "ABSU_AT"                    ,
+    "VOR1 hdg"                   ,
+    "VOR2 hdg"                   ,
+    "KS8 Main ASA"               ,
+    "KS8 Main OFA"               ,
+    "KS8 Main OSS"               ,
+    "KS8 Auxl ASA"               ,
+    "KS8 Auxl OFA"               ,
+    "KS8 Auxl OSS"               ,
+    "Siren"                      ,
+    "Siren2"                     ,
+    "Stabilizer"                 ,
+    "RHB power"                  ,
+    "Hydraulic pump"             ,
+    "PRT2"                       ,
+    "PRT1"                       ,
+    "PO500"                      ,
+    "Trim on"                    ,
+    "FL"                         ,
+    "Interseptor Switch"         ,
+    "BKK on"                     ,
+    "Steer55"                    ,
+    "RSBN power"                 ,
+    "DISS Power Source Line"     ,
+    "AGR power"                  ,
+    "AGL power"                  ,
+    "AGD power"                  ,
+    "CGV power"                  ,
+    "KS8 Power Source Line"      ,
+    "STU power"                  ,
+    "VOR soft"                   ,
+    "AUASP test"                 ,
+    "Wheel steer"                ,
+    "AUASP Power"                ,
+    "KMP1 power"                 ,
+    "KMP2 power"                 ,
+    "EUP power"                  ,
+    "ARK1 power"                 ,
+    "ARK2 power"                 ,
+    "Test SVK"                   ,
+    "ZK sel"                     ,
+    "RV power"                   ,
+    "UVIDF power"                ,
+    "UVID power"                 ,
+    "RPH"                        ,
+    "ENG1 N1"                    ,
+    "ENG1 N2"                    ,
+    "ENG2 N1"                    ,
+    "ENG2 N2"                    ,
+    "DISS AZS State"             ,
+    "KS8 AZS State"              ,
+    "IT on"                      ,
+    "spu"                        ,
+    "POS Stab"                   ,
+    "EUP2 power"                 ,
+    "VEM power"                  ,
+    "MSRP_day1"                  ,
+    "MSRP_day2"                  ,
+    "MSRP_month1"                ,
+    "MSRP_month2"                ,
+    "MSRP_year"                  ,
+    "MSRP_route1"                ,
+    "MSRP_route2"                ,
+    "MSRP_route3"                ,
+    "MSRP_route4"                ,
+    "MSRP_MLP1"                  ,
+    "MSRP_MLP2"                  ,
+    "GPS power"                  ,
+    ""
+}; 
+
+void LoadVariable(string name)
+{
+    double ret=LoadVar(name);
+    if(ret!=-1234567890)
+        SetNamedVar(name,ret);
+}
+
+void OnLoadState()
+{
+    int i=0;
+    string s;
+    bool done=false;
+
+    while(!done) {
+        s=Variables[i++];
+        if(s=="")
+            done=true;
+        else
+            LoadVariable(s);
+    };
+}
+
+void OnSaveState()
+{
+    int i=0;
+    string s;
+    bool done=false;
+
+    while(!done) {
+        s=Variables[i++];
+        if(s=="")
+            done=true;
+        else
+            SaveVar(s,GetNamedVar(s));
+    };
+}

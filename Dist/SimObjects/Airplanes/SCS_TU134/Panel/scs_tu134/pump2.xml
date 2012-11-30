@@ -1,0 +1,18 @@
+<Gauge Name="Fuel Pump2" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:GENERAL ENG2 FUEL PUMP ON,bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>0 (>K:TOGGLE_ELECT_FUEL_PUMP2) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+   </Mouse>
+</Gauge>

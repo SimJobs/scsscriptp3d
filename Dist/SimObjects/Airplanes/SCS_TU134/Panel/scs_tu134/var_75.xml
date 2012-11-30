@@ -1,0 +1,24 @@
+<Gauge Name="Var75" Version="1.0">
+   <Image Name="VAR75.bmp" Luminous="Yes" ImageSizes="192,192,0,0"/>
+   <Element>
+      <Position X="96" Y="96"/>
+      <Image Name="VAR_N.bmp" Luminous="Yes" ImageSizes="79,9,0,0">
+         <Axis X="4" Y="4" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-75" Maximum="75">(A:Vertical speed,feet per minute) 197.36 /</Value>
+         <Nonlinearity>
+            <Item Value="-75" X="169" Y="97"/>
+            <Item Value="-45" X="150" Y="150"/>
+            <Item Value="-30" X="96" Y="169"/>
+            <Item Value="-15" X="44" Y="150"/>
+            <Item Value="0" X="21" Y="96"/>
+            <Item Value="15" X="44" Y="44"/>
+            <Item Value="30" X="96" Y="21"/>
+            <Item Value="45" X="150" Y="44"/>
+            <Item Value="75" X="169" Y="95"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="20"/>
+      </Rotate>
+   </Element>
+</Gauge>

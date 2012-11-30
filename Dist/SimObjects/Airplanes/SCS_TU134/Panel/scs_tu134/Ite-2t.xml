@@ -1,0 +1,39 @@
+<Gauge Name="ITE-2T" Version="1.0">
+   <Image Name="ite_b2.bmp" Luminous="Yes"/>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="ite_n2.bmp" Luminous="Yes">
+         <Axis X="7" Y="81"/>
+      </Image>
+      <Rotate>
+         <Value Mimimum="0" Maximum="105">(A:Turb eng2 corrected N2, percent)</Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="1"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="42"/>
+            <Item Value="50" Degrees="201"/>
+            <Item Value="100" Degrees="360"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="210"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="ite_n1.bmp" Luminous="Yes">
+         <Axis X="7" Y="81"/>
+      </Image>
+      <Rotate>
+         <Value Mimimum="0" Maximum="105">(A:Turb eng1 corrected N2, percent)</Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="1"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="42"/>
+            <Item Value="50" Degrees="201"/>
+            <Item Value="100" Degrees="360"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="240"/>
+      </Rotate>
+   </Element>
+</Gauge>

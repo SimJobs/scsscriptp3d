@@ -1,0 +1,77 @@
+<Gauge Name="PPS-2MK" Version="1.0">
+   <Image Name="pps_bg.bmp" ImageSizes="272,156,0,0"/>
+   <Element>
+      <Position X="17" Y="43"/>
+      <Select>
+         <Value>(L:Gear down,bool) (L:GCheck,number) || (A:Circuit general panel on,bool) &amp;&amp; </Value>
+         <Case Value="1">
+            <Image Name="pps_rg.bmp" Bright="Yes" ImageSizes="56,29,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="86" Y="46"/>
+      <Select>
+         <Value>(A:Gear left position,percent) 0 &gt; (A:Gear left position,percent) near 100 != &amp;&amp; (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_rh.bmp" Bright="Yes" ImageSizes="22,12,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="130" Y="23"/>
+      <Select>
+         <Value>(A:Gear center position,percent) 0 &gt; (A:Gear center position,percent) near 100 != &amp;&amp; (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_rv.bmp" Bright="Yes" ImageSizes="12,22,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="165" Y="46"/>
+      <Select>
+         <Value>(A:Gear right position,percent) 0 &gt; (A:Gear right position,percent) near 100 != &amp;&amp; (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_rh.bmp" Bright="Yes" ImageSizes="22,12,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="90" Y="81"/>
+      <Select>
+         <Value>(A:Gear left position,percent) near 100 == (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_gr.bmp" Bright="Yes" ImageSizes="12,22,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="130" Y="63"/>
+      <Select>
+         <Value>(A:Gear center position,percent) near 100 == (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_gr.bmp" Bright="Yes" ImageSizes="12,22,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="170" Y="81"/>
+      <Select>
+         <Value>(A:Gear right position,percent) near 100 == (A:Circuit general panel on,bool) &amp;&amp; (L:GCheck,number) ||</Value>
+         <Case Value="1">
+            <Image Name="pps_gr.bmp" Bright="Yes" ImageSizes="12,22,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+  <Mouse>
+     <Area Left="116" Top="104" Width="40" Height="40">
+       <Tooltip ID="">Lamp Check</Tooltip>
+       <Cursor Type="Hand"/>
+       <Click Kind="LeftSingle+LeftRelease+Leave">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>L:GCheck,number) }
+          (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:GCheck,number) }
+          (M:Event) 'Leave' scmp 0 == if{ 0 (>L:GCheck,number) }
+       </Click>
+     </Area>
+   </Mouse>
+</Gauge>

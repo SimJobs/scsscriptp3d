@@ -1,0 +1,8 @@
+<Gauge Name="Eng2 Stop" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+   <Mouse>
+      <Tooltip ID="">Eng2 Stop</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click> 0 (>L:Eng2 Start,bool) 0 (>K:TOGGLE_AFTERBURNER2) </Click>
+   </Mouse>
+</Gauge>

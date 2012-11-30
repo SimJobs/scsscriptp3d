@@ -1,0 +1,104 @@
+<Gauge Name="Eng2 Tablo" Version="1.0">
+   <Image Name="tablo_m.bmp" ImageSizes="145,221,0,0"/>
+   <Element>
+      <Position X="82" Y="21"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (L:POS Eng2, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_die.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="82" Y="55"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (L:POS Wing, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_diw.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="82" Y="89"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (L:POS Eng2, bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_dio.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="82" Y="123"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (A:Indicated Altitude,meters) 7000 &gt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_pn.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="82" Y="157"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (A:Indicated Altitude,meters) 2000 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_pf.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="12" Y="21"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (L:IV switch,bool) (A:Turb eng2 vibration, percent) 250 &gt; &amp;&amp; (L:IV switch,bool) (L:EV control,bool) &amp;&amp; || || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_vibr.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="12" Y="55"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) }</Value>    
+         <Case Value="1">
+            <Image Name="tm_tm.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="12" Y="89"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (A:General eng2 oil pressure, psi) 10 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_op.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="12" Y="123"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) }</Value>    
+         <Case Value="1">
+            <Image Name="tm_ff.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="12" Y="157"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (G:Var1) (A:Eng2 Failed, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_e2.bmp" Bright="Yes" ImageSizes="52,25,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+    <Area Top="185" Left="55" Width="36" Height="36">
+      <Tooltip ID="">Lamp Check</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click Kind="LeftSingle+LeftRelease+Leave">
+        (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>G:Var1) }
+        (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>G:Var1) }
+        (M:Event) 'Leave' scmp 0 == if{ 0 (>G:Var1) }
+      </Click>
+     </Area>
+   </Mouse>
+</Gauge>

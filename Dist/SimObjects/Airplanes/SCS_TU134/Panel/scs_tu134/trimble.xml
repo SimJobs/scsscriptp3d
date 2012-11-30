@@ -1,0 +1,90 @@
+<Gauge Name="Trimble GPS" Version="1.0">
+<Image Name="trimble_back.bmp" Luminous="Yes" />
+  <Element>
+    <Position X="429" Y="69"/>
+    <Select>
+      <Value>(G:Var2) 7 &gt; if{ 0 (>G:Var2) (G:Var1) ! (>G:Var1) } els{ (G:Var2) ++ (>G:Var2) } (G:Var8) 60 * int 0 == (G:Var1) &amp;&amp; (L:GPS power,bool) &amp;&amp;</Value>
+      <Case Value="1">
+        <Image Name="trimble_lamp.bmp" Bright="Yes"/>
+      </Case>  
+    </Select>
+  </Element>
+
+  <Element>
+    <Visible>(A:GPS IS ACTIVE WAY POINT, bool) ! (L:GPS power,bool) &amp;&amp; </Visible>
+    <Image Name="trimble_text2.bmp" Bright="Yes"/>
+  </Element>
+
+  <Element>
+  <Visible>(A:GPS IS ACTIVE WAY POINT, bool) (L:GPS power,bool) &amp;&amp; </Visible>
+
+  <Element>
+    <Position X="0" Y="0"/>
+    <Image Name="trimble_text.bmp" Bright="Yes"/>
+  </Element>
+
+  <Element>
+    <Position X="43" Y="41"/>
+    <FormattedText X="94" Y="24" Font="Quartz" FontSize="24" Adjust="Left" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+      <String>%((A:GPS WP NEXT ID, string))%!s!%</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Position X="163" Y="41"/>
+    <FormattedText X="56" Y="24" Font="Quartz" FontSize="24" Adjust="Right" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+      <String>%((A:GPS WP BEARING, degrees) d360)%!03d!%</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Position X="241" Y="41"/>
+    <FormattedText X="56" Y="24" Font="Quartz" FontSize="24" Adjust="Right" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+       <String>%((A:GPS WP DISTANCE, kilometer) near)%!d!%</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Position X="328" Y="75"/>
+    <FormattedText X="56" Y="24" Font="Quartz" FontSize="24" Adjust="Right" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+       <String>%((A:GPS GROUND SPEED, kilometer per hour) near)%!d!%</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Position X="241" Y="75"/>
+    <FormattedText X="56" Y="24" Font="Quartz" FontSize="24" Adjust="Right" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+       <String>%((A:GPS GROUND TRUE HEADING, degrees) near)%!d!%</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Position X="328" Y="41"/>
+    <FormattedText X="64" Y="24" Font="Quartz" FontSize="24" Adjust="Right" VerticalAdjust="Center" Color="DC8000" Bright="Yes">
+       <String>%((L:ETA hours,number))%!02d!:%((L:ETA minutes,number))%!02d!</String>
+    </FormattedText>
+  </Element>
+
+  <Element>
+    <Image Name="trimble_line.bmp" Bright="Yes"/>
+    <Shift>
+      <Value Minimum="-10" Maximum="10">(A:GPS WP CROSS TRK, nmiles)</Value>
+      <Nonlinearity>
+        <Item Value="-10" X="26" Y="75"/>
+        <Item Value="10" X="226" Y="75"/>
+      </Nonlinearity>
+    </Shift>
+  </Element>
+<Element>
+  <Select>
+    <Value>(A:GPS WP DISTANCE, nmiles) (A:GPS GROUND SPEED, knots) / (>G:Var8) (G:Var8) int (>L:ETA hours,number) (L:ETA hours,number) 99 &gt; if{ 99 (>L:ETA hours,number) } (G:Var8) (G:Var8) int - 60 * int (>L:ETA minutes,number) (G:Var9) ! if{ 0 (>K:GPS_FLIGHTPLAN_BUTTON) 1 (>G:Var9) }</Value>
+  </Select>
+</Element>
+  </Element>
+  <Mouse>
+     <Area Top-="12" Left="278" Width="30" Height="30">
+       <Cursor Type="Hand"/>
+       <Click>(L:GPS power,bool) ! (>L:GPS power,bool) 0 (>K:TOGGLE_AFTERBURNER2)</Click>
+     </Area>
+  </Mouse>
+</Gauge>

@@ -1,0 +1,25 @@
+<Gauge Name="Landing gear control" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:Gear left position,percent) (A:Gear right position,percent) + near s0 200 == s1 l0 0 == l1 || ! (>G:Var1) 0 
+                      (A:Gear handle position,percent) 50 &gt; (G:Var1) &amp;&amp; if{ 1 }
+                      (A:Gear handle position,percent) 50 &lt; (G:Var1) &amp;&amp; if{ -1 }
+        </Value>
+           <Case Value="-1">
+             <Image Name="gear_up.bmp" ImageSizes="64,128,0,0"/>
+           </Case>
+           <Case Value="0">
+             <Image Name="gear_nt.bmp" ImageSizes="64,128,0,0"/>
+           </Case>
+           <Case Value="1">
+             <Image Name="gear_dn.bmp" ImageSizes="64,128,0,0"/>
+           </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Area>
+         <Cursor Type="Hand"/>
+         <Click Event="GEAR_TOGGLE"/>
+      </Area>
+   </Mouse>
+</Gauge>

@@ -1,0 +1,21 @@
+<Gauge Name="Engine vibration" Version="1.0">
+   <Image Name="vibr_bg.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="vibr_nd.bmp" Luminous="Yes" ImageSizes="36,4,0,0">
+         <Axis X="0" Y="2" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="100">(L:IV switch,bool) if{ (L:EV control,bool) if{ 65 } els{ (A:Turb eng1 vibration, percent) 8 / } } els{ 0 }</Value>
+         <Nonlinearity>
+            <Item Value="0" X="11" Y="42"/>
+            <Item Value="50" X="48" Y="12"/>
+            <Item Value="100" X="83" Y="41"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="105"/>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+      </Rotate>
+   </Element>
+</Gauge>

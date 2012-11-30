@@ -1,0 +1,31 @@
+<Gauge Name="KMP Freq" Version="1.0">
+   <Image Name="kmp_hdg_bg.bmp" ImageSizes="280,276,0,0"/>
+         <Element>
+            <Position X="50" Y="124"/>
+            <Text Luminous="Yes" X="92" Y="26" Length="3" Fixed="Yes" Font="Arial" Color="#EEEEEE" Adjust="Center" VerticalAdjust="Center">
+               <String>%( (L:VOR2 hdg,degrees) 0 max 999 min)%!03.0d!</String>
+            </Text>
+         </Element>
+  <Element>
+    <Position X="150" Y="83"/>
+    <Select>
+       <Value>(A:Circuit avionics on, bool) if{ (L:KMP2_hdg,bool) } els{ 5 }</Value>
+       <Case Value="0">
+          <Image Name="kmp_hdg_na.bmp" Bright="Yes" ImageSizes="35,109"/>
+       </Case>
+       <Case Value="1">
+          <Image Name="kmp_hdg_ot.bmp" Bright="Yes" ImageSizes="35,109"/>
+       </Case>
+    </Select>
+  </Element>
+   <Mouse>
+      <Area Left="196" Right="230" Top="152" Bottom="220">
+            <Cursor Type="DownArrow"/>
+            <Click Repeat="Yes"> (L:VOR2 hdg,degrees) -- (>L:VOR2 hdg,degrees) (L:VOR2 hdg,degrees) 1 &lt; if{ 360 (>L:VOR2 hdg,degrees) }</Click>
+         </Area>
+      <Area Left="230" Right="264" Top="152" Bottom="220">
+            <Cursor Type="UpArrow"/>
+            <Click Repeat="Yes"> (L:VOR2 hdg,degrees) ++ (>L:VOR2 hdg,degrees) (L:VOR2 hdg,degrees) 360 &gt; if{ 1 (>L:VOR2 hdg,degrees) }</Click>
+         </Area>
+   </Mouse>
+</Gauge>

@@ -1,0 +1,44 @@
+<Gauge Name="Fuelmeter" Version="1.0">
+   <Image Name="tm_bg.bmp" Luminous="Yes" ImageSizes="240,240,0,0"/>
+
+   <Element>
+      <Position X="120" Y="120"/>
+      <Image Name="tm_n1.bmp" Luminous="Yes" ImageSizes="65,15,0,0">
+         <Axis X="0" Y="8"/>
+      </Image>
+      <Rotate>
+         <Value>
+                (L:TM pos, enum) 0 == if{ (A:FUEL TANK LEFT TIP QUANTITY, pounds) (A:FUEL TANK EXTERNAL1 QUANTITY, pounds) (A:FUEL TANK LEFT AUX QUANTITY, pounds) + + (A:FUEL TANK CENTER QUANTITY, pounds) 2 / + 4.413 / } 
+                (L:TM pos, enum) 1 == if{ (A:FUEL TANK LEFT TIP QUANTITY, pounds) 2.700 / }
+                (L:TM pos, enum) 2 == if{ (A:FUEL TANK EXTERNAL1 QUANTITY, pounds) (A:FUEL TANK CENTER QUANTITY, pounds) 2 / + 2.700 / }
+                (L:TM pos, enum) 3 == if{ (A:FUEL TANK LEFT AUX QUANTITY, pounds) 2.700 / }
+         </Value>
+         <Nonlinearity>
+            <Item Value="0" X="87" Y="175"/>
+            <Item Value="4" X="183" Y="111"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="85"/>
+      </Rotate>
+   </Element>
+
+   <Element>
+      <Position X="120" Y="120"/>
+      <Image Name="tm_n2.bmp" Luminous="Yes" ImageSizes="65,15,0,0">
+         <Axis X="0" Y="8"/>
+      </Image>
+      <Rotate>
+         <Value>
+                (L:TM pos, enum) 0 == if{ (A:FUEL TANK RIGHT TIP QUANTITY, pounds) (A:FUEL TANK EXTERNAL2 QUANTITY, pounds) (A:FUEL TANK RIGHT AUX QUANTITY, pounds) + + (A:FUEL TANK CENTER QUANTITY, pounds) 2 / + 4.413 / } 
+                (L:TM pos, enum) 1 == if{ (A:FUEL TANK RIGHT TIP QUANTITY, pounds) 2.700 / }
+                (L:TM pos, enum) 2 == if{ (A:FUEL TANK EXTERNAL2 QUANTITY, pounds) (A:FUEL TANK CENTER QUANTITY, pounds) 2 / + 2.700 / }
+                (L:TM pos, enum) 3 == if{ (A:FUEL TANK RIGHT AUX QUANTITY, pounds) 2.700 / }
+         </Value>
+         <Nonlinearity>
+            <Item Value="0" X="87" Y="175"/>
+            <Item Value="4" X="183" Y="111"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="95"/>
+      </Rotate>
+   </Element>
+
+</Gauge>

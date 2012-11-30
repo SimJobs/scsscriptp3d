@@ -1,0 +1,44 @@
+<Gauge Name="UPZ-134" Version="1.0">
+   <Image Name="UPZ_back.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="39" Y="110"/>
+      <Image Name="UPZ_needle.bmp" Luminous="Yes" ImageSizes="8,55,0,0">
+         <Axis X="4" Y="55"/>
+      </Image>
+      <Rotate>
+       <Value Minimum="0" Maximum="100">(A:Trailing edge flaps0 left percent,percent)</Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+             <Nonlinearity>
+                 <Item Value="0" Degrees="30"/>
+                 <Item Value="33" Degrees="60"/>
+                 <Item Value="66" Degrees="90"/>
+                 <Item Value="100" Degrees="120"/>
+             </Nonlinearity>
+         <Delay DegreesPerSecond="15"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="181" Y="110"/>
+      <Image Name="UPZ_needle.bmp" PointsTo="East" Luminous="Yes" ImageSizes="8,55,0,0">
+         <Axis X="4" Y="55"/>
+      </Image>
+      <Rotate>
+       <Value Minimum="0" Maximum="100">(A:Trailing edge flaps0 right percent,percent)</Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="100" Degrees="-120"/>
+            <Item Value="66" Degrees="-90"/>
+            <Item Value="33" Degrees="-60"/>
+            <Item Value="0" Degrees="-30"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Tooltip ID="TOOLTIPTEXT_FLAP_INDICATOR_DEGREES"/>
+   </Mouse>
+</Gauge>

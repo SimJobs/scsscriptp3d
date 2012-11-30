@@ -1,0 +1,24 @@
+<Gauge Name="Var30" Version="1.0">
+   <Image Name="VAR_back.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="VAR_needle.bmp" Luminous="Yes" ImageSizes="124,15,0,0">
+         <Axis X="81" Y="8" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-30" Maximum="30">(A:Vertical speed,feet per minute) 197.36 /</Value>
+         <Nonlinearity>
+            <Item Value="-30" Degrees="-180"/>
+            <Item Value="-20" Degrees="-143"/>
+            <Item Value="-10" Degrees="-83"/>
+            <Item Value="-5" Degrees="-43"/>  
+            <Item Value="0" Degrees="0"/>
+            <Item Value="5" Degrees="43"/>
+            <Item Value="10" Degrees="83"/>
+            <Item Value="20" Degrees="143"/>
+            <Item Value="30" Degrees="180"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="20"/>
+      </Rotate>
+   </Element>
+</Gauge>

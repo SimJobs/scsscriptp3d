@@ -1,0 +1,57 @@
+<Gauge Name="UIz3_1" Version="1.0">
+   <Image Name="UIZ_back.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="170" Y="146"/>
+      <Image Name="UIZ_N2.bmp" Luminous="Yes" ImageSizes="7,50,0,0">
+         <Axis X="4" Y="50"/>
+      </Image>
+      <Rotate>
+       <Value Minimum="-50" Maximum="150">(A:General eng1 oil temperature, celsius)</Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="0"/>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+             <Nonlinearity>
+                 <Item Value="-50" Degrees="-150"/>
+                 <Item Value="150" Degrees="-30"/>
+             </Nonlinearity>
+         <Delay DegreesPerSecond="15"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="50" Y="146"/>
+      <Image Name="UIZ_N2.bmp" Luminous="Yes" ImageSizes="7,50,0,0">
+         <Axis X="4" Y="50"/>
+      </Image>
+      <Rotate>
+       <Value Minimum="0" Maximum="8">(A:General eng1 oil pressure, psi) 60 /</Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="0"/>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="8" Degrees="30"/>
+            <Item Value="0" Degrees="150"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="15"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="94"/>
+      <Image Name="UIZ_N1.bmp" Luminous="Yes" PointsTo="East" ImageSizes="7,72,0,0">
+         <Axis X="4" Y="72"/>
+      </Image>
+      <Rotate>
+      <Value Minimum="0" Maximum="100">(A:General eng1 fuel pressure, psi)</Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="0"/>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+        <Nonlinearity>
+         <Item Value="0" Degrees="-60"/>
+         <Item Value="100" Degrees="50"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+</Gauge>

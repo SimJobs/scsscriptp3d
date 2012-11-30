@@ -1,0 +1,50 @@
+<Gauge Name="Airspeed" Version="1.0">
+   <Image Name="usi_back.bmp" Luminous="Yes" ImageSize="220,220,0,0" />
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="usi_needle.bmp" Luminous="Yes" ImageSize="15,124,0,0">
+         <Axis X="8" Y="82" />
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="1000">(A:Airspeed indicated, knots) 1.852 *</Value>
+         <Failures>
+            <SYSTEM_PITOT_STATIC Action="0"/>
+            <GAUGE_AIRSPEED Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="150" Degrees="13"/>
+            <Item Value="200" Degrees="30"/>
+            <Item Value="300" Degrees="67"/>
+            <Item Value="600" Degrees="190"/>
+            <Item Value="1000" Degrees="353"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="usi_mark.bmp" Luminous="Yes" ImageSize="28,97,0,0">
+         <Axis X="14" Y="97" />
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="1000">(L:AT speed, knots) 1.852 * </Value>
+         <Failures>
+            <SYSTEM_PITOT_STATIC Action="0"/>
+            <GAUGE_AIRSPEED Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="150" Degrees="13"/>
+            <Item Value="200" Degrees="30"/>
+            <Item Value="300" Degrees="67"/>
+            <Item Value="600" Degrees="190"/>
+            <Item Value="1000" Degrees="353"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_GAUGE_AIRSPEED"/>
+      <Tooltip ID="TOOLTIPTEXT_AIRSPEED_KILOS" MetricID="TOOLTIPTEXT_AIRSPEED_KILOS"/>
+   </Mouse>
+</Gauge>

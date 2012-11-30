@@ -1,0 +1,30 @@
+<Gauge Name="Eng2 mode selector" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:Eng2 mode ,enum)</Value>
+         <Case Value="-1">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="0">
+            <Image Name="sw_n.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Area  Bottom="40">
+            <Cursor Type="Hand"/>
+            <Click>1 (>L:Eng2 mode ,enum) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+      <Area Top="40" Bottom="63">
+            <Cursor Type="Hand"/>
+            <Click>0 (>L:Eng2 mode ,enum) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+      <Area Top="63">
+            <Cursor Type="Hand"/>
+            <Click>-1 (>L:Eng2 mode ,enum) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+   </Mouse>
+</Gauge>

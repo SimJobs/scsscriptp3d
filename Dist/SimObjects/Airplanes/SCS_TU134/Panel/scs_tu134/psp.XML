@@ -1,0 +1,104 @@
+<Gauge Name="psp" Version="1.0">
+   <Image Name="psp_bg.bmp" Luminous="Yes" ImageSizes="180,177,0,0"/>
+   <Element>
+      <Position X="90" Y="146"/>
+      <Image Name="psp_galet.bmp" Luminous="Yes" ImageSizes="21,45,0,0">
+         <Axis X="11" Y="23" PointsTo="Notrh"/>
+      </Image>
+      <Rotate>
+         <Value>(L:PSP mode, enum)</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="1" Degrees="30"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="250"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="54" Y="44"/>
+      <Image Name="psp_galet.bmp" Luminous="Yes" ImageSizes="21,45,0,0">
+         <Axis X="11" Y="23" PointsTo="Notrh"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Marker sound,bool)</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-15"/>
+            <Item Value="1" Degrees="15"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="250"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="125" Y="44"/>
+      <Image Name="psp_galet.bmp" Luminous="Yes" ImageSizes="21,45,0,0">
+         <Axis X="11" Y="23" PointsTo="Notrh"/>
+      </Image>
+      <Rotate>
+         <Value>(L:PSP mode2, bool)</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-15"/>
+            <Item Value="1" Degrees="15"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="250"/>
+      </Rotate>
+   </Element>
+
+   <Element>
+      <Position X="14" Y="84"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:NAV1 HAS LOCALIZER,bool) ! (A:NAV1 HAS NAV,bool) ! || || }</Value>    
+         <Case Value="1">
+            <Image Name="psp_lamp.bmp" Bright="Yes" ImageSizes="11,11,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="153" Y="84"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:NAV2 HAS LOCALIZER,bool) ! (A:NAV2 HAS NAV,bool) ! || || }</Value>    
+         <Case Value="1">
+            <Image Name="psp_lamp.bmp" Bright="Yes" ImageSizes="11,11,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="25" Y="122"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Nav1 GS Flag, bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="psp_lamp.bmp" Bright="Yes" ImageSizes="11,11,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="140" Y="122"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Nav2 GS Flag, bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="psp_lamp.bmp" Bright="Yes" ImageSizes="11,11,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Mouse>
+      <Area Left="70" Top="122" Width="40" Height="45">
+        <Area Right="20">
+          <Cursor Type="DownArrow"/>
+          <Click>(L:PSP mode, bool) -1 &gt; if{ (L:PSP mode, bool) -- (>L:PSP mode, bool) 0 (>K:TOGGLE_AFTERBURNER1) }</Click>
+        </Area>
+        <Area Left="20">
+          <Cursor Type="UpArrow"/>
+          <Click>(L:PSP mode, bool) 1 &lt; if{ (L:PSP mode, bool) ++ (>L:PSP mode, bool) 0 (>K:TOGGLE_AFTERBURNER1) }</Click>
+        </Area>
+      </Area>
+      <Area Left="44" Top="24" Width="20" Height="45">
+        <Cursor Type="Hand"/>
+        <Click> 0 (>K:MARKER_SOUND_TOGGLE) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+      <Area Left="115" Top="24" Width="20" Height="45">
+        <Cursor Type="Hand"/>
+        <Click>(L:PSP mode2, bool) ! (>L:PSP mode2, bool) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+   </Mouse>
+</Gauge>

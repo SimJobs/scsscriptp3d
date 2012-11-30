@@ -1,0 +1,67 @@
+#include "crew.script"
+
+int GetTumblerState()
+{
+    int a=GetCToken(TURB_ENGINE_1_AFTERBURNER);
+    if(a==1) {
+        SetSimEvent(KEY_TOGGLE_AFTERBURNER1,0);
+    }
+    return a;
+}
+
+int GetButtonState()
+{
+    int a=GetCToken(TURB_ENGINE_2_AFTERBURNER);
+    if(a==1) {
+        SetSimEvent(KEY_TOGGLE_AFTERBURNER2,0);
+    }
+    return a;
+}
+
+void ProcessTumblersAndButtons()
+{
+    if(GetTumblerState()==1) {
+        PlaySound("tumbler.wav");
+    }
+
+    if(GetButtonState()==1) {
+        PlaySound("button.wav");
+    }
+}
+
+void ProcessBeacons()
+{
+    int BeaconState=GetCToken(MARKER_BEACON_STATE);
+
+    if(BeaconState==1)
+        PlaySoundIfNotPlay("ring_om.wav");
+
+    if(BeaconState==2)
+        PlaySoundIfNotPlay("ring_mm.wav");
+
+    if(BeaconState==3)
+        PlaySoundIfNotPlay("ring_im.wav");
+}
+
+void ProcessAlarm()
+{
+    int s1=GetNamedVar("Siren");
+    int s2=GetNamedVar("Siren2");
+
+    if(s1>0) {
+        PlaySoundIfNotPlay("tkofwarn.wav");
+    }
+
+    if(s2>0) {
+        PlaySoundIfNotPlay("tone400gz.wav");
+    }
+}
+
+void ProcessInternalSounds()
+{
+    ProcessTumblersAndButtons();
+    ProcessBeacons();
+    ProcessAlarm();
+    ProcessCrew();
+}
+

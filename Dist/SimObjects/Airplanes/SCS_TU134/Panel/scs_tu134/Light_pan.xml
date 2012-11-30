@@ -1,0 +1,18 @@
+<Gauge Name="Panel Lights" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:Light panel,bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_GAUGE_LIGHT_SWITCH_PANEL"/>
+      <Cursor Type="Hand"/>
+      <Click>0 (>K:PANEL_LIGHTS_TOGGLE) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+   </Mouse>
+</Gauge>

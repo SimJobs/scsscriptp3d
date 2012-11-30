@@ -1,0 +1,14 @@
+<Gauge Name="Bat power" Version="1.0">
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (A:General eng1 generator active,bool) (A:General eng2 generator active,bool) || (L:APU Power,bool) || ! }</Value>
+         <Case Value="0">
+            <Image Name="lamp_red_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_red_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

@@ -1,0 +1,24 @@
+<Gauge Name="APU Ampermeter" Version="1.0">
+   <Image Name="a500.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="ele_n.bmp" PointsTo="East" Luminous="Yes" ImageSizes="36,5,0,0">
+         <Axis X="0" Y="3"/>
+      </Image>
+      <Rotate>
+         <Value>(L:APU Gen,bool) if{ (L:APU RPM, enum) } els{ 0 }</Value>
+         <Nonlinearity>
+            <Item Value="0" X="13" Y="52"/>
+            <Item Value="100" X="21" Y="27"/>
+            <Item Value="200" X="43" Y="13"/>
+            <Item Value="300" X="69" Y="19"/>
+            <Item Value="400" X="84" Y="42"/>
+            <Item Value="500" X="79" Y="68"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Tooltip ID="TOOLTIPTEXT_AMMETER"/>
+   </Mouse>
+</Gauge>

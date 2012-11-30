@@ -1,0 +1,32 @@
+<Gauge Name="UM-1K" Version="1.0">
+   <Image Name="MS_back.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="MS_needle.bmp" Luminous="Yes" ImageSizes="10,79,0,0">
+         <Axis X="5" Y="79"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="0.9">(A:Airspeed mach, machs)</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-180"/>
+            <Item Value="0.5" Degrees="-162"/>
+            <Item Value="0.6" Degrees="-100"/>
+            <Item Value="0.7" Degrees="-40"/>
+            <Item Value="0.8" Degrees="30"/>
+            <Item Value="0.9" Degrees="95"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="25"/>
+         <Failures>
+            <GAUGE_VERTICAL_SPEED Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="0"/>
+         </Failures>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="0" Y="0"/>
+      <Image Name="MS_upper.bmp" ImageSizes="220,220,0,0"/>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_CONCORDE_MACHMETER"/>
+   </Mouse>
+</Gauge>

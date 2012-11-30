@@ -1,0 +1,179 @@
+<Gauge Name="ARK15_2" Version="1.0">
+   <Image Name="ARK15.bmp" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Select>
+         <Value>(G:Var8) 0 == if{ 
+   (A:Adf active frequency:2, Kilohertz) 100 / int (>G:Var3)
+   (A:Adf active frequency:2, Kilohertz) 100 % 10 / int (>G:Var2) 
+   (A:Adf active frequency:2, Kilohertz) 10 % int (>G:Var1) 
+   1 (>G:Var6) 1 (>G:Var8)  
+}</Value>
+      </Select>
+   </Element>
+   <Element>
+      <Select>
+         <Value>(G:Var9) if{
+  (A:Adf active frequency:2, Kilohertz) 100 / int (G:Var6) &lt; if{ 0 (>K:ADF2_100_INC) }
+  (A:Adf active frequency:2, Kilohertz) 100 / int (G:Var6) &gt; if{ 0 (>K:ADF2_100_DEC) }
+  (A:Adf active frequency:2, Kilohertz) 100 % 10 / int (G:Var5) &lt; if{ 0 (>K:ADF2_10_INC) }
+  (A:Adf active frequency:2, Kilohertz) 100 % 10 / int (G:Var5) &gt; if{ 0 (>K:ADF2_10_DEC) }
+  (A:Adf active frequency:2, Kilohertz) 10 % int (G:Var4) &lt; if{ 0 (>K:ADF2_1_INC) }
+  (A:Adf active frequency:2, Kilohertz) 10 % int (G:Var4) &gt; if{ 0 (>K:ADF2_1_DEC) } } els{
+  (A:Adf active frequency:2, Kilohertz) 100 / int (G:Var3) &lt; if{ 0 (>K:ADF2_100_INC) }
+  (A:Adf active frequency:2, Kilohertz) 100 / int (G:Var3) &gt; if{ 0 (>K:ADF2_100_DEC) }
+  (A:Adf active frequency:2, Kilohertz) 100 % 10 / int (G:Var2) &lt; if{ 0 (>K:ADF2_10_INC) }
+  (A:Adf active frequency:2, Kilohertz) 100 % 10 / int (G:Var2) &gt; if{ 0 (>K:ADF2_10_DEC) }
+  (A:Adf active frequency:2, Kilohertz) 10 % int (G:Var1) &lt; if{ 0 (>K:ADF2_1_INC) }
+  (A:Adf active frequency:2, Kilohertz) 10 % int (G:Var1) &gt; if{ 0 (>K:ADF2_1_DEC) } }</Value>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="29" Y="140"/>
+      <MaskImage Name="ARK_1_Mask.bmp" ImageSizes="48,48,0,0">
+         <Axis X="24" Y="24"/>
+      </MaskImage>
+      <Image Name="ARK_1_limb.bmp" Luminous="Yes" ImageSizes="48,48,0,0">
+         <Axis X="24" Y="24"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var1) -0.628 *</Value>
+         <Delay DegreesPerSecond="155"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="0" Y="110"/>
+      <MaskImage Name="ARK_10_Mask.bmp" ImageSizes="106,106,0,0">
+         <Axis X="53" Y="53"/>
+      </MaskImage>
+      <Image Name="ARK_10_limb.bmp" Luminous="Yes" ImageSizes="74,66,0,0">
+         <Axis X="41" Y="33"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var2) -0.314 *</Value>
+         <Delay DegreesPerSecond="122"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="47" Y="116"/>
+      <MaskImage Name="ARK_100_Mask.bmp" ImageSizes="12,92,0,0">
+         <Axis X="6" Y="46"/>
+      </MaskImage>
+      <Image Name="ARK_100_limb.bmp" Luminous="Yes" ImageSizes="92,92,0,0">
+         <Axis X="46" Y="46"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var3) 1 - -0.349 *</Value>
+         <Delay DegreesPerSecond="99"/>
+      </Rotate>
+   </Element>
+
+   <Element>
+      <Position X="84" Y="59"/>
+      <Select>
+	<Value>(G:Var9)</Value>
+         <Case Value="0">
+         <Image Name="ARK_k1.bmp" ImageSizes="28,32,0,0"/>
+         </Case>
+         <Case Value="1">
+         <Image Name="ARK_k2.bmp" ImageSizes="28,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="143" Y="140"/>
+      <MaskImage Name="ARK_1_Mask.bmp" ImageSizes="48,48,0,0">
+         <Axis X="24" Y="24"/>
+      </MaskImage>
+      <Image Name="ARK_1_limb.bmp" Luminous="Yes" ImageSizes="48,48,0,0">
+         <Axis X="24" Y="24"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var4) -0.628 *</Value>
+         <Delay DegreesPerSecond="155"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="114" Y="110"/>
+      <MaskImage Name="ARK_10_Mask.bmp" ImageSizes="106,106,0,0">
+         <Axis X="53" Y="53"/>
+      </MaskImage>
+      <Image Name="ARK_10_limb.bmp" Luminous="Yes" ImageSizes="74,66,0,0">
+         <Axis X="41" Y="33"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var5) -0.314 *</Value>
+         <Delay DegreesPerSecond="111"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="161" Y="116"/>
+      <MaskImage Name="ARK_100_Mask.bmp" ImageSizes="12,92,0,0">
+         <Axis X="6" Y="46"/>
+      </MaskImage>
+      <Image Name="ARK_100_limb.bmp" Luminous="Yes" ImageSizes="92,92,0,0">
+         <Axis X="46" Y="46"/>
+      </Image>
+      <Rotate>
+         <Value>(G:Var6) 1 - -0.349 *</Value>
+         <Delay DegreesPerSecond="99"/>
+      </Rotate>
+   </Element>
+
+   <Mouse>
+      <Area Left="38" Top="149" Right="52" Bottom="179">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var1) -- (>G:Var1) (G:Var1) 0 &lt; if{ 9 (>G:Var1) }</Click>
+      </Area>
+      <Area Left="53" Top="149" Right="67" Bottom="179">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var1) ++ (>G:Var1) (G:Var1) 9 &gt; if{ 0 (>G:Var1) }</Click>
+      </Area>
+      <Area Left="15" Top="145" Right="38" Bottom="195">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var2) -- (>G:Var2) (G:Var2) 0 &lt; if{ 0 (>G:Var2) }</Click>
+      </Area>
+      <Area Left="67" Top="145" Right="90" Bottom="195">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var2) ++ (>G:Var2) (G:Var2) 9 &gt; if{ 9 (>G:Var2) }</Click>
+      </Area>
+      <Area Left="1" Top="114" Right="15" Bottom="219">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var3) -- (>G:Var3) (G:Var3) 0 &lt; if{ 0 (>G:Var3) }</Click>
+      </Area>
+      <Area Left="90" Top="114" Right="109" Bottom="219">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var3) ++ (>G:Var3) (G:Var3) 16 &gt; if{ 16 (>G:Var3) }</Click>
+      </Area>
+
+      <Area Left="79" Top="64" Right="116" Bottom="90">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var9) ! (>G:Var9) 0 (>K:TOGGLE_AFTERBURNER2)</Click>
+      </Area>
+
+      <Area Left="152" Top="149" Right="166" Bottom="179">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var4) -- (>G:Var4) (G:Var4) 0 &lt; if{ 9 (>G:Var4) }</Click>
+      </Area>
+      <Area Left="167" Top="149" Right="181" Bottom="179">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var4) ++ (>G:Var4) (G:Var4) 9 &gt; if{ 0 (>G:Var4) }</Click>
+      </Area>
+      <Area Left="129" Top="145" Right="152" Bottom="195">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var5) -- (>G:Var5) (G:Var5) 0 &lt; if{ 0 (>G:Var5) }</Click>
+      </Area>
+      <Area Left="181" Top="145" Right="204" Bottom="195">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var5) ++ (>G:Var5) (G:Var5) 9 &gt; if{ 9 (>G:Var5) }</Click>
+      </Area>
+      <Area Left="115" Top="114" Right="129" Bottom="219">
+      <Cursor Type="DownArrow"/>
+      <Click>(G:Var6) -- (>G:Var6) (G:Var6) 0 &lt; if{ 0 (>G:Var6) }</Click>
+      </Area>
+      <Area Left="204" Top="114" Right="219" Bottom="219">
+      <Cursor Type="UpArrow"/>
+      <Click>(G:Var6) ++ (>G:Var6) (G:Var6) 16 &gt; if{ 16 (>G:Var6) }</Click>
+      </Area>
+   </Mouse>
+</Gauge>

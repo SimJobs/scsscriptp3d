@@ -1,0 +1,74 @@
+int ReadKeyFromSim()
+{
+    return SimKeyPressed;
+}
+
+int ReadKeyDataFromSim()
+{
+    return SimKeyData;
+}
+
+void ResetKey()
+{
+    SimKeyPressed=KEY_NULL;
+    SimKeyData=0;
+}
+
+double GetGearPos(int i)
+{
+    return i==RIGHT_GEAR?GetCToken(GEAR_POS_RIGHT):i==LEFT_GEAR?GetCToken(GEAR_POS_LEFT):GetCToken(GEAR_POS_NOSE);
+}
+
+double GetVerticalSpeed()
+{ 
+    return GetCToken(VERTICAL_SPEED)/256;   
+}
+
+bool IsAircraftOnGround()
+{ 
+    return GetCToken(AIRCRAFT_ON_GROUND)>0; 
+}
+
+double GetEngineN1(int eng)
+{ 
+    if(eng==1)
+        return GetCToken(TURB_ENGINE_1_CORRECTED_N1); 
+        
+    if(eng==2)
+        return GetCToken(TURB_ENGINE_2_CORRECTED_N1); 
+        
+    if(eng==3)
+        return GetCToken(TURB_ENGINE_3_CORRECTED_N1); 
+        
+    if(eng==4)
+        return GetCToken(TURB_ENGINE_4_CORRECTED_N1); 
+        
+    return 0;
+}
+
+double GetEngineN2(int eng)
+{ 
+    if(eng==1)
+        return GetCToken(TURB_ENGINE_1_CORRECTED_N2); 
+        
+    if(eng==2)
+        return GetCToken(TURB_ENGINE_2_CORRECTED_N2); 
+        
+    if(eng==3)
+        return GetCToken(TURB_ENGINE_3_CORRECTED_N2); 
+        
+    if(eng==4)
+        return GetCToken(TURB_ENGINE_4_CORRECTED_N2); 
+        
+    return 0;
+}
+
+double DegreesToRadian(double angle)
+{
+    return angle*PI/180.0;
+}
+
+double RadianToDegrees(double angle)
+{
+    return angle*180.0/PI;
+}

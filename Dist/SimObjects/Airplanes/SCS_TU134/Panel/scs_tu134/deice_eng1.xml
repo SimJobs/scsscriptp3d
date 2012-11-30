@@ -1,0 +1,22 @@
+<Gauge Name="Eng1 Deice" Version="1.0">
+   <Image Name="deice_temp.bmp" Luminous="Yes" ImageSizes="192,192,0,0"/>
+   <Element>
+      <Position X="96" Y="96"/>
+      <Image Name="deice_temp_n.bmp" Luminous="Yes" ImageSizes="80,7,0,0">
+         <Axis X="0" Y="4" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="300">(A:Circuit general panel on,bool) if{ (L:POS Eng1,bool) (A:General eng1 exhaust gas temperature, celsius) 3 / * (A:Ambient temperature, celsius) + } els{ (A:Ambient temperature, celsius) }</Value>
+         <Nonlinearity>
+            <Item Value="0" X="174" Y="86"/>
+            <Item Value="100" X="155" Y="142"/>
+            <Item Value="200" X="83" Y="166"/>
+            <Item Value="300" X="26" Y="105"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="5"/>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+      </Rotate>
+   </Element>
+</Gauge>

@@ -1,0 +1,8 @@
+<Gauge Name="Captain Icon" Version="1.0">
+   <Image Name="icon_l.bmp"/>
+   <Mouse>
+      <Tooltip ID="">Captain's panel</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>0 (&gt;K:PANEL_ID_OPEN) 10001 (&gt;K:PANEL_ID_CLOSE)</Click>
+   </Mouse>
+</Gauge>

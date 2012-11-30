@@ -1,0 +1,17 @@
+<Gauge Name="Rudder booster switsh" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:RHB power, bool) (A:Sim on ground,bool) || ! if{ 0 (>K:RUDDER_CENTER) } (L:RHB power, bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>(L:RHB power, bool) ! (>L:RHB power, bool) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+   </Mouse>
+</Gauge>

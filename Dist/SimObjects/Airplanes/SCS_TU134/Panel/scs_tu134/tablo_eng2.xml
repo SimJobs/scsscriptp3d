@@ -1,0 +1,135 @@
+<Gauge Name="Eng_Tablo" Version="1.0">
+   <Image Name="tablo_eng_back2.bmp" ImageSizes="272,186,0,0"/>
+   <Element>
+      <Position X="-41" Y="7"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Eng1 Failed, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_ce.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="194" Y="7"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Eng2 Failed, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_ce.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="-48" Y="55"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Eng1 On Fire, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_ef.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="201" Y="55"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Eng2 On Fire, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_ef.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="-48" Y="101"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:General eng1 throttle lever position, percent) 0 &lt; (A:Turb eng1 N2, percent) 50 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_rl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="201" Y="101"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:General eng2 throttle lever position, percent) 0 &lt; (A:Turb eng2 N2, percent) 50 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_rl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="-48" Y="147"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:General eng1 throttle lever position, percent) -5 &lt; (A:Turb eng1 N2, percent) 50 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_er.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="201" Y="147"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:General eng2 throttle lever position, percent) -5 &lt; (A:Turb eng2 N2, percent) 50 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_er.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="39" Y="147"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Turb eng1 N2, percent) 79 &lt; (A:Turb eng1 N2, percent) 11 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_vna.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="116" Y="147"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Turb eng2 N2, percent) 79 &lt; (A:Turb eng2 N2, percent) 11 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_vna.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="39" Y="101"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Fuel tank right tip level, percent) 10 &gt; (A:Fuel tank left tip level, percent) 10 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_sl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="116" Y="101"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (A:Fuel total quantity weight, pounds) 0.45355 * 2400 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_fe.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="39" Y="55"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:General eng1 generator active,bool) (A:General eng2 generator active,bool) || (L:APU Power,bool) || ! (L:AnnCheck,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_bp.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="116" Y="55"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:AnnCheck,bool) (L:TA8_fire, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_eng_af.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

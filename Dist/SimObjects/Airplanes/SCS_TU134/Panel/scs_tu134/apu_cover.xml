@@ -1,0 +1,13 @@
+<Gauge Name="APU Cover" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:APU Check,bool) (A:WATER LEFT RUDDER EXTENDED, bool) || }</Value>
+         <Case Value="0">
+            <Image Name="lamp_yellow_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_yellow_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

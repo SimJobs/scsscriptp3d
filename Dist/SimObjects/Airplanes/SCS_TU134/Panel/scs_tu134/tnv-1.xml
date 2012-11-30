@@ -1,0 +1,20 @@
+<Gauge Name="Temperature Indicator" Version="1.0">
+   <Image Name="tnv_back.bmp" Luminous="Yes" ImageSizes="152,152,0,0"/>
+   <Element>
+      <Position X="76" Y="76"/>
+      <Image Name="tnv_needle.bmp" Luminous="Yes" ImageSizes="8,60,0,0">
+         <Axis X="4" Y="60"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-5" Maximum="15">(A:Circuit general panel on, bool) if{ (A:Ambient temperature, celsius) 10 / }</Value>
+         <Nonlinearity>
+            <Item Value="-5" Degrees="-105"/>
+            <Item Value="0" Degrees="-48"/>
+            <Item Value="5" Degrees="6"/>
+            <Item Value="10" Degrees="64"/>
+            <Item Value="15" Degrees="104"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="2"/>
+      </Rotate>
+   </Element>
+</Gauge>

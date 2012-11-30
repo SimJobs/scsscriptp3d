@@ -1,0 +1,17 @@
+<Gauge Name="KPPM switch" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:KPPM sel,bool)</Value> 
+         <Case Value="0">
+            <Image Name="sw_nd.bmp" ImageSizes="17,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_nu.bmp" ImageSizes="17,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>(L:KPPM sel,bool) ! (>L:KPPM sel,bool) 0 (>K:TOGGLE_AFTERBURNER1)</Click> 
+   </Mouse>
+</Gauge>

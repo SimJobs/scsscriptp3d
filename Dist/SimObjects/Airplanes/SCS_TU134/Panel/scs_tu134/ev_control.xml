@@ -1,0 +1,13 @@
+<Gauge Name="Vibration Check" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+
+   <Mouse>
+      <Tooltip ID="">Lamp Check</Tooltip>
+      <Cursor Type="Hand"/>
+<Click Kind="LeftSingle+LeftRelease+Leave">
+    (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>L:EV control,bool) }
+    (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:EV control,bool) }
+    (M:Event) 'Leave' scmp 0 == if{ 0 (>L:EV control,bool) }
+   </Click>
+   </Mouse>
+</Gauge>

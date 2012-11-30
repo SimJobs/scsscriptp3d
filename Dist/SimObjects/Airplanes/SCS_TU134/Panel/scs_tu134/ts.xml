@@ -1,0 +1,150 @@
+<Gauge Name="Fuel System Lamps" Version="1.0">
+   <Image Name="ts_bg.bmp" ImageSizes="490,98,0,0"/>
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS left auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS left auto,bool) ! || (L:FS st1,bool) &amp;&amp; || if{ (A:Fuel tank left tip level, percent) 2 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="0" Y="46"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS left auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS left auto,bool) ! || (L:FS st1,bool) &amp;&amp; || if{ (A:Fuel tank left tip level, percent) 2 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="450" Y="0"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS right auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS right auto,bool) ! || (L:FS st1,bool) &amp;&amp; || if{ (A:Fuel tank right tip level, percent) 2 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="450" Y="46"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS right auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS right auto,bool) ! || (L:FS st1,bool) &amp;&amp; || if{ (A:Fuel tank right tip level, percent) 2 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="91" Y="8"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG1 FUEL PUMP ON,bool) (A:Fuel tank left tip level, percent) 25 &lt; &amp;&amp; }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="91" Y="54"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG1 FUEL PUMP ON,bool) (A:Fuel tank left tip level, percent) 25 &lt; &amp;&amp; }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="359" Y="8"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG2 FUEL PUMP ON,bool) (A:Fuel tank right tip level, percent) 25 &lt; &amp;&amp; }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="359" Y="54"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG2 FUEL PUMP ON,bool) (A:Fuel tank right tip level, percent) 25 &lt; &amp;&amp; }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="45" Y="4"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS left auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS left auto,bool) ! || (L:FS st3,bool) &amp;&amp; || if{ (A:Fuel tank left aux level, percent) 1 &gt; (A:Fuel tank external1 level, percent) 48 &lt; &amp;&amp; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="45" Y="50"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS left auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS left auto,bool) ! || (L:FS st3,bool) &amp;&amp; || if{ (A:Fuel tank left aux level, percent) 1 &gt; (A:Fuel tank external1 level, percent) 48 &lt; &amp;&amp; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="406" Y="4"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS right auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS right auto,bool) ! || (L:FS st3,bool) &amp;&amp; || if{ (A:Fuel tank right aux level, percent) 1 &gt; (A:Fuel tank external2 level, percent) 48 &lt; &amp;&amp; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="406" Y="50"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (L:FS auto,bool) (L:FS right auto,bool) &amp;&amp; (L:FS auto,bool) ! (L:FS right auto,bool) ! || (L:FS st3,bool) &amp;&amp; || if{ (A:Fuel tank right aux level, percent) 1 &gt; (A:Fuel tank external2 level, percent) 48 &lt; &amp;&amp; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="138" Y="54"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG1 FUEL PUMP ON,bool) if{ (A:Fuel tank center level, percent) (A:Fuel tank external1 level, percent) + 1 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="187" Y="58"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG1 FUEL PUMP ON,bool) if{ (A:Fuel tank center level, percent) (A:Fuel tank external1 level, percent) + 1 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="311" Y="54"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG2 FUEL PUMP ON,bool) if{ (A:Fuel tank center level, percent) (A:Fuel tank external2 level, percent) + 1 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="263" Y="58"/>
+      <Select>
+         <Value>(A:Circuit avionics on,bool) if{ (A:GENERAL ENG2 FUEL PUMP ON,bool) if{ (A:Fuel tank center level, percent) (A:Fuel tank external2 level, percent) + 1 &gt; } }</Value>    
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

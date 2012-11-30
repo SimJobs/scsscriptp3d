@@ -1,0 +1,162 @@
+<Gauge Name="NKP-4" Version="1.0">
+   <Image Name="NKP_back.bmp" Luminous="Yes" ImageSizes="268,268,0,0"/>
+   
+  <Element>
+    <Position X="107" Y="146"/>
+    <Select>
+      <Value>(L:PO4500,enum) 0 != (L:PT1500,enum) 0 != &amp;&amp; (L:PSP mode, bool) &amp;&amp; if{ (L:KMP2 power,bool) (A:Nav2 GS Flag, bool) &amp;&amp; } els{ (L:KMP1 power,bool) (A:Nav1 GS Flag, bool) &amp;&amp; }</Value>
+      <Case Value="0">
+        <Image Name="NKP_bg.bmp" Luminous="Yes" ImageSizes="18,18,0,0"/>
+      </Case>
+    </Select>
+  </Element>
+   
+  <Element>
+    <Position X="143" Y="104"/>
+    <Select>
+      <Value>(L:PO4500,enum) 0 != (L:PT1500,enum) 0 != &amp;&amp; (L:PSP mode, bool) &amp;&amp; if{ (L:KMP2 power,bool) (A:Nav2 Has Localizer, bool) &amp;&amp; } els{ (L:KMP1 power,bool) (A:Nav1 Has Localizer, bool) &amp;&amp; }</Value>
+      <Case Value="0">
+        <Image Name="NKP_bc.bmp" Luminous="Yes" ImageSizes="18,18,0,0"/>
+      </Case>
+    </Select>
+  </Element>
+   
+  <Element>
+    <Position X="134" Y="134"/>
+    <Image Name="NKP_kr.bmp" Luminous="Yes" ImageSizes="4,119,0,0">
+      <Axis X="2" Y="60"/>
+    </Image>
+    <Shift>
+      <Value Minimum="-120" Maximum="120">
+        (L:PO4500,enum) 0 != (L:PT1500,enum) 0 != &amp;&amp; if{ (L:PSP mode, enum) -1 == if{ (L:RSBN_CDI,number) }  
+        (L:PSP mode, enum) 0 == if{ (L:KMP1 power,bool) (A:Nav1 has NAV, bool) &amp;&amp; if{ (A:Nav1 CDI, number) } els{ 0 } } 
+        (L:PSP mode, enum) 1 == if{ (L:KMP2 power,bool) (A:Nav2 has NAV, bool) &amp;&amp; if{ (A:Nav2 CDI, number) } els{ 0 } } }
+      </Value>
+      <Failures>
+        <SYSTEM_ELECTRICAL_PANELS   Action="Freeze"/>
+        <SYSTEM_ELECTRICAL_AVIONICS Action="Freeze"/>
+        <GAUGE_GYRO_HEADING         Action="Freeze"/>
+        <GAUGE_NAVIGATION_VOR1      Action="Freeze"/>
+      </Failures>
+      <Scale X="0.4"/>
+      <Delay PixelsPerSecond="60"/>
+    </Shift>
+  </Element>
+
+  <Element>
+    <Position X="134" Y="134"/>
+    <Image Name="NKP_gl.bmp" Luminous="Yes" ImageSizes="119,4,0,0">
+      <Axis X="60" Y="2"/>
+    </Image>
+    <Shift>
+      <Value Minimum="-120" Maximum="120">
+        (L:PO4500,enum) 0 != (L:PT1500,enum) 0 != &amp;&amp; if{ (L:PSP mode, enum) -1 == if{ 0 }  
+        (L:PSP mode, enum) 0 == if{ (L:KMP1 power,bool) (A:Nav1 GS Flag, bool) &amp;&amp; if{ (A:Nav1 GSI, number) } els{ 0 } }
+        (L:PSP mode, enum) 1 == if{ (L:KMP2 power,bool) (A:Nav2 GS Flag, bool) &amp;&amp; if{ (A:Nav2 GSI, number) } els{ 0 } } }
+      </Value>
+      <Scale Y="0.4"/>
+      <Delay PixelsPerSecond="60"/>
+    </Shift>
+  </Element>
+
+  <Element>
+    <Position X="0" Y="0"/>
+    <Image Name="NKP_upper.bmp" Luminous="Yes" ImageSizes="268,268,0,0"/>
+  </Element>
+   
+  <Element>
+    <Position X="134" Y="134"/>
+    <Image Name="NKP_sc2.bmp" Luminous="Yes" ImageSizes="207,207,0,0">
+      <Axis X="104" Y="104"/>
+    </Image>
+    <Rotate>
+      <Value>
+        (L:KS8 Primary Course Signal, radians) 
+        (L:USH MagVar Selector, radians) + d
+        (>L:NKP Course, radians)
+        /-/
+      </Value>
+      <Failures>
+        <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+        <GAUGE_GYRO_HEADING       Action="Freeze"/>
+      </Failures>
+      <Delay DegreesPerSecond="55"/>
+    </Rotate>
+  </Element>
+
+  <Element>
+  <Position X="134" Y="134"/>
+  <Image Name="NKP_ZK.bmp" Luminous="Yes" ImageSizes="15,208,0,0">
+    <Axis X="8" Y="104"/>
+  </Image>
+  <Clip/>
+  <Rotate>
+    <Value>
+      (L:NKP Course Selector, radians) 
+      (L:NKP Course, radians) -
+    </Value>
+    <Failures>
+      <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+      <SYSTEM_ELECTRICAL_AVIONICS Action="Freeze"/>
+      <GAUGE_GYRO_HEADING Action="Freeze"/>
+      <GAUGE_NAVIGATION_VOR1 Action="Freeze"/>
+    </Failures>
+    <Delay DegreesPerSecond="45"/>
+  </Rotate>
+  </Element>
+
+  <Element>
+  <Position X="134" Y="134"/>
+  <Image Name="NKP_kur.bmp" Luminous="Yes" ImageSizes="17,208,0,0">
+    <Axis X="8" Y="104"/>
+  </Image>
+  <Clip/>
+  <Rotate>
+    <Value>
+(L:PO4500,enum) 0 == (L:PT1500,enum) 0 == || if{ 0 } els{
+(L:nkp4 switch,bool) ! if{
+          (L:USh_md1,bool) ! if{ (L:ARK1 power,bool) if{  
+            (A:ADF Radial:1, radians) (L:ARK1 dev, radians) + } 
+          } els{ (L:KMP1 power,bool) if{ 
+            (A:NAV1 Radial, radians) (A:Plane heading degrees gyro,radians) - 
+          } } } 
+els{
+          (L:USh_md2,bool) ! if{ (L:ARK2 power,bool) if{ 
+            (A:ADF Radial:2, radians) (L:ARK2 dev, radians) + }
+          } els{ (L:KMP2 power,bool) if{
+            (A:NAV2 Radial, radians) (A:Plane heading degrees gyro,radians) - 
+          } } } }
+    </Value>
+    <Failures>
+      <SYSTEM_ELECTRICAL_PANELS   Action="Freeze"/>
+      <SYSTEM_ELECTRICAL_AVIONICS Action="Freeze"/>
+      <GAUGE_GYRO_HEADING         Action="Freeze"/>
+      <GAUGE_NAVIGATION_VOR1      Action="Freeze"/>
+    </Failures>
+    <Delay DegreesPerSecond="45"/>
+  </Rotate>
+  </Element>
+
+<!-- /////////////////////////////////////////////////////////////////////// -->
+
+  <Mouse>
+    <Tooltip>ПУ: %((L:KS8 Primary Course Signal, degrees) (L:USH MagVar Selector, degrees) +)%!03.0f!° ЗК: %((L:NKP Course Selector, degrees))%!03.0f!°</Tooltip>
+    <Area Left="212" Top="212" Width="46" Height="46">
+      <Area Right="23">
+        <Click Repeat="Yes">
+          (L:NKP Course Selector, degrees) -- dnor
+          (>L:NKP Course Selector, degrees)
+        </Click>
+        <Cursor Type="DownArrow"/>
+      </Area>
+      <Area Left="23">
+        <Click Repeat="Yes">
+          (L:NKP Course Selector, degrees) ++ dnor
+          (>L:NKP Course Selector, degrees)
+        </Click>
+        <Cursor Type="UpArrow"/>
+      </Area>
+    </Area>
+  </Mouse>
+
+</Gauge>

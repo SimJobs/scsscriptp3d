@@ -1,0 +1,14 @@
+<Gauge Name="PK1 Lamp" Version="1.0">
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (A:GENERAL ENG1 FUEL VALVE,bool) }</Value>
+         <Case Value="0">
+            <Image Name="lamp_green_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

@@ -1,0 +1,21 @@
+<Gauge Name="Torque Indicator" Version="1.0">
+   <Image Name="hydr_bg15.bmp" Luminous="Yes" ImageSizes="108,108,0,0"/>
+   <Element>
+      <Position X="54" Y="71"/>
+      <Image Name="hydr_needle.bmp" Luminous="Yes" ImageSizes="5,48,0,0">
+         <Axis X="3" Y="48"/>
+      </Image>
+      <Rotate>
+         <Value  Minimum="0" Maximum="15">(L:Auto Hydr, number) 1000 /</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-58"/>
+            <Item Value="15" Degrees="58"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="0" Y="0"/>
+      <Image Name="hydr_upper.bmp" ImageSizes="108,108,0,0"/>
+   </Element>
+</Gauge>

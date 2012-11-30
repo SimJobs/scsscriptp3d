@@ -1,0 +1,17 @@
+<Gauge Name="APU Main Switch" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:WATER RUDDER HANDLE POSITION, bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+        <Cursor Type="Hand"/>
+        <Click>1 (>L:APU Fail,bool) 0 (>L:APU Ready,bool) 0 (>L:APU TSA,bool) 0 (>K:TOGGLE_WATER_RUDDER) 0 (>K:TOGGLE_AFTERBURNER1) </Click>
+   </Mouse>
+</Gauge>

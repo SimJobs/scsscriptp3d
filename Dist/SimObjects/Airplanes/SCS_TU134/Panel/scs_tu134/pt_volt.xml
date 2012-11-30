@@ -1,0 +1,27 @@
+<Gauge Name="PT volts" Version="1.0">
+   <Image Name="V45.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="ele_n.bmp" PointsTo="East" Luminous="Yes" ImageSizes="36,5,0,0">
+         <Axis X="0" Y="3"/>
+      </Image>
+      <Rotate>
+         <Value>(L:PT volts, enum) 0 == if{ (A:Circuit avionics on,bool) (L:PT1500,enum) 0 &gt; &amp;&amp; if{ 36 } els{ 0 } }
+          (L:PT volts, enum) 1 == if{ (A:Circuit avionics on,bool) (L:PT1500,enum) 0 &gt; &amp;&amp; if{ 36 } els{ 0 } }
+          (L:PT volts, enum) 2 == if{ (A:Circuit avionics on,bool) (L:PT1500,enum) 0 &gt; &amp;&amp; if{ 36 } els{ 0 } }
+          (L:PT volts, enum) 3 == if{ (A:Circuit avionics on,bool) 38 * }
+          (L:PT volts, enum) 4 == if{ (A:Circuit avionics on,bool) 38 * }
+          (L:PT volts, enum) 5 == if{ (A:Circuit avionics on,bool) 38 * }
+          (L:PT volts, enum) 6 == if{ (A:Circuit avionics on,bool) 37 * }
+          (L:PT volts, enum) 7 == if{ (A:Circuit avionics on,bool) 37 * }
+          (L:PT volts, enum) 8 == if{ (A:Circuit avionics on,bool) 37 * }
+          </Value>
+         <Nonlinearity>
+            <Item Value="0" X="16" Y="68"/>
+            <Item Value="30" X="34" Y="13"/>
+            <Item Value="45" X="82" Y="64"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+</Gauge>

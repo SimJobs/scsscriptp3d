@@ -1,0 +1,265 @@
+void Throttle()
+{
+    double e1N2=GetEngineN2(1);
+    double e2N2=GetEngineN2(2);
+    double as=GetCToken(AIRSPEED);
+    double rh=GetCToken(RADIO_HEIGHT);
+    double fa=GetCToken(TRAILING_EDGE_FLAPS0_LEFT_ANGLE);
+    int    key=ReadKeyFromSim();
+
+    int NormThrottlePlayed=GetNamedVar("NormThrottlePlayed");
+    int NormThrottlePlayedOK=GetNamedVar("NormThrottlePlayedOK");
+    int IdlePowerPlayed=GetNamedVar("IdlePowerPlayed");
+    int FullThrottlePlayed1=GetNamedVar("FullThrottlePlayed1");
+    int FullThrottlePlayed2=GetNamedVar("FullThrottlePlayed2");
+    int AircraftLanding=GetNamedVar("AircraftLanding");
+
+    if(key==KEY_THROTTLE_FULL&&IsAircraftOnGround()&&FullThrottlePlayed1==0&&AircraftLanding==0) {
+        PlaySoundIfNotPlay("FullThrottle.wav");
+        SetNamedVar("FullThrottlePlayed1",1);
+        SetNamedVar("FullThrottlePlayed2",0);
+        SetNamedVar("IdlePowerPlayed",0);
+    }
+
+    if(IsAircraftOnGround()&&e1N2>93&&e2N2>93&&as>20&&FullThrottlePlayed1==1&&FullThrottlePlayed2==0&&AircraftLanding==0) {
+        PlaySoundIfNotPlay("FullThrottleOk_alt.wav");
+        SetNamedVar("FullThrottlePlayed2",1);
+        SetNamedVar("FullThrottlePlayed1",0);
+    }
+
+    if(e1N2>94&&e2N2>94&&rh>10&&as>245&&as<260&&NormThrottlePlayed==0) {
+        PlaySoundIfNotPlay("NormThrottle.wav");
+        SetNamedVar("NormThrottlePlayed",1);
+        SetNamedVar("NormThrottlePlayedOK",0);
+    }
+
+    if(e1N2>88&&e1N2<94&&e2N2>88&&e2N2<94&&rh>10&&NormThrottlePlayedOK==0) {
+        PlaySoundIfNotPlay("NormThrottleOK.wav");
+        SetNamedVar("NormThrottlePlayed",0);
+        SetNamedVar("NormThrottlePlayedOK",1);
+    }
+
+    if(fa>25&&rh>2&&rh<10&&as>100&&as<180&&e1N2>60&&e2N2>60&&IdlePowerPlayed==0) {
+        PlaySoundIfNotPlay("IdlePower.wav");
+        SetNamedVar("IdlePowerPlayed",1);
+        SetNamedVar("NormThrottlePlayedOK",0);
+    }
+}
+
+void Decision()
+{
+    double e1N2=GetEngineN2(1);
+    double e2N2=GetEngineN2(2);
+    double as=GetCToken(AIRSPEED);
+    double rh=GetCToken(RADIO_HEIGHT);
+    double fa=GetCToken(TRAILING_EDGE_FLAPS0_LEFT_ANGLE);
+
+    int DecisionPlayed=GetNamedVar("DecisionPlayed");
+    int LandPlayed=GetNamedVar("LandPlayed");
+
+    if(fa>10&&rh>120&&rh<140&&as>114&&as<161&&e1N2<85&&e2N2<85&&DecisionPlayed==0) {
+        PlaySoundIfNotPlay("decision.wav");
+        SetNamedVar("DecisionPlayed",1);
+        SetNamedVar("LandPlayed",0);
+    }
+
+    if(fa>10&&rh>100&&rh<120&&as>114&&as<161&&e1N2<88&&e2N2<88&&LandPlayed==0&&DecisionPlayed==1) {
+        PlaySoundIfNotPlay("land.wav");
+        SetNamedVar("DecisionPlayed",0);
+        SetNamedVar("LandPlayed",1);
+    }
+}
+
+void Gear()
+{
+    double vs=GetVerticalSpeed();
+    double rh=GetCToken(RADIO_HEIGHT);
+    double gl=GetGearPos(LEFT_GEAR);
+    double gr=GetGearPos(RIGHT_GEAR);
+    double gc=GetGearPos(CENTER_GEAR);
+
+    int GearUpCmdPlayed=GetNamedVar("GearUpCmdPlayed");
+    int GearUpRepPlayed=GetNamedVar("GearUpRepPlayed");
+    int GearDownCmdPlayed=GetNamedVar("GearDownCmdPlayed");
+    int GearDownRepPlayed=GetNamedVar("GearDownRepPlayed");
+    int SpeedIncPlayed=GetNamedVar("SpeedIncPlayed");
+    int Speed150Played=GetNamedVar("Speed150Played");
+    int Speed170Played=GetNamedVar("Speed170Played");
+    int Speed190Played=GetNamedVar("Speed190Played");
+    int Speed210Played=GetNamedVar("Speed210Played");
+    int Speed230Played=GetNamedVar("Speed230Played");
+    int Speed250Played=GetNamedVar("Speed250Played");
+    int SpeedRotationPlayed=GetNamedVar("SpeedRotationPlayed");
+    int SpeedTakeoffPlayed=GetNamedVar("SpeedTakeoffPlayed");
+
+    if(vs>2&&rh>10&&rh<25&&GearUpCmdPlayed==0) {
+        PlaySoundIfNotPlay("GearUpCommand.wav");
+        SetNamedVar("GearUpCmdPlayed",1);
+        SetNamedVar("GearDownRepPlayed",0);
+        SetNamedVar("GearDownCmdPlayed",0);
+        SetNamedVar("SpeedIncPlayed",0);
+        SetNamedVar("Speed150Played",0);
+        SetNamedVar("Speed170Played",0);
+        SetNamedVar("Speed190Played",0);
+        SetNamedVar("Speed210Played",0);
+        SetNamedVar("Speed230Played",0);
+        SetNamedVar("Speed250Played",0);
+        SetNamedVar("SpeedRotationPlayed",0);
+        SetNamedVar("SpeedTakeoffPlayed",0);
+    }
+
+    if(GearUpCmdPlayed==1&&gl==0&&gr==0&&gc==0) {
+        PlaySoundIfNotPlay("GearUp.wav");
+        SetNamedVar("GearUpRepPlayed",1);
+        SetNamedVar("GearUpCmdPlayed",0);
+        SetNamedVar("GearDownRepPlayed",0);
+        SetNamedVar("GearDownCmdPlayed",0);
+        SetNamedVar("SpeedIncPlayed",0);
+        SetNamedVar("Speed150Played",0);
+        SetNamedVar("Speed170Played",0);
+        SetNamedVar("Speed190Played",0);
+        SetNamedVar("Speed210Played",0);
+        SetNamedVar("Speed230Played",0);
+        SetNamedVar("Speed250Played",0);
+        SetNamedVar("SpeedRotationPlayed",0);
+        SetNamedVar("SpeedTakeoffPlayed",0);
+    }
+}
+
+void Flaps()
+{
+    double fa=GetCToken(TRAILING_EDGE_FLAPS0_LEFT_ANGLE);
+    double rh=GetCToken(RADIO_HEIGHT);
+    double as=GetCToken(AIRSPEED);
+    double e1N2=GetEngineN2(1);
+    double e2N2=GetEngineN2(2);
+
+    int FlapsUpCmdPlayed=GetNamedVar("FlapsUpCmdPlayed");
+    int FlapsUpIntPlayed=GetNamedVar("FlapsUpIntPlayed");
+    int FlapsUpRepPlayed=GetNamedVar("FlapsUpRepPlayed");
+
+    int key=ReadKeyFromSim();
+
+    if(fa>0&&rh>120&&rh<600&&as>178&&e1N2>87&&e2N2>87&&FlapsUpCmdPlayed==0) {
+        PlaySoundIfNotPlay("FlapsUpCommand.wav");
+        SetNamedVar("FlapsUpCmdPlayed",1);
+        SetNamedVar("FlapsUpRepPlayed",0);
+        SetNamedVar("FlapsUpIntPlayed",0);
+    }
+
+    if(FlapsUpCmdPlayed==1&&!IsSoundPlaying("FlapsUpCommand.wav")&&FlapsUpIntPlayed==0&&fa>0&&key==KEY_GEAR_TOGGLE) {
+        PlaySoundIfNotPlay("FlapsUpInt.wav");
+        SetNamedVar("FlapsUpIntPlayed",1);
+        SetNamedVar("FlapsUpRepPlayed",0);
+    }
+
+    if(FlapsUpIntPlayed==1&&FlapsUpRepPlayed==0&&fa==0) {
+        PlaySoundIfNotPlay("FlapsUp.wav");
+        SetNamedVar("FlapsUpRepPlayed",1);
+        SetNamedVar("FlapsUpCmdPlayed",0);
+        SetNamedVar("FlapsUpIntPlayed",0);
+    }
+}
+
+void Speed()
+{
+    double as=GetCToken(AIRSPEED);
+    bool aon=IsAircraftOnGround();
+    double e1N2=GetEngineN2(1);
+    double e2N2=GetEngineN2(2);
+
+    int SpeedIncPlayed=GetNamedVar("SpeedIncPlayed");
+    int Speed150Played=GetNamedVar("Speed150Played");
+    int Speed170Played=GetNamedVar("Speed170Played");
+    int Speed190Played=GetNamedVar("Speed190Played");
+    int Speed210Played=GetNamedVar("Speed210Played");
+    int Speed230Played=GetNamedVar("Speed230Played");
+    int Speed250Played=GetNamedVar("Speed250Played");
+    int SpeedRotationPlayed=GetNamedVar("SpeedRotationPlayed");
+    int SpeedTakeoffPlayed=GetNamedVar("SpeedTakeoffPlayed");
+    int DecisionSpeedPlayed=GetNamedVar("DecisionSpeedPlayed");
+    int TakeoffContinuePlayed=GetNamedVar("TakeoffContinuePlayed");
+    int AircraftLanding=GetNamedVar("AircraftLanding");
+
+    if(as>=53&&as<=54&&aon&&e1N2>93&&e2N2>93&&SpeedIncPlayed==0&&AircraftLanding==0) {
+        PlaySoundIfNotPlay("SpeedInc.wav");
+        SetNamedVar("SpeedIncPlayed",1);
+    }
+
+    if(as>=80&&as<=81&&aon&&Speed150Played==0) {
+        PlaySoundIfNotPlay("N150.wav");
+        SetNamedVar("Speed150Played",1);
+        SetNamedVar("SpeedIncPlayed",0);
+        SetNamedVar("Speed170Played",0);
+    }
+
+    if(as>=90&&as<=91&&aon&&Speed170Played==0) {
+        PlaySoundIfNotPlay("N170.wav");
+        SetNamedVar("Speed170Played",1);
+        SetNamedVar("Speed150Played",0);
+        SetNamedVar("Speed190Played",0);
+    }
+
+    if(as>=102&&as<=103&&aon&&Speed190Played==0) {
+        PlaySoundIfNotPlay("N190.wav");
+        SetNamedVar("Speed190Played",1);
+        SetNamedVar("Speed170Played",0);
+        SetNamedVar("Speed210Played",0);
+    }
+
+    if(as>=113&&as<=114&&aon&&Speed210Played==0) {
+        PlaySoundIfNotPlay("N210.wav");
+        SetNamedVar("Speed210Played",1);
+        SetNamedVar("Speed190Played",0);
+        SetNamedVar("Speed230Played",0);
+    }
+
+    if(as>=119&&as<=120&&aon&&e1N2>93&&e2N2>93&&DecisionSpeedPlayed==0) {
+        PlaySoundIfNotPlay("DecisionSpeed.wav");
+        SetNamedVar("DecisionSpeedPlayed",1);
+        SetNamedVar("Speed210Played",0);
+    }
+
+    if(as>=123&&as<=124&&aon&&e1N2>93&&e2N2>93&&DecisionSpeedPlayed==1&&TakeoffContinuePlayed==0) {
+        PlaySoundIfNotPlay("TakeoffContinue.wav");
+        SetNamedVar("TakeoffContinuePlayed",1);
+        SetNamedVar("DecisionSpeedPlayed",0);
+    }
+
+    if(as>=124&&as<=125&&aon&&Speed230Played==0) {
+        PlaySoundIfNotPlay("N230.wav");
+        SetNamedVar("Speed230Played",1);
+        SetNamedVar("Speed250Played",0);
+        SetNamedVar("TakeoffContinuePlayed",0);
+    }
+
+    if(as>=135&&as<=136&&aon&&Speed250Played==0) {
+        PlaySoundIfNotPlay("N250.wav");
+        SetNamedVar("Speed250Played",1);
+        SetNamedVar("Speed230Played",0);
+        SetNamedVar("SpeedRotationPlayed",0);
+    }
+
+    if(as>=140&&as<=141&&aon&&SpeedRotationPlayed==0&&AircraftLanding==0) {
+        PlaySoundIfNotPlay("RotationSpeed.wav");
+        SetNamedVar("SpeedRotationPlayed",1);
+        SetNamedVar("Speed250Played",0);
+    }
+
+    if(as>=151&&as<=152&&aon&&SpeedTakeoffPlayed==0&&AircraftLanding==0) {
+        PlaySoundIfNotPlay("TakeoffSpeed.wav");
+        SetNamedVar("SpeedTakeoffPlayed",1);
+        SetNamedVar("SpeedRotationPlayed",0);
+    }
+
+}
+
+void ProcessCrew()
+{
+    Throttle();
+    Decision();
+    Gear();
+    Flaps();
+    Speed();
+}
+

@@ -1,0 +1,235 @@
+<Gauge Name="Tablo Copilot" Version="1.0">
+   <Image Name="tablo_cop_back.bmp" ImageSizes="706,396,0,0"/>
+   <Element>
+      <Position X="108" Y="7"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Outer Marker,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_m1.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="108" Y="53"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Middle Marker,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_m2.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="108" Y="99"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Inner Marker,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_m3.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="396" Y="119"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:H Resh,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_dh.bmp" Bright="Yes" ImageSizes="32,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="459" Y="165"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:ABSU_PT,bool) || (L:PO4500,bool) ! (L:PT1500,bool) ! || || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_pf.bmp" Bright="Yes" ImageSizes="32,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="368" Y="203"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:ABSU_BK,bool) || (L:PO4500,bool) ! (L:PT1500,bool) ! || || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_bf.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="283" Y="203"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:ABSU_AT,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_at.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="290" Y="149"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:ABSU_YK,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_yk.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="210" Y="87"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:AP GA,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_ma.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="125" Y="203"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:PSP mode, bool) 
+                if{ (A:NAV2 CDI,number) abs 30 &gt; if{ (A:Radio height, meters) 100 &lt; if{ 1 (>L:ABSU_ISO,bool) } 1 } els{ 0 } }
+                els{ (A:NAV1 CDI,number) abs 30 &gt; if{ (A:Radio height, meters) 100 &lt; if{ 1 (>L:ABSU_ISO,bool) } 1 } els{ 0 } } 
+                (L:AnnCheck,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_cl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="210" Y="171"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:PSP mode, bool) 
+                if{ (A:NAV2 GSI,number) abs 30 &gt; if{ (A:Radio height, meters) 100 &lt; if{ 1 (>L:ABSU_ISO,bool) } 1 } els{ 0 } }
+                els{ (A:NAV1 GSI,number) abs 30 &gt; if{ (A:Radio height, meters) 100 &lt; if{ 1 (>L:ABSU_ISO,bool) } 1 } els{ 0 } } 
+                (L:AnnCheck,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_gl.bmp" Bright="Yes" ImageSizes="32,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="628" Y="311"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Attitude indicator bank degrees:1,degrees) -30 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_br.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="628" Y="357"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Decision height, feet) (A:Radio height, feet) &gt; (A:Radio height, feet) 100 &lt; || (A:Vertical speed,feet per minute) -1400 &lt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_tw.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="329"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:PT1500,bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_bk.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="283"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:PT1500,bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_ag.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="162" Y="323"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Sim on ground,bool) if{ 0 } els{ (L:Flaps extended,bool) 0 != if{ (A:Airspeed indicated,knots) 217 &gt; } els{ (L:Gears Not Up,bool) if{ (A:Airspeed indicated,knots) 243 &gt; } els{ (A:Airspeed indicated,knots) 324 &gt; (A:Airspeed mach, machs) 0.82 &gt; || } } } || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_sl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="162" Y="281"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Attitude indicator bank degrees:1,degrees) 30 &gt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_bl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="15" Y="7"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AUASP test, bool) if{ 1 } els{ (A:Trailing edge flaps0 left percent,percent) 10 &gt; if{ 8.5 (A:Incidence Alpha, degrees) &lt; } els{ 11 (A:Airspeed mach, machs) 6 * -  (A:Incidence Alpha, degrees) &lt; } } (L:AnnCheck,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_ac.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="53"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:G force, G force) 1.8 &gt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_nd.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="99"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Airspeed indicated, knots) 200 &gt; (A:Rudder deflection, degrees) abs 5 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_r5.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="145"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Trailing edge flaps0 left percent,percent) 10 &gt; (A:Airspeed indicated, knots) 30 &gt; &amp;&amp; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_wl.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="191"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Airspeed indicated, knots) 200 &gt; (A:Ambient temperature, celsius) abs 5 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_ic.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="15" Y="237"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:POS Stab,bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_sw.bmp" Bright="Yes" ImageSizes="62,32,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Select>
+         <Value>(A:Vertical speed,feet per minute) 0 &gt; (L:ABSU_ISO,bool) &amp;&amp; if{ 0 (>L:ABSU_ISO,bool) }
+         (A:Radio height, meters) 30 &lt; (L:ABSU_ISO,bool) &amp;&amp; if{ 0 (>L:ABSU_ISO,bool) }</Value>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="281" Y="73"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:ABSU_ISO,bool) || (L:Counter,number) 10 &gt; &amp;&amp; }</Value>    
+         <Case Value="1">
+            <Image Name="tablo_absu_iso.bmp" Bright="Yes" ImageSizes="82,42,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

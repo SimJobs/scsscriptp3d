@@ -1,0 +1,27 @@
+<Gauge Name="PT Galet" Version="1.0">
+   <Image Name="galet_bg.bmp" ImageSizes="96,96"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="galet.bmp" ImageSizes="53,93,0,0">
+         <Axis X="27" Y="46"/>
+      </Image>
+      <Rotate>
+         <Value>(L:PT volts, enum)</Value>
+         <Nonlinearity>
+            <Item Value="3" Degrees="-15"/>
+            <Item Value="4" Degrees="15"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="355"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Area Right="48">
+      <Cursor Type="DownArrow"/>
+      <Click>(L:PT volts, enum) 0 &gt; if{ (L:PT volts, enum) -- (>L:PT volts, enum) 0 (>K:TOGGLE_AFTERBURNER2) }</Click>
+      </Area>
+      <Area Left="49">
+      <Cursor Type="UpArrow"/>
+      <Click>(L:PT volts, enum) 8 &lt; if{ (L:PT volts, enum) ++ (>L:PT volts, enum) 0 (>K:TOGGLE_AFTERBURNER2) }</Click>
+      </Area>
+   </Mouse>
+</Gauge>

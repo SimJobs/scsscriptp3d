@@ -1,0 +1,21 @@
+<Gauge Name="APU Pressure" Version="1.0">
+   <Image Name="APU_P_Bg.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="63"/>
+      <Image Name="apu_p_nd.bmp" Luminous="Yes" ImageSizes="38,3,0,0">
+         <Axis X="0" Y="2" PointsTo="East"/>
+      </Image>
+      <Rotate>
+         <Value>(L:APU air,bool) if{ (L:APU RPM, enum) 120 / } els{ 0 }</Value>
+         <Nonlinearity>
+            <Item Value="0" X="11" Y="45"/>
+            <Item Value="4" X="48" Y="25"/>
+            <Item Value="8" X="85" Y="45"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="5"/>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+      </Rotate>
+   </Element>
+</Gauge>

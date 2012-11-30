@@ -1,0 +1,281 @@
+<Gauge Name="Autopilot" Version="1.0">
+   <Image Name="ap_bg.bmp" ImageSizes="435,619"/>
+   <Element>
+      <Position X="224" Y="152"/>
+      <Image Name="ap_bank.bmp" ImageSizes="132,142,0,0">
+         <Axis X="66" Y="75"/>
+      </Image>
+      <Rotate>
+         <Value>(L:AP_BankH, degree) 12 / </Value>
+         <Delay DegreesPerSecond="155"/>
+      </Rotate>
+   </Element>
+
+   <Element>
+      <Position X="82" Y="70"/>
+      <Select>
+         <Value>(L:bok ready,bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_off.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_pre.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="82" Y="70"/>
+      <Select>
+         <Value>(L:AP bok on,bool)</Value>
+         <Case Value="1">
+            <Image Name="ap_on.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="303" Y="70"/>
+      <Select>
+         <Value>(L:prod ready,bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_off.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_pre.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="303" Y="70"/>
+      <Select>
+         <Value>(L:AP prod on,bool)</Value>
+         <Case Value="1">
+            <Image Name="ap_on.bmp" ImageSizes="64,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="113" Y="369"/>
+      <Select>
+         <Value>(L:AP_KAp, bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_gl_off.bmp" ImageSizes="53,39,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_gl_on.bmp" ImageSizes="53,39,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="293" Y="371"/>
+      <Select>
+         <Value>(L:AP_GAp, bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_gl_off.bmp" ImageSizes="53,39,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_gl_on.bmp" ImageSizes="53,39,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="287" Y="459"/>
+      <Select>
+         <Value>(L:AP_kv, bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_kv_off.bmp" ImageSizes="53,55,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_kv_on.bmp" ImageSizes="53,55,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="287" Y="459"/>
+      <Visible>(L:AP KV,bool)</Visible>
+      <Select>
+         <Value>(L:AP_kv, bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_kvl_off.bmp" Bright="Yes" ImageSizes="53,55,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_kvl_on.bmp" Bright="Yes" ImageSizes="53,55,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Image Name="ap_pitch.bmp" ImageSizes="44,32,0,0">
+         <Axis X="0" Y="0"/>
+      </Image>
+      <Shift>
+         <Value>(L:AP_PitcK, degree)</Value>
+         <Nonlinearity>
+            <Item Value="-12" X="383" Y="180"/>
+            <Item Value="-6" X="389" Y="212"/>
+            <Item Value="0" X="391" Y="278"/>
+            <Item Value="6" X="391" Y="339"/>
+            <Item Value="12" X="386" Y="386"/>
+         </Nonlinearity>
+      </Shift>
+   </Element>
+
+   <Element>
+      <Position X="205" Y="392"/>
+      <Select>
+         <Value>(L:AP_STU_M, enum)</Value>
+         <Case Value="0">
+            <Image Name="ap_stu_off.bmp" ImageSizes="52,52,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_stu_zk.bmp" ImageSizes="52,52,0,0"/>
+         </Case>
+         <Case Value="2">
+            <Image Name="ap_stu_vor.bmp" ImageSizes="52,52,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="208" Y="459"/>
+      <Select>
+         <Value>(L:AP_master, bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_master_off.bmp" ImageSizes="28,44,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_master_on.bmp" ImageSizes="28,44,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="113" Y="569"/>
+      <Select>
+         <Value>(L:AP_BokP,bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_chanel_off.bmp" ImageSizes="24,34,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_chanel_on.bmp" ImageSizes="24,34,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Position X="301" Y="568"/>
+      <Select>
+         <Value>(L:AP_ProdP,bool)</Value>
+         <Case Value="0">
+            <Image Name="ap_chanel_off.bmp" ImageSizes="24,34,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="ap_chanel_on.bmp" ImageSizes="24,34,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Element>
+      <Select>
+         <Value>
+            (G:Var1) 0 == if{ 150 (>L:PitchKD,number) 40 (>L:PitchKP,number) 10 (>L:PitchKI,number) 70 (>L:BankKD,number) 2000 (>L:BankKP,number) 1 (>L:BankKI,number) 50 (>L:AltKD,number) 50 (>L:AltKP,number) 200 (>L:AltKI,number) 20 (>L:VorKP,number) 15 (>L:VorKD,number) 1 (>G:Var1) }
+            (L:PO4500,bool) (L:PT1500,bool) &amp;&amp; (L:AP_master, bool) (L:AP_ProdM, bool) &amp;&amp; (A:G force, G force) 1 - abs 0.2 &lt; &amp;&amp; &amp;&amp; if{ 1 (>L:prod ready,bool) } els{ 0 (>L:prod ready,bool) }
+            (L:PO4500,bool) (L:PT1500,bool) &amp;&amp; (L:AP_master, bool) (L:AP_BokM, bool) &amp;&amp; &amp;&amp; if{ 1 (>L:bok ready,bool) } els{ 0 (>L:bok ready,bool) }   
+         </Value>    
+      </Select>
+   </Element>
+
+   <Mouse>
+      <Area Left="156" Top="84" Width="50" Height="144">
+      <Cursor Type="DownArrow"/>
+      <Click Repeat="Yes">(L:AP_BankH, degree) -- (>L:AP_BankH, degree) (L:AP_BankH, degree) -22 &lt; if{ -22 (>L:AP_BankH, degree) } 0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:AP ANU,bool) 0 (>L:STU VOR,bool)</Click>
+      </Area>
+      <Area Left="240" Top="84" Width="50" Height="144">
+      <Cursor Type="UpArrow"/>
+      <Click Repeat="Yes">(L:AP_BankH, degree) ++ (>L:AP_BankH, degree) (L:AP_BankH, degree) 22 &gt; if{ 22 (>L:AP_BankH, degree) } 0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:AP ANU,bool) 0 (>L:STU VOR,bool)</Click>
+      </Area>
+      <Area Left="206" Top="84" Width="34" Height="144">
+      <Cursor Type="Hand"/>
+      <Click> 0 (>L:AP_BankH, degree) 0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:NAS1 ANUAP mode,bool) 0 (>L:STU VOR,bool)</Click>
+      </Area>
+
+      <Area Left="372" Top="179" Width="57" Height="72">
+      <Cursor Type="DownArrow"/>
+      <Click Repeat="Yes">(L:AP_PitcK, degree) 0.5 - (>L:AP_PitcK, degree) (L:AP_PitcK, degree) -12 &lt; if{ -12 (>L:AP_PitcK, degree) } 0 (>L:STU Glis,bool) 0 (>L:AP KV,bool) 0 (>L:AP GA,bool) (L:AP_PitcK, degree) (G:Var1) + (>L:AP_PitcH, degree)</Click>
+      </Area>
+      <Area Left="372" Top="334" Width="57" Height="81">
+      <Cursor Type="UpArrow"/>
+      <Click Repeat="Yes">(L:AP_PitcK, degree) 0.5 + (>L:AP_PitcK, degree) (L:AP_PitcK, degree) 12 &gt; if{ 12 (>L:AP_PitcK, degree) } 0 (>L:STU Glis,bool) 0 (>L:AP KV,bool) 0 (>L:AP GA,bool) (L:AP_PitcK, degree) (G:Var1) + (>L:AP_PitcH, degree)</Click>
+      </Area>
+      <Area Left="372" Top="252" Width="57" Height="80">
+      <Cursor Type="Hand"/>
+      <Click Repeat="Yes">0 (>L:AP_PitcK, degree) 0 (>L:STU Glis,bool) 0 (>L:AP KV,bool) 0 (>L:AP GA,bool) (L:AP_PitcK, degree) (G:Var1) + (>L:AP_PitcH, degree)</Click>
+      </Area>
+
+      <Area Left="205" Top="392" Width="52" Height="52">
+         <Area Left="32">
+         <Cursor Type="Hand"/>
+         <Click>1 (>L:AP_STU_M, enum) 0 (>K:TOGGLE_AFTERBURNER1) 0 (>L:STU ZK, bool)</Click>
+         </Area>
+         <Area Left="20" Right="32">
+         <Cursor Type="Hand"/>
+         <Click>0 (>L:AP_STU_M, enum) 0 (>K:TOGGLE_AFTERBURNER1) 0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:STU VOR,bool)</Click>
+         </Area>
+         <Area Right="20">
+         <Cursor Type="Hand"/>
+         <Click>2 (>L:AP_STU_M, enum) 0 (>K:TOGGLE_AFTERBURNER1) 0 (>L:STU Kurs, bool) 0 (>L:STU VOR,bool)</Click>
+         </Area>
+      </Area>
+      <Area Left="208" Top="459" Width="28" Height="44">
+         <Cursor Type="Hand"/>
+         <Click>(L:AP_master, bool) ! (>L:AP_master, bool) 0 (>K:TOGGLE_AFTERBURNER1) 
+                     0 (>L:AP bok on,bool) 0 (>L:AP prod on,bool) 0 (>L:STU Glis,bool) 0 (>L:AP KV,bool) 0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:AP ANU,bool) 0 (>L:STU VOR,bool) 0 (>L:AP GA,bool)</Click>
+      </Area>
+
+      <Area Left="92" Top="440" Width="50" Height="50">
+         <Cursor Type="Hand"/>
+         <Click>0 (>K:TOGGLE_AFTERBURNER2) (L:prod ready,bool) (>L:AP prod on,bool) (L:bok ready,bool) (>L:AP bok on,bool) (A:Attitude indicator pitch degrees,degrees) /-/ (>G:Var1) (L:AP_PitcK, degree) (G:Var1) + (>L:AP_PitcH, degree)</Click>
+      </Area>
+
+      <Area Left="113" Top="569" Width="24" Height="34">
+         <Cursor Type="Hand"/>
+         <Click>(L:AP_BokP, bool) ! (>L:AP_BokP, bool) 0 (>K:TOGGLE_AFTERBURNER1) (L:AP_BokP, bool) (>L:AP_BokM, bool) 0 (>L:AP bok on,bool)
+                     0 (>L:STU Kurs, bool) 0 (>L:STU ZK, bool) 0 (>L:NAS1 ANUAP mode,bool) 0 (>L:STU VOR,bool)</Click>
+      </Area>
+      <Area Left="301" Top="568" Width="24" Height="34">
+         <Cursor Type="Hand"/>
+         <Click>(L:AP_ProdP, bool) ! (>L:AP_ProdP, bool) 0 (>K:TOGGLE_AFTERBURNER1) (L:AP_ProdP, bool) (>L:AP_ProdM, bool) 0 (>L:AP prod on,bool)
+                     0 (>L:STU Glis,bool) 0 (>L:AP KV,bool) 0 (>L:AP GA,bool)</Click>
+      </Area>
+
+      <Area Left="290" Top="450" Width="50" Height="50">
+         <Cursor Type="Hand"/>
+            <Click Kind="LeftSingle+LeftRelease+Leave">
+                (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>L:AP_kv, bool) 0 (>K:TOGGLE_AFTERBURNER2) (L:AP prod on,bool) if{ 1 (>L:AP KV,bool) 0 (>L:STU Glis,bool) 0 (>L:AP GA,bool) (A:Indicated Altitude,meters) (>L:AP Alt hold, meters) } }
+                (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:AP_kv, bool) }
+                (M:Event) 'Leave' scmp 0 == if{ 0 (>L:AP_kv, bool) }
+            </Click>
+      </Area>
+
+      <Area Left="113" Top="369" Width="53" Height="39">
+         <Cursor Type="Hand"/>
+            <Click Kind="LeftSingle+LeftRelease+Leave">
+                (M:Event) 'LeftSingle' scmp 0 == if{ 0 (>K:TOGGLE_AFTERBURNER2) 1 (>L:AP_KAp, bool) 0 (>L:NAS1 ANUAP mode,bool) 0 (>L:STU ZK, bool) 0 (>L:STU VOR,bool) 0 (>L:STU Kurs, bool) 
+                       (L:AP bok on,bool) (L:AP_STU_M, enum) 1 == &amp;&amp; (L:STU power, bool) &amp;&amp; if{ 
+                       (L:PSP mode, bool) (A:Nav2 GS Flag, bool) &amp;&amp; (L:PSP mode, bool) ! (A:Nav1 GS Flag, bool) &amp;&amp; || if{ 1 (>L:STU Kurs, bool) } els{ 1 (>L:STU VOR,bool) } }
+                       (L:AP bok on,bool) (L:AP_STU_M, enum) 2 == &amp;&amp; (L:STU power, bool) &amp;&amp; if{ 1 (>L:STU ZK, bool) } }
+                (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:AP_KAp, bool) }
+                (M:Event) 'Leave' scmp 0 == if{ 0 (>L:AP_KAp, bool) }
+            </Click>
+      </Area>
+      <Area Left="293" Top="371" Width="53" Height="39">
+         <Cursor Type="Hand"/>
+            <Click Kind="LeftSingle+LeftRelease+Leave">
+                (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>L:AP_GAp, bool) 0 (>K:TOGGLE_AFTERBURNER2) (L:AP prod on,bool) (L:AP_STU_M, enum) 1 == &amp;&amp; (L:STU power, bool) &amp;&amp;  if{ 1 (>L:STU Glis,bool) 0 (>L:AP KV,bool) } }
+                (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:AP_GAp, bool) }
+                (M:Event) 'Leave' scmp 0 == if{ 0 (>L:AP_GAp, bool) }
+            </Click>
+      </Area>
+    </Mouse>
+</Gauge>

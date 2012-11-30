@@ -1,0 +1,44 @@
+#include "globals.script"
+#include "simvars.script"
+#include "simevents.script"
+#include "tools.script"
+#include "saveload.script"
+#include "internal.script"
+#include "external.script"
+#include "mixed.script"
+//#include "autopilot.script"
+
+void OnStartup()
+{
+//	AutopilotInit();
+}
+
+void OnUpdate()
+{
+    int ViewMode=GetViewMode();
+
+
+    if(ViewMode==VIEWMODE_2D||ViewMode==VIEWMODE_3D) {
+		Print("I'm in 2D or 3D");
+        ProcessInternalSounds();
+    } else {
+		Print("I'm at external");
+        ProcessExternalSounds();
+    } 
+
+    ProcessMixedSounds();
+
+//	AutopilotUpdate();
+
+    ResetKey();
+}
+
+void OnLoad()
+{
+    OnLoadState();
+}
+
+void OnSave()
+{
+    OnSaveState();
+}

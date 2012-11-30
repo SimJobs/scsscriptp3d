@@ -1,0 +1,52 @@
+<Gauge Name="KUS" Version="1.0">
+   <Image Name="KUS_bg.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="kus_needle.bmp" Luminous="Yes" ImageSize="7,71,0,0" >
+         <Axis X="4" Y="51" />
+      </Image>
+      <Rotate>
+        <Value Minimum="0" Maximum="1100">(A:Airspeed true, knots) 1.852 *</Value>
+        <Failures>
+           <SYSTEM_PITOT_STATIC Action="0"/>
+           <GAUGE_AIRSPEED Action="Freeze"/>
+        </Failures>
+        <Nonlinearity>
+           <Item Value="0" Degrees="180"/>
+           <Item Value="400" Degrees="190"/>
+           <Item Value="750" Degrees="360"/>
+           <Item Value="1100" Degrees="530"/>
+        </Nonlinearity>
+        <Delay DegreesPerSecond="25"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="0" Y="0"/>
+   <Image Name="KUS_upper.bmp" ImageSizes="220,220,0,0"/>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="usi_needle.bmp" Luminous="Yes" ImageSize="15,124,0,0" >
+         <Axis X="8" Y="82" />
+      </Image>
+      <Rotate>
+        <Value Minimum="0" Maximum="700">(A:Airspeed indicated, knots) 1.852 *</Value>
+        <Failures>
+           <SYSTEM_PITOT_STATIC Action="0"/>
+           <GAUGE_AIRSPEED Action="Freeze"/>
+        </Failures>
+        <Nonlinearity>
+           <Item Value="0" Degrees="0"/>
+           <Item Value="50" Degrees="4"/>
+           <Item Value="100" Degrees="27"/>
+           <Item Value="200" Degrees="85"/>
+           <Item Value="300" Degrees="138"/>
+           <Item Value="400" Degrees="184"/>
+           <Item Value="500" Degrees="230"/>
+           <Item Value="600" Degrees="275"/>
+           <Item Value="700" Degrees="322"/>
+        </Nonlinearity>
+        <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+</Gauge>

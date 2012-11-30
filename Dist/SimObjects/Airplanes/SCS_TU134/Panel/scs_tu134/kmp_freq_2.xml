@@ -1,0 +1,51 @@
+<Gauge Name="KMP Freq" Version="1.0">
+   <Image Name="kmp_frq.bmp" ImageSizes="204,236,0,0"/>
+   <Element>
+      <MaskImage Name="kmp_mask.bmp" ImageSizes="204,236,0,0">
+         <Axis X="102" Y="135"/>
+      </MaskImage>
+      <Image Name="kmp_whole.bmp" Luminous="Yes" ImageSizes="146,146,0,0">
+         <Axis X="73" Y="73"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Nav2 active frequency,MHz) flr</Value>
+         <Nonlinearity>
+            <Item Value="113" Degrees="180"/>
+            <Item Value="108" Degrees="0"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <MaskImage Name="kmp_mask.bmp" ImageSizes="204,236,0,0">
+         <Axis X="102" Y="135"/>
+      </MaskImage>
+      <Image Name="kmp_dec.bmp" Luminous="Yes" ImageSizes="188,188,0,0">
+         <Axis X="94" Y="94"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Nav2 active frequency,MHz) (A:Nav1 active frequency,MHz) flr - </Value>
+         <Nonlinearity>
+            <Item Value="0.5" Degrees="180"/>
+            <Item Value="0" Degrees="0"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Area Left="74" Right="102" Top="106" Bottom="164">
+            <Cursor Type="DownArrow"/>
+            <Click Event="NAV2_RADIO_WHOLE_DEC" Repeat="Yes"/>
+         </Area>
+      <Area Left="102" Right="130" Top="106" Bottom="164">
+            <Cursor Type="UpArrow"/>
+            <Click Event="NAV2_RADIO_WHOLE_INC" Repeat="Yes"/>
+         </Area>
+      <Area Left="0" Right="40" Top="106" Bottom="164">
+            <Cursor Type="DownArrow"/>
+            <Click Event="NAV2_RADIO_FRACT_DEC" Repeat="Yes"/>
+         </Area>
+      <Area Left="164" Right="204" Top="106" Bottom="164">
+            <Cursor Type="UpArrow"/>
+            <Click Event="NAV2_RADIO_FRACT_INC" Repeat="Yes"/>
+         </Area>
+   </Mouse>
+</Gauge>

@@ -1,0 +1,17 @@
+<Gauge Name="Fuel system auto" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:FS auto,bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>(L:FS auto,bool) ! (>L:FS auto,bool) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+   </Mouse>
+</Gauge>

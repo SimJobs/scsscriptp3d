@@ -1,0 +1,13 @@
+<Gauge Name="PRT 2 lamp" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:PRT2c, bool) }</Value>
+         <Case Value="0">
+            <Image Name="lamp_red_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_red_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

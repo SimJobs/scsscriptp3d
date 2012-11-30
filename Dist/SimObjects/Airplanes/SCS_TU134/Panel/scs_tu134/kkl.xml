@@ -1,0 +1,14 @@
+<Gauge Name="Crossfeed Lamp" Version="1.0">
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (A:Fuel cross feed, bool) }</Value>
+         <Case Value="0">
+            <Image Name="lamp_red_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_red_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

@@ -1,0 +1,20 @@
+<Gauge Name="PO volts" Version="1.0">
+   <Image Name="V15.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="ele_n.bmp" PointsTo="East" Luminous="Yes" ImageSizes="36,5,0,0">
+         <Axis X="0" Y="3"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Circuit avionics on,bool) (L:PO4500, enum) 0 &gt; &amp;&amp; if{ 115 } els{ 0 }
+          </Value>
+         <Nonlinearity>
+            <Item Value="0" X="16" Y="67"/>
+            <Item Value="90" X="28" Y="17"/>
+            <Item Value="120" X="70" Y="16"/>
+            <Item Value="150" X="83" Y="65"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+</Gauge>

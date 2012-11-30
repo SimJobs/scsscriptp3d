@@ -1,0 +1,25 @@
+<Gauge Name="ITE2APU" Version="1.0">
+   <Image Name="ite_b1.bmp" Luminous="Yes"/>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="ite_n0.bmp" Luminous="Yes">
+         <Axis X="7" Y="81"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="107">(L:APU RPM, enum) 3.58 / </Value>
+         <Failures>
+            <SYSTEM_ENGINE Action="0"/>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="42"/>
+            <Item Value="70" Degrees="201"/>
+            <Item Value="100" Degrees="360"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_GAUGE_ENGINE_CONTROLS"/>
+   </Mouse>
+</Gauge>

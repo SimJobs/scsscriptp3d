@@ -1,0 +1,20 @@
+<Gauge Name="Stab" Version="1.0">
+   <Image Name="stab_back.bmp" Luminous="Yes" ImageSizes="157,161,0,0"/>
+   <Element>
+      <Position X="79" Y="79"/>
+      <Image Name="stab_needle.bmp" Luminous="Yes" ImageSizes="14,60,0,0">
+         <Axis X="7" Y="53"/>
+      </Image>
+      <Rotate>
+       <Value>(L:Stabilizer, degree)</Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+             <Nonlinearity>
+                 <Item Value="0" Degrees="0"/>
+                 <Item Value="-4.5" Degrees="180"/>
+             </Nonlinearity>
+         <Delay DegreesPerSecond="15"/>
+      </Rotate>
+   </Element>
+</Gauge>

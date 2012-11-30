@@ -1,0 +1,168 @@
+Tupolev Tu 134A-3
+
+Short range liner.
+
+MAIN DATA
+
+Empty weight            30572 kg (Inc.crew)
+Max fuel weight         14400 kg
+Max take-off weight     49000 kg
+Max landing weight      43000 kg
+Take-off weigt(+fuel)   44972 kg
+Range with max fuel     3 500 km
+                        (inc. 1 hour reserve)
+
+Takeoff field length    2400 m
+Landing field length    2200 m
+Service celling         10 600 - 12 100 m
+
+Altitude limitations
+
+Weight          Max Alt
+X1000 kg
+
+Any             10 600 m
+44.5            11 100 m
+41              11 600 m
+37.5            12 100 m
+
+Speed limits
+
+Note: ALL SPEEDS IN THIS REFERENCE ARE INDICATED AIRSPEEDS!!!
+
+Never exeed speed 600 km/h or 0.82M
+
+Minimum "clean" speed 330 km/h
+
+Gear extention speed  400 km/h
+
+Flaps speeds
+10    400 - 310 km/h
+20    400 - 290 km/h
+30    340 - 240 km/h
+
+
+In next sections all engine data applicable to +15 degree celsium, 760 mm hg.
+
+TAXIING
+
+For begin moving use up to 86% N2 a short time.
+Normal taxiing at 62-66% N2 depending weight.
+In turns use 68-70% N2.
+Maximum taxiing speed 35 km/h and 10-15 km/h in turns.
+
+
+TAKEOFF
+
+At MTOW
+
+Flaps     10 (20)
+N2        98-99.5% (full throttle, no more 5 min)
+Elevator trim - 1.5 degrees up
+Switch landing lights ON.
+
+At 270 km/h up nose (pitch about 10-12 degrees, angle off attack  6-8 degrees, pull yoke
+about 1/2 it move range) and plane will take off at speed about 290 km/h.
+Maximum ground speed for nose gear 310 km/h and 330 km/h for main gear.
+
+After hight 5m and positive climb retract gear.
+After 50m(night),200m(day) switch landing lights OFF.
+After hight 120m and speed not less 330-340 km/h retract flaps to 0 degrees.
+
+390-400 km/h - reduce throttle to nominal value 91.5-93.0 % N2.
+
+Accelerate to 500 km/h (460 km/h if need noise reduction procedure)
+
+Climb to altitude 3000 at 500-480 km/h,from 3000m to 6000m at 480-460 km/h,then reduce speed by 5 km/h per 1000m.
+
+Time to reach 9100M  - 21 min.
+Time to reach 10600M - 26 min.
+
+
+CRUISING
+
+At cruising altitude accelerate to desired speed at 91.5-93.0 % N2.
+Acceleration time to 0.82M with 93% N2 at 10 600M after reach 10 600M about 10 minutes.
+
+Altitude  N2     IAS       M       TAS        Fuel flow
+meters    %      km/h              km/h      kg/h
+
+ 9 600   90      520      0.75   820        2600
+10 600   91      500      0.78   830        2300
+10 600   93      515-520  0.81   855-860    2600
+
+At 10 600M
+
+N2       IAS       Mach     TAS   Pitch   Angle off   Fuel flow
+%        km/h               km/h  degree  attack       kg/h
+
+89       452       0.71     760   2.7     4.2         2050
+90       460       0.72     770   2.0     3.7         2200
+91       500       0.78     830   1.7     3.2         2450
+92       525       0.81     865   1.5     3.0         2700
+93       530       0.82     875   1.5     3.0         2950
+
+Note: At 93% N2 plane will increase it maximum speed limit.
+
+DESCENDING
+
+Reduce trottle to 81-83% N2 and begin descend 10-12 m/sec at 0.8-0.82M while reach 600 km/h,
+than maintain this speed.
+Above 8100m maintain 83% N2 or more. Pitch -1 -2 degree.
+Below 8100m to 5000M one engine 81% N2 and another  75-68% N2(if practicable).
+Below 5000m reduse trottle to 61.7-72.0% N2 or idle.
+Below 3000m speed less than 460 km/h and vertical speed less than 15 m/sec.
+
+Emergency descending
+
+Trottle - Idle (61.7-63% N2), pitch 10-15 degree negative, gear down.
+Speed 600 km/h, 0.82M. Vertical speed 30-50m/sec.
+While ending this mode plane drop 400-500m of altitude.
+After emergency descend do not retract gear.
+
+
+APPROACHING
+
+Typical speed 380-400 km/h at clean plane, and 78-85% N2 and 85-88%N2 with gear down.
+Gear down and extend flaps to 20 degree at 360-340 km/h, 86-88 N2.
+At 300-320 km/h flaps 30 degree.
+Before intercept glideslope flaps 30, gear down, speed 280-300 km/h.
+When intercept glideslope decrease throttle to 81-83% N2.
+In glideslope use 80-86% N2 (75-82% N2 in case small weight).
+
+Weight          Speed
+kg              km/h
+
+43 000          275-285
+40 000          267-280
+35 000          252-265
+33 000          250-260
+
+Optimal angle off attack  4.5-6 degrees.
+
+
+LANDING
+
+At 60 m AGL disengage autopilot.
+At 20 m AGL begin decreasing vertical speed and at 10 m AGL vertical speed must be about -3m/s
+At 7 m AGL smoothly up nose to create 1-2 degree pitch and begin flare.
+While flare increase pitch to 3-4 degrees if nessesary to maintain vertical speed less than -1m/s.
+Smoothly set throttle to idle and touchdown.
+Apply spoilers. After nose gear touchdown activate reversers.
+At 250 km/h apply breaks.
+Usually reversers off at 110 km/h, but if nesessary it may be used to full stop.
+Typical touchdown speed = GS Speed - 20 km/h.
+
+Notes
+1. Using more than 2.5 degree pitch when flare will result plane up and quickly drop speed with
+hard landing with gear crash possible.
+2. Using more than recommended glideslope speed will result as above.
+3. Speed less than recommended in glideslope need you use more pitch when flare and result will
+same or if use right flare pitch - to big vertical touchdown speed with result as above.
+
+
+
+Recommended in glideslope need you use more pitch when flare and result will same or if use right
+flare pitch - to big vertical touchdown speed with result as above.
+
+

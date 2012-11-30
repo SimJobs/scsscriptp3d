@@ -1,0 +1,46 @@
+<Gauge Name="Autothrottle Switch" Version="1.0">
+<Image Name="At_bg.bmp" Luminous="Yes" ImageSizes="439,190,0,0"/>
+   <Element>
+      <Position X="62" Y="68"/>
+      <Select>
+         <Value>(L:AT master,bool)</Value>
+         <Case Value="0">
+            <Image Name="AT_Dn.bmp" ImageSizes="48,54,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="AT_Up.bmp" ImageSizes="48,54,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="180" Y="21"/>
+      <Select>
+         <Value>(L:AT on, bool)</Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="0"/>
+         </Failures>
+         <Case Value="1">
+            <Image Name="AT_On.bmp" Bright="Yes" ImageSizes="63,62,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Select>
+          <Value>(L:AT on, bool) ! (L:AT master, bool) &amp;&amp; if{ (A:Airspeed indicated, knots) (>L:AT speed, knots) }
+          (L:AT on, bool) (L:AT master, bool) &amp;&amp; if{ (A:Airspeed indicated, knots) (L:AT speed, knots) - abs 18 &gt; if{ 1 (>L:ABSU_AT,bool) 0 (>L:AT on, bool) } }
+          </Value>
+      </Select>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_AUTOPILOT_AUTOTHROTTLE"/>
+      <Tooltip ID="TOOLTIPTEXT_AUTOPILOT_AUTOTHROTTLE"/>
+      <Area Left="62" Top="68" Width="48" Height="54">
+         <Cursor Type="Hand"/>
+         <Click>(L:AT master, bool) ! (>L:AT master, bool) 0 (>L:ABSU_AT,bool) 0 (>L:AT on, bool) 0 (>K:TOGGLE_AFTERBURNER1)</Click>
+      </Area>
+      <Area Left="180" Top="21" Width="63" Height="62">
+         <Cursor Type="Hand"/>
+         <Click>(L:ABSU_AT,bool) ! (L:AT master, bool) &amp;&amp; if{ 1 (>L:AT on, bool) } 0 (>K:TOGGLE_AFTERBURNER2)</Click>
+      </Area>
+   </Mouse>
+</Gauge>
