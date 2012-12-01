@@ -1,8 +1,0 @@
-<Gauge Name="Navigator Icon" Version="1.0">
-   <Image Name="icon_d.bmp"/>
-   <Mouse>
-      <Tooltip ID="">Navigator's panel</Tooltip>
-      <Cursor Type="Hand"/>
-      <Click>10002 (&gt;K:PANEL_ID_OPEN) 10003 (>K:PANEL_ID_CLOSE)</Click>
-   </Mouse>
-</Gauge>

@@ -1,8 +1,0 @@
-<Gauge Name="Kurs-MP" Version="1.0">
-   <Image Name="dummy.bmp"/>
-   <Mouse>
-      <Tooltip ID="">Radio Switch</Tooltip>
-         <Cursor Type="Hand"/>
-         <Click>10005 (>K:PANEL_ID_TOGGLE)</Click>
-  </Mouse>
-</Gauge>
