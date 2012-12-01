@@ -5,7 +5,7 @@
 
     SCSScript is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation,either version 3 of the License,or
     (at your option) any later version.
 
     SCSScript is distributed in the hope that it will be useful,
@@ -14,7 +14,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with SCSScript.  If not, see <http://www.gnu.org/licenses/>.
+    along with SCSScript.  If not,see <http://www.gnu.org/licenses/>.
 
     Nick Sharmanzhinov
     except134@gmail.com
@@ -22,12 +22,40 @@
 
 #include "PCH.h"
 
-#ifdef _DEBUG
-#define PRINTINFO(str1,str2)		_cprintf("\n\n[SCSScript] "##str1,str2);
-#define PRINTINFO2(str1,str2,str3)	_cprintf("\n\n[SCSScript] "##str1,str2,str3);
+#ifdef FSX
+typedef HRESULT (__stdcall *XSimConnectOpen)(HANDLE* phSimConnect,LPCSTR szName,HWND hWnd,DWORD UserEventWin32,HANDLE hEventHandle,DWORD ConfigIndex);
+typedef HRESULT (__stdcall *XSimConnectClose)(HANDLE hSimConnect);
+typedef HRESULT (__stdcall *XSimConnectCallDispatch)(HANDLE hSimConnect,DispatchProc pfcnDispatch,void* pContext);
+typedef HRESULT (__stdcall *XSimConnectSubscribeToSystemEvent)(HANDLE hSimConnect,SIMCONNECT_CLIENT_EVENT_ID EventID,const char* SystemEventName);
+typedef HRESULT (__stdcall *XSimConnectAddToDataDefinition)(HANDLE hSimConnect,SIMCONNECT_DATA_DEFINITION_ID DefineID,const char* DatumName,const char* UnitsName,SIMCONNECT_DATATYPE DatumType,float fEpsilon,DWORD DatumID);
+typedef HRESULT (__stdcall *XSimConnectRequestDataOnSimObject)(HANDLE hSimConnect,SIMCONNECT_DATA_REQUEST_ID RequestID,SIMCONNECT_DATA_DEFINITION_ID DefineID,SIMCONNECT_OBJECT_ID ObjectID,SIMCONNECT_PERIOD Period,SIMCONNECT_DATA_REQUEST_FLAG Flags,DWORD origin,DWORD interval,DWORD limit);
+typedef HRESULT (__stdcall *XSimConnectSetDataOnSimObject)(HANDLE hSimConnect,SIMCONNECT_DATA_DEFINITION_ID DefineID,SIMCONNECT_OBJECT_ID ObjectID,SIMCONNECT_DATA_SET_FLAG Flags,DWORD ArrayCount,DWORD cbUnitSize,void* pDataSet);
+
+extern "C" 
+{
+	XSimConnectOpen						SimConnectOpen=nullptr;						
+	XSimConnectClose					SimConnectClose=nullptr;					
+	XSimConnectCallDispatch				SimConnectCallDispatch=nullptr;				
+	XSimConnectSubscribeToSystemEvent	SimConnectSubscribeToSystemEvent=nullptr;	
+	XSimConnectAddToDataDefinition		SimConnectAddToDataDefinition=nullptr;		
+	XSimConnectRequestDataOnSimObject	SimConnectRequestDataOnSimObject=nullptr;	
+	XSimConnectSetDataOnSimObject		SimConnectSetDataOnSimObject=nullptr;		
+}
+
+HMODULE moduleSimConnect=nullptr;
+
+const String nameSimConnectDll="SimConnectForSCSScript.dll";
+
 #else
-#define PRINTINFO(str1,str2)	
-#define PRINTINFO2(str1,str2,str3)	
+
+#define SimConnectOpen						SimConnect_Open						
+#define SimConnectClose						SimConnect_Close					
+#define SimConnectCallDispatch				SimConnect_CallDispatch
+#define SimConnectSubscribeToSystemEvent	SimConnect_SubscribeToSystemEvent	
+#define SimConnectAddToDataDefinition		SimConnect_AddToDataDefinition		
+#define SimConnectRequestDataOnSimObject	SimConnect_RequestDataOnSimObject	
+#define SimConnectSetDataOnSimObject		SimConnect_SetDataOnSimObject		
+
 #endif
 
 extern void CALLBACK fnSimConnectDispatchExt(SIMCONNECT_RECV* pData,DWORD cbData,void* pContext)
@@ -43,7 +71,7 @@ extern void CALLBACK fnSimConnectDispatchExt(SIMCONNECT_RECV* pData,DWORD cbData
 				}
 			}
 			if(!found) {
-				SimConnect_AddToDataDefinition(pMyHandle->simConnect, pMyHandle->definitionSimObjects[j].DefineID, pMyHandle->definitionSimObjects[j].DatumName, pMyHandle->definitionSimObjects[j].UnitsName, pMyHandle->definitionSimObjects[j].DatumType);
+				SimConnectAddToDataDefinition(pMyHandle->simConnect,pMyHandle->definitionSimObjects[j].DefineID,pMyHandle->definitionSimObjects[j].DatumName,pMyHandle->definitionSimObjects[j].UnitsName,pMyHandle->definitionSimObjects[j].DatumType,0,SIMCONNECT_UNUSED);
 				Strcpy(pMyHandle->alreadyDefined[pMyHandle->alreadyDefinedCount++],pMyHandle->definitionSimObjects[j].DatumName);
 			}
 		}
@@ -58,7 +86,7 @@ extern void CALLBACK fnSimConnectDispatchExt(SIMCONNECT_RECV* pData,DWORD cbData
 			}
 			if(!found) {
 				if(pMyHandle->requestSimObjects[j].RequestID!=-1) {
-					SimConnect_RequestDataOnSimObject(pMyHandle->simConnect, pMyHandle->requestSimObjects[j].RequestID, pMyHandle->requestSimObjects[j].DefineID, pMyHandle->requestSimObjects[j].ObjectID, pMyHandle->requestSimObjects[j].Period, pMyHandle->requestSimObjects[j].Flags); 
+					SimConnectRequestDataOnSimObject(pMyHandle->simConnect,pMyHandle->requestSimObjects[j].RequestID,pMyHandle->requestSimObjects[j].DefineID,pMyHandle->requestSimObjects[j].ObjectID,pMyHandle->requestSimObjects[j].Period,pMyHandle->requestSimObjects[j].Flags,0,0,0); 
 					pMyHandle->alreadyRequested[pMyHandle->alreadyRequestedCount++]=pMyHandle->requestSimObjects[j].RequestID;
 				}
 			}
@@ -91,6 +119,34 @@ bool SimConnect::Init(HWND windowhandle)
 {
 	if(simConnect)
 		return true;
+
+#ifdef FSX
+	GetModuleFileName(gHModule,gaugePath,MAX_BUFFER_LENGTH);
+	Helpers::ExtractPath(gaugePath);
+	String simconnectModuleName=gaugePath+nameSimConnectDll;
+
+	moduleSimConnect=LoadLibrary(simconnectModuleName.c_str());
+	if(!moduleSimConnect) {
+		LOG.Write("Could not load SimConnectForSCSScript.dll\n");
+		return false;
+	}
+
+	if (!(SimConnectOpen = (XSimConnectOpen)GetProcAddress(moduleSimConnect,"SimConnect_Open")))
+		return false;
+	if (!(SimConnectClose = (XSimConnectClose)GetProcAddress(moduleSimConnect,"SimConnect_Close")))
+		return false;
+	if (!(SimConnectCallDispatch = (XSimConnectCallDispatch)GetProcAddress(moduleSimConnect,"SimConnect_CallDispatch")))
+		return false;
+	if (!(SimConnectSubscribeToSystemEvent = (XSimConnectSubscribeToSystemEvent)GetProcAddress(moduleSimConnect,"SimConnect_SubscribeToSystemEvent")))
+		return false;
+	if (!(SimConnectAddToDataDefinition = (XSimConnectAddToDataDefinition)GetProcAddress(moduleSimConnect,"SimConnect_AddToDataDefinition")))
+		return false;
+	if (!(SimConnectRequestDataOnSimObject = (XSimConnectRequestDataOnSimObject)GetProcAddress(moduleSimConnect,"SimConnect_RequestDataOnSimObject")))
+		return false;
+	if (!(SimConnectSetDataOnSimObject = (XSimConnectSetDataOnSimObject)GetProcAddress(moduleSimConnect,"SimConnect_SetDataOnSimObject")))
+		return false;
+
+#endif 
 
 	windowHandle=windowhandle;
 
@@ -145,37 +201,37 @@ bool SimConnect::Init(HWND windowhandle)
 	autopilotEngine->Init();
 	application->Init(this);
 
-	HRESULT hr=SimConnect_Open(&simConnect,"SCSScript",windowHandle,0,0,0);
+	HRESULT hr=SimConnectOpen(&simConnect,"SCSScript",windowHandle,0,0,0);
 	if(hr) {
-		PRINTINFO("SCSScript could not connect to Prepar3D Flight Simulator!\n","");   
+		LOG.Write("SCSScript could not connect to Flight Simulator!\n","");   
 		return false;
 	}
 
-	PRINTINFO("SCSScript connected to Prepar3D Flight Simulator!\n","");   
+	LOG.Write("SCSScript connected to Flight Simulator!\n","");   
 
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_1SEC						,"1sec");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_4SEC						,"4sec");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_6HZ						,"6Hz");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_CRASHED					,"Crashed");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_CRASHRESET				,"CrashReset");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_FLIGHT_LOAD					,"FlightLoaded");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_FLIGHT_SAVE					,"FlightSaved");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_FLIGHTPLAN_ACTIVATED		,"FlightPlanActivated");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_FLIGHTPLAN_DEACTIVATED	,"FlightPlanDeactivated");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_FRAME					,"Frame");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSE					,"Pause");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSED					,"Paused");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSEFRAME				,"PauseFrame");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_POSITION_CHANGED			,"PositionChanged");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_SIM						,"Sim");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_START					,"SimStart");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_STOP						,"SimStop");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_SOUND					,"Sound");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_UNPAUSED					,"Unpaused");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_VIEW						,"View");
-	SimConnect_SubscribeToSystemEvent(simConnect,EVENT_SIM_WEATHER_MODE_CHANGED		,"WeatherModeChanged");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_1SEC						,"1sec");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_4SEC						,"4sec");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_6HZ						,"6Hz");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_CRASHED					,"Crashed");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_CRASHRESET				,"CrashReset");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_FLIGHT_LOAD					,"FlightLoaded");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_FLIGHT_SAVE					,"FlightSaved");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_FLIGHTPLAN_ACTIVATED		,"FlightPlanActivated");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_FLIGHTPLAN_DEACTIVATED	,"FlightPlanDeactivated");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_FRAME					,"Frame");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSE					,"Pause");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSED					,"Paused");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_PAUSEFRAME				,"PauseFrame");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_POSITION_CHANGED			,"PositionChanged");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_SIM						,"Sim");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_START					,"SimStart");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_STOP						,"SimStop");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_SOUND					,"Sound");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_UNPAUSED					,"Unpaused");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_VIEW						,"View");
+	SimConnectSubscribeToSystemEvent(simConnect,EVENT_SIM_WEATHER_MODE_CHANGED		,"WeatherModeChanged");
 
-	SimConnect_CallDispatch(simConnect,fnSimConnectDispatchExt,this);
+	SimConnectCallDispatch(simConnect,fnSimConnectDispatchExt,this);
 
 	static bool m_AlreadyLoaded=false;
 
@@ -187,15 +243,22 @@ bool SimConnect::Init(HWND windowhandle)
 
 	InitVars();
 
+	application->Update();
+
 	return true;
 }
 
 void SimConnect::DeInit()
 {
 	if(simConnect) {
-		SimConnect_Close(simConnect);
+		SimConnectClose(simConnect);
 		simConnect=nullptr;
 	}
+
+#ifdef FSX
+	FreeLibrary(moduleSimConnect);
+	moduleSimConnect=nullptr;
+#endif
 
 	application->DeInit();
 	autopilotEngine->DeInit();
@@ -207,6 +270,9 @@ void SimConnect::DeInit()
 void SimConnect::Update()
 {
 	try {
+#ifdef FSX
+		SimConnectCallDispatch(simConnect,fnSimConnectDispatchExt,this);
+#endif 
 		application->Update();
 	} catch(Exception& e) {
 		LOG.Write(e.what());
@@ -319,9 +385,9 @@ void SimConnect::fnSimConnectDispatch(SIMCONNECT_RECV *pData,DWORD cbData)
 						requestSimObjects[i].Data=&pObjData->dwData;
 						double tmp=*((double *)requestSimObjects[i].Data);
 						tmp=requestSimObjects[i].ValToSet;
-						 SimConnect_SetDataOnSimObject(simConnect,requestSimObjects[i].DefineID,requestSimObjects[i].ObjectID, 0, 0, sizeof(double), &tmp);
+						 SimConnectSetDataOnSimObject(simConnect,requestSimObjects[i].DefineID,requestSimObjects[i].ObjectID,0,0,sizeof(double),&tmp);
 						requestSimObjects[i].ValToSetFlag=false;
-						PRINTINFO2("Set data: DefID=%d %f",requestSimObjects[i].DefineID,requestSimObjects[i].ValToSet);
+						LOG.Write("Set data: DefID=%d %f",requestSimObjects[i].DefineID,requestSimObjects[i].ValToSet);
 					}
 				}
 			}

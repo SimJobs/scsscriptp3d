@@ -281,6 +281,7 @@ private:
 	HANDLE							simConnect;
 
 	std::string						myName;
+	Char							gaugePath[MAX_BUFFER_LENGTH];
 
 	bool							addingRequests;
 	REQUEST							requestSimObjects[MAX_REQUESTS];

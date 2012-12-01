@@ -96,7 +96,7 @@ void Application::DeInit()
 {
 	StopKey();
 
-	runFirstTime=false;
+	runFirstTime=true;
 	if(showDebugConsole&&consoleActivated) {
 		consoleActivated=(FreeConsole()==0);
 	}

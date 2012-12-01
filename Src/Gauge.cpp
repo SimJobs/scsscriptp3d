@@ -52,6 +52,12 @@ void FSAPI cbScriptEngine(PGAUGEHDR pgauge,SINT32 service_id,UINT32 extra_data)
 				MessageBox(NULL,e.what(),"An exception has occured!",MB_OK|MB_ICONERROR|MB_TASKMODAL);
 			}
 		}break;
+#ifdef FSX
+		case PANEL_SERVICE_PRE_UPDATE: {
+			simConnect->Update();
+		}break;
+#endif 
+
 	}
 }
 
