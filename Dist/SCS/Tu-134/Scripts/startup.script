@@ -19,10 +19,8 @@ void OnUpdate()
 
 
     if(ViewMode==VIEWMODE_2D||ViewMode==VIEWMODE_3D) {
-		Print("I'm in 2D or 3D");
         ProcessInternalSounds();
     } else {
-		Print("I'm at external");
         ProcessExternalSounds();
     } 
 
