@@ -1,0 +1,81 @@
+<Gauge Name="UVO" Version="1.0">
+   <Image Name="vm_bg.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+   <Element>
+      <Position X="0" Y="0"/>
+      <MaskImage Name="vm_ms.bmp" ImageSizes="220,220,0,0">
+         <Axis X="110" Y="110"/>
+      </MaskImage>
+      <Image Name="vm_sc.bmp" Luminous="Yes" ImageSizes="172,172,0,0">
+         <Axis X="86" Y="86"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Kohlsman setting MB,mbar) 0.75 * </Value>
+         <Nonlinearity>
+            <Item Value="710" Degrees="-150"/>
+            <Item Value="760" Degrees="0"/>
+            <Item Value="810" Degrees="150"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="vm_nm.bmp" Luminous="Yes" ImageSizes="72,84,0,0">
+         <Axis X="29" Y="54"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Indicated Altitude,meters)</Value>
+         <Failures>
+            <GAUGE_ALTIMETER Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="50000" Degrees="180"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="vm_nd.bmp" Luminous="Yes" ImageSizes="15,74,0,0">
+         <Axis X="7.3" Y="48"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Indicated Altitude,meters)</Value>
+         <Failures>
+            <GAUGE_ALTIMETER Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="5000" Degrees="180"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="us_nd.bmp" Luminous="Yes" ImageSizes="10,120,0,0">
+         <Axis X="5" Y="82"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Indicated Altitude,meters)</Value>
+         <Failures>
+            <GAUGE_ALTIMETER Action="Freeze"/>
+            <SYSTEM_PITOT_STATIC Action="Freeze"/>
+         </Failures>
+         <Nonlinearity>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="500" Degrees="180"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Area Left="1" Right="24" Top="183" Bottom="207">
+            <Cursor Type="DownArrow"/>
+            <Click Event="KOHLSMAN_DEC" Repeat="Yes"/>
+         </Area>
+      <Area Left="25" Right="48" Top="183" Bottom="207">
+            <Cursor Type="UpArrow"/>
+            <Click Event="KOHLSMAN_INC" Repeat="Yes"/>
+         </Area>
+   </Mouse>
+</Gauge>

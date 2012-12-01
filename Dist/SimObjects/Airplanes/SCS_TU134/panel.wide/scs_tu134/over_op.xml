@@ -1,0 +1,8 @@
+<Gauge Name="Overhead panel" Version="1.0">
+   <Image Name="dummy.bmp"/>
+   <Mouse>
+      <Tooltip ID="">Overhead Switch</Tooltip>
+         <Cursor Type="Hand"/>
+         <Click>10004 (>K:PANEL_ID_TOGGLE)</Click>
+  </Mouse>
+</Gauge>

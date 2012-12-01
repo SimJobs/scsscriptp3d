@@ -1,0 +1,106 @@
+<Gauge Name="Transponder" Version="1.0">
+   <Image Name="transp_bg.bmp" Luminous="Yes" ImageSizes="413,193,0,0"/>
+   <Element>
+      <Position X="57" Y="139"/>
+      <Image Name="xpdr_galet.bmp">
+        <Axis X="21" Y="41"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Transponder1 code,number) 1000 / int 10 %</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-90"/>
+            <Item Value="3" Degrees="0"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="255"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="157" Y="151"/>
+      <Image Name="xpdr_galet.bmp">
+        <Axis X="21" Y="41"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Transponder1 code,number) 100 / int 10 %</Value>
+         <Nonlinearity>
+            <Item Value="1" Degrees="-90"/>
+            <Item Value="4" Degrees="0"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="255"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="257" Y="151"/>
+      <Image Name="xpdr_galet.bmp">
+        <Axis X="21" Y="41"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Transponder1 code,number) 10 / int 10 %</Value>
+         <Nonlinearity>
+            <Item Value="0" Degrees="-90"/>
+            <Item Value="3" Degrees="0"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="255"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="357" Y="139"/>
+      <Image Name="xpdr_galet.bmp">
+        <Axis X="21" Y="41"/>
+      </Image>
+      <Rotate>
+         <Value>(A:Transponder1 code,number) 10 %</Value>
+         <Nonlinearity>
+            <Item Value="1" Degrees="-90"/>
+            <Item Value="4" Degrees="0"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="255"/>
+      </Rotate>
+   </Element>
+
+   <Mouse>
+      <Area Left="17" Top="97" Right="97" Height="95">
+        <Area Right="47">
+           <Cursor Type="DownArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 1000 / int 10 % 0 &gt; if{ 0 (>K:XPNDR_1000_DEC) }</Click>
+        </Area>
+        <Area Left="47">
+           <Cursor Type="UpArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 1000 / int 10 % 7 &lt; if{ 0 (>K:XPNDR_1000_INC) }</Click>
+        </Area>
+      </Area>
+      <Area Left="117" Top="97" Right="197" Height="95">
+        <Area Right="47">
+           <Cursor Type="DownArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 100 / int 10 % 0 &gt; if{ 0 (>K:XPNDR_100_DEC) }</Click>
+        </Area>
+        <Area Left="47">
+           <Cursor Type="UpArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 100 / int 10 % 7 &lt; if{ 0 (>K:XPNDR_100_INC) }</Click>
+        </Area>
+      </Area>
+      <Area Left="217" Top="97" Right="297" Height="95">
+        <Area Right="47">
+           <Cursor Type="DownArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 10 / int 10 % 0 &gt; if{ 0 (>K:XPNDR_10_DEC) }</Click>
+        </Area>
+        <Area Left="47">
+           <Cursor Type="UpArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 10 / int 10 % 7 &lt; if{ 0 (>K:XPNDR_10_INC) }</Click>
+        </Area>
+      </Area>
+      <Area Left="317" Top="97" Right="397" Height="95">
+        <Area Right="47">
+           <Cursor Type="DownArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 10 % 0 &gt; if{ 0 (>K:XPNDR_1_DEC) }</Click>
+        </Area>
+        <Area Left="47">
+           <Cursor Type="UpArrow"/>
+           <Click Repeat="Yes">(A:Transponder1 code,number) 10 % 7 &lt; if{ 0 (>K:XPNDR_1_INC) }</Click>
+        </Area>
+      </Area>
+      <Area Bottom="80">
+         <Cursor Type="Hand"/>
+         <Click>10010 (>K:PANEL_ID_CLOSE)</Click>
+      </Area>
+  </Mouse>
+</Gauge>

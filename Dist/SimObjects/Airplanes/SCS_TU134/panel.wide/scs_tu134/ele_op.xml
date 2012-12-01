@@ -1,0 +1,8 @@
+<Gauge Name="Electric panel" Version="1.0">
+   <Image Name="dummy.bmp"/>
+   <Mouse>
+      <Tooltip ID="">Electric Panel Open</Tooltip>
+         <Cursor Type="Hand"/>
+         <Click>10007 (>K:PANEL_ID_OPEN)</Click>
+  </Mouse>
+</Gauge>

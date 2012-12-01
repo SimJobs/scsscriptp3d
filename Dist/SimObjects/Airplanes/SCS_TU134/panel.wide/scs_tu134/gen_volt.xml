@@ -1,0 +1,30 @@
+<Gauge Name="Generator volts" Version="1.0">
+   <Image Name="V30.bmp" Luminous="Yes" ImageSizes="96,96,0,0"/>
+   <Element>
+      <Position X="48" Y="48"/>
+      <Image Name="ele_n.bmp" PointsTo="East" Luminous="Yes" ImageSizes="36,5,0,0">
+         <Axis X="0" Y="3"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="0" Maximum="30"></Value>
+         <Value>(L:DC volts, enum) 0 == if{ (L:RAP Power,bool) if{ (A:Electrical battery bus voltage,volts) } els{ 0 } }
+          (L:DC volts, enum) 1 == if{ (A:Electrical main bus voltage,volts) }
+          (L:DC volts, enum) 2 == if{ (A:Electrical genalt1 bus voltage,volts) (L:Gen1_dev,number) + 3 - }
+          (L:DC volts, enum) 3 == if{ (A:Electrical genalt1 bus voltage,volts) (L:Gen2_dev,number) + 4 + } 
+          (L:DC volts, enum) 4 == if{ (A:Electrical genalt2 bus voltage,volts) (L:Gen3_dev,number) + 1 - }
+          (L:DC volts, enum) 5 == if{ (A:Electrical genalt2 bus voltage,volts) (L:Gen4_dev,number) + 2 - }
+          (L:DC volts, enum) 6 == if{ (L:APU active,bool) if{ (A:Electrical battery bus voltage,volts) (L:Gena_dev,number) + 1 - } els{ 0 } }
+          (L:DC volts, enum) 7 == if{ (A:Electrical battery bus voltage,volts) }
+          (L:DC volts, enum) 8 == if{ (A:Electrical battery bus voltage,volts) }
+          (L:DC volts, enum) 9 == if{ (A:Electrical battery bus voltage,volts) }
+          </Value>
+         <Nonlinearity>
+            <Item Value="0" X="17" Y="67"/>
+            <Item Value="10" X="24" Y="20"/>
+            <Item Value="20" X="72" Y="20"/>
+            <Item Value="30" X="80" Y="67"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+</Gauge>

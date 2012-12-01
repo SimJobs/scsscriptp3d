@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Gauge Name="Map Angle Controller" Version="1.0">
+  <Image Name="ZUK_back.bmp" Luminous="Yes" ImageSizes="220,220,0,0"/>
+  
+<!-- Стрелка задатчика угла карты                                            -->
+  <Element>
+    <Position X="110" Y="110"/>
+    <Image Name="ZUK_needle.bmp" Luminous="Yes" ImageSizes="6,80,0,0">
+      <Axis X="3" Y="80"/>
+    </Image>
+    <Rotate>
+      <Value> (L:NAS1 Map Angle, degrees) dgrd </Value>
+      <Delay DegreesPerSecond="90"/>
+    </Rotate>
+  </Element>
+
+  <Mouse>
+    <Area Left="0" Top="0">
+      <Tooltip>Map Angle %((L:NAS1 Map Angle, degrees))%!03.1f!</Tooltip>
+    </Area>
+
+    <Area Left="70" Top="70" Right="150" Bottom="150">
+      <Area Right="40">
+        <Cursor Type="DownArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 Map Angle, degrees) 0.5 - (>L:NAS1 Map Angle, degrees)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 Map Angle, degrees) 10 - (>L:NAS1 Map Angle, degrees)
+          }
+          (L:NAS1 Map Angle, degrees) 0 &lt; if{
+            (L:NAS1 Map Angle, degrees) 360 + (>L:NAS1 Map Angle, degrees)
+          }
+        </Click>
+      </Area>
+      <Area Left="40">
+        <Cursor Type="UpArrow"/>
+        <Click Repeat="Yes" Kind="LeftSingle+RightSingle">
+          (M:Event) 'LeftSingle' scmp 0 == if{ 
+            (L:NAS1 Map Angle, degrees) 0.5 + (>L:NAS1 Map Angle, degrees)
+          }
+          (M:Event) 'RightSingle' scmp 0 == if{
+            (L:NAS1 Map Angle, degrees) 10 + (>L:NAS1 Map Angle, degrees)
+          }
+          (L:NAS1 Map Angle, degrees) 359 &gt; if{
+            (L:NAS1 Map Angle, degrees) 360 - (>L:NAS1 Map Angle, degrees)
+          }
+        </Click>
+      </Area>
+    </Area>
+  </Mouse>
+
+</Gauge>

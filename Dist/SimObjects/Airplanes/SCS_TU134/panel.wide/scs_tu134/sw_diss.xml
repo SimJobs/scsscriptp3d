@@ -1,0 +1,34 @@
+<Gauge Name="DISS-013 power switsh" Version="1.0">
+  <Element>
+    <Select>
+      <Value>(L:DISS AZS State, bool)</Value>
+      <Case Value="0">
+        <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+      </Case>
+      <Case Value="1">
+        <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+      </Case>
+    </Select>
+  </Element>
+  <Element>
+    <Select>
+      <Value>
+        (A:Electrical main bus voltage,volts) 20 &gt; 
+        (L:PO4500, enum)         &amp;&amp;
+        (L:DISS AZS State, bool) &amp;&amp; if{
+          1 (>L:DISS Power Source Line, bool)
+        }
+        els{
+          0 (>L:DISS Power Source Line, bool)
+        }
+      </Value>
+    </Select>
+  </Element>
+  <Mouse>
+    <Cursor Type="Hand"/>
+    <Click>
+      (L:DISS AZS State, bool) ! (>L:DISS AZS State, bool) 
+      1 (>L:TumblerPressed)
+    </Click>
+  </Mouse>
+</Gauge>

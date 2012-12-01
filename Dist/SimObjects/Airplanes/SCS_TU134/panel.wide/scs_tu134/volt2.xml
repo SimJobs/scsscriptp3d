@@ -1,0 +1,27 @@
+<Gauge Name="Voltage tuner" Version="1.0">
+   <Image Name="volt_back.bmp" Luminous="Yes" ImageSizes="180,180,0,0"/>
+   <Element>
+      <Position X="90" Y="90"/>
+      <Image Name="volt_arrow.bmp" Luminous="Yes" ImageSizes="28,180,0,0">
+         <Axis X="14" Y="90"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-12" Maximum="12">(L:Gen2_dev,number)</Value>
+         <Nonlinearity>
+            <Item Value="-12" Degrees="-150"/>
+            <Item Value="12" Degrees="150"/>
+         </Nonlinearity>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   <Mouse>
+      <Area Right="90">
+            <Cursor Type="DownArrow"/>
+            <Click Repeat="Yes">(L:Gen2_dev,number) -12 &gt; if{ (L:Gen2_dev,number) -- (>L:Gen2_dev,number) }</Click>
+         </Area>
+      <Area Left="90">
+            <Cursor Type="UpArrow"/>
+            <Click Repeat="Yes">(L:Gen2_dev,number) 12 &lt; if{ (L:Gen2_dev,number) ++ (>L:Gen2_dev,number) }</Click>
+         </Area>
+   </Mouse>
+</Gauge>

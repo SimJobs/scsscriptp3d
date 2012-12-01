@@ -1,0 +1,16 @@
+<Gauge Name="Eng ISO" Version="1.0">
+   <Image Name="eng_iso_bg.bmp" ImageSizes="40,40,0,0"/>
+   <Element>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:Counter,number) 8 &gt; (L:Eng ISO,bool) &amp;&amp; }</Value>
+         <Case Value="1">
+            <Image Name="eng_iso_lm.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Tooltip>Fuel System Mode</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>0 (>L:Eng ISO,bool) 1 (>L:ButtonPressed)</Click>
+   </Mouse>
+</Gauge>

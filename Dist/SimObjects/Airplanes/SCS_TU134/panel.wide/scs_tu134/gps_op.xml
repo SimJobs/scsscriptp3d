@@ -1,0 +1,8 @@
+<Gauge Name="Trimble GPS" Version="1.0">
+   <Image Name="dummy.bmp"/>
+   <Mouse>
+      <Tooltip ID="">GPS Switch</Tooltip>
+         <Cursor Type="Hand"/>
+         <Click>10009 (>K:PANEL_ID_TOGGLE)</Click>
+  </Mouse>
+</Gauge>

@@ -1,9 +1,0 @@
-<Gauge Name="AUASP test" Version="1.0">
-   <Image Name="dummy.bmp" ImageSizes="10,10,0,0"/>
-   <Mouse>
-      <Area>
-         <Cursor Type="Hand"/>
-         <Click>0 (>K:TOGGLE_AFTERBURNER2) 1 (>L:AUASP test, bool)</Click>    
-      </Area>
-   </Mouse>
-</Gauge>

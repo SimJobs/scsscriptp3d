@@ -1,0 +1,9 @@
+<Gauge Name="APU Start" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+
+   <Mouse>
+      <Tooltip ID="">APU Start</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>1 (>L:ButtonPressed) (L:APU RPM, enum) 1 &lt; (L:APU Ready,bool) (L:APU air,bool) ! &amp;&amp; &amp;&amp; if{ 1 (>L:APU Starter,enum) } </Click>
+   </Mouse>
+</Gauge>

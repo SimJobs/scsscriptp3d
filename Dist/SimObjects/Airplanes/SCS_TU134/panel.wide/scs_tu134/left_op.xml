@@ -1,0 +1,8 @@
+<Gauge Name="Left panel" Version="1.0">
+   <Image Name="dummy.bmp"/>
+   <Mouse>
+      <Tooltip ID="">Left panel open</Tooltip>
+         <Cursor Type="Hand"/>
+         <Click>10006 (>K:PANEL_ID_OPEN)</Click>
+  </Mouse>
+</Gauge>

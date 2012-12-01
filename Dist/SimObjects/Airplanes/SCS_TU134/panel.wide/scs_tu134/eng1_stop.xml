@@ -1,0 +1,8 @@
+<Gauge Name="Eng1 Stop" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+   <Mouse>
+      <Tooltip ID="">Eng1 Stop</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click> 0 (>L:Eng1 Start,bool) 1 (>L:ButtonPressed) </Click>
+   </Mouse>
+</Gauge>

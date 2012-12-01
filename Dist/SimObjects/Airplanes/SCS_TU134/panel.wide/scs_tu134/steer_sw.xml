@@ -1,0 +1,20 @@
+<Gauge Name="Wheel Steer Switch" Version="1.0">
+  
+  <Element>
+    <Select>
+      <Value>(L:Wheel steer, bool)</Value> 
+      <Case Value="0">
+        <Image Name="sw_nd.bmp" ImageSizes="17,103,0,0"/>
+      </Case>
+      <Case Value="1">
+        <Image Name="sw_nu.bmp" ImageSizes="17,103,0,0"/>
+      </Case>
+    </Select>
+  </Element>
+
+  <Mouse>
+    <Cursor Type="Hand"/>
+    <Click>(L:Wheel steer, bool) ! (>L:Wheel steer, bool) 1 (>L:TumblerPressed)</Click> 
+  </Mouse>
+
+</Gauge>

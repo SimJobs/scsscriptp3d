@@ -1,0 +1,33 @@
+<Gauge Name="Flight Loader" Version="1.0">
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(L:FL, bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d_pk.bmp" ImageSizes="48,120,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u_pk.bmp" ImageSizes="48,120,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(G:Var1)</Value>
+         <Case Value="0">
+            <Image Name="sw_s_cl.bmp" ImageSizes="48,120,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_g_op.bmp" ImageSizes="48,120,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+         <Cursor Type="Hand"/>
+            <Click Kind="LeftSingle+RightSingle">
+            (M:Event) 'LeftSingle' scmp 0 == (G:Var1) &amp;&amp; if{ (L:FL, bool) ! (>L:FL, bool) 1 (>L:TumblerPressed) }
+            (M:Event) 'RightSingle' scmp 0 == if{ (G:Var1) ! (>G:Var1) 1 (>L:ButtonPressed) }
+           </Click>
+    </Mouse>
+</Gauge>

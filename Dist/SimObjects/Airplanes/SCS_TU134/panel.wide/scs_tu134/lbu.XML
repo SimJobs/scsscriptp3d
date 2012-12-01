@@ -1,0 +1,63 @@
+<Gauge Name="LBU Controller" Version="1.0">
+   <Image Name="lbu_back.bmp" Luminous="Yes" ImageSizes="200,200,0,0"/>
+   <Element>
+      <Position X="100" Y="82"/>
+      <Image Name="lbu_needle.bmp" Luminous="Yes" ImageSizes="38,95,0,0">
+         <Axis X="19" Y="66"/>
+      </Image>
+      <Rotate>
+         <Value Minimum="-25" Maximum="25">(L:NAS1 LBU Controller, km)</Value>
+         <Nonlinearity>
+            <Item Value="-25" Degrees="-150"/>
+            <Item Value="0" Degrees="0"/>
+            <Item Value="25" Degrees="150"/>
+         </Nonlinearity>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="90" Y="127"/>
+      <Select>
+         <Value>(L:NAS1 SAU mode,bool)</Value>
+         <!--Value>(L:NAS1 ANUAP mode,bool)</Value-->
+         <Case Value="1">
+            <Image Name="lbu_lamp.bmp" Bright="Yes" ImageSizes="20,20,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Mouse>
+      <Tooltip>%((L:NAS1 LBU Controller, km))%!03.1f!</Tooltip>
+      <Area Left="23" Top="149" Width="27" Height="27">
+        <Cursor Type="Hand"/>
+        <Click>
+          (L:NAS1 SAU mode,bool) ! (>L:NAS1 SAU mode,bool)
+          (L:NAS1 SAU mode,bool) 0 == if{ 
+            0 (>L:NAS1 ANUAP mode,bool)
+          }
+          1 (>L:NAS1 ANU Vprev reset, bool)
+        </Click>
+      </Area>
+      <Area Left="144" Top="149" Width="16" Height="27">
+        <Cursor Type="DownArrow"/>
+        <Click Repeat="Yes">
+          (L:NAS1 LBU Controller, km) 0.5 - (>L:NAS1 LBU Controller, km) 
+          (L:NAS1 LBU Controller, km) -25 &lt; if{ -25 (>L:NAS1 LBU Controller, km) }
+          1 (>L:NAS1 ANU Vprev reset, bool)
+        </Click>
+      </Area>
+      <Area Left="161" Top="149" Width="16" Height="27">
+        <Cursor Type="UpArrow"/>
+        <Click Repeat="Yes">
+          (L:NAS1 LBU Controller, km) 0.5 + (>L:NAS1 LBU Controller, km)
+          (L:NAS1 LBU Controller, km) 25 &gt; if{ 25 (>L:NAS1 LBU Controller, km) }
+          1 (>L:NAS1 ANU Vprev reset, bool)
+        </Click>
+      </Area>
+      <Area Left="90" Top="90" Width="20" Height="20">
+        <Cursor Type="Hand"/>
+        <Click>
+	  0 (>L:NAS1 LBU Controller, km)
+        </Click>
+      </Area>
+   </Mouse>
+</Gauge>

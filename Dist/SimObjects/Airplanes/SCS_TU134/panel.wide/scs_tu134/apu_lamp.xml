@@ -1,0 +1,13 @@
+<Gauge Name="APU Gen on" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:APU Power,bool) }</Value>
+         <Case Value="0">
+            <Image Name="lamp_green_off.bmp" ImageSizes="40,40,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="lamp_green_on.bmp" Bright="Yes" ImageSizes="40,40,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+</Gauge>

@@ -1,0 +1,33 @@
+<Gauge Name="Interseptor Switch" Version="1.0">
+  
+  <Element>
+    <Select>
+      <Value>(L:Interseptor Switch, enum)</Value> 
+      <Case Value="-1">
+        <Image Name="inter_dn.bmp" ImageSizes="64,128,0,0"/>
+      </Case>
+      <Case Value="0">
+        <Image Name="inter_nt.bmp" ImageSizes="64,128,0,0"/>
+      </Case>
+      <Case Value="1">
+        <Image Name="inter_up.bmp" ImageSizes="64,128,0,0"/>
+      </Case>
+    </Select>
+  </Element>
+
+  <Mouse>
+    <Area Bottom="48">
+      <Cursor Type="Hand"/>
+      <Click>(L:Interseptor Switch, enum) 1 != if{ 1 (>L:Interseptor Switch, enum) 1 (>L:TumblerPressed) }</Click> 
+    </Area>
+    <Area Top="48" Bottom="80">
+      <Cursor Type="Hand"/>
+      <Click>(L:Interseptor Switch, enum) 0 != if{ 0 (>L:Interseptor Switch, enum) 0 (&gt;K:SPOILERS_OFF) 1 (>L:TumblerPressed) }</Click> 
+    </Area>
+    <Area Top="80">
+      <Cursor Type="Hand"/>
+      <Click>(L:Interseptor Switch, enum) -1 != if{ -1 (>L:Interseptor Switch, enum) 0 (&gt;K:SPOILERS_OFF) 1 (>L:TumblerPressed) }</Click> 
+    </Area>
+  </Mouse>
+
+</Gauge>

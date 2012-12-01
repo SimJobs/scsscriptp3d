@@ -1,0 +1,17 @@
+<Gauge Name="ANU button" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10,0,0"/>
+   <Mouse>
+      <Area>
+         <Cursor Type="Hand"/>
+         <Click>
+            1 (>L:ButtonPressed) 
+            (L:AP bok on, bool) (L:NAS1 SAU mode,bool) &amp;&amp; if{ 
+              0 (>L:STU Kurs, bool) 
+              0 (>L:STU ZK, bool) 
+              1 (>L:NAS1 ANUAP mode,bool) 
+              0 (>L:STU VOR,bool) 
+            } 
+         </Click>    
+      </Area>
+   </Mouse>
+</Gauge>

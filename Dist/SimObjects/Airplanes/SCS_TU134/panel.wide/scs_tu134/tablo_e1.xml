@@ -1,0 +1,95 @@
+<Gauge Name="Eng1 Tablo" Version="1.0">
+   <Image Name="tablo_eng1_bg.bmp" ImageSizes="156,236,0,0"/>
+   <Element>
+      <Position X="11" Y="20"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:POS Eng1, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_die.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="11" Y="56"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:POS Wing, bool) || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_diw.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="11" Y="93"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:POS Eng1, bool) ! || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_dio.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="11" Y="130"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Indicated Altitude,meters) 7000 &gt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_pn.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="11" Y="167"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:Indicated Altitude,meters) 2000 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_pf.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="87" Y="20"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (L:IV switch,bool) (A:Turb eng1 vibration, percent) 250 &gt; &amp;&amp; (L:IV switch,bool) (L:EV control,bool) &amp;&amp; || || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_vibr.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="87" Y="56"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) }</Value>    
+         <Case Value="1">
+            <Image Name="tm_tm.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="87" Y="93"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) (A:General eng1 oil pressure, psi) 10 &lt; || }</Value>    
+         <Case Value="1">
+            <Image Name="tm_op.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="87" Y="130"/>
+      <Select>
+         <Value>(A:Circuit general panel on, bool) if{ (L:AnnCheck,bool) }</Value>    
+         <Case Value="1">
+            <Image Name="tm_ff.bmp" Bright="Yes" ImageSizes="59,31,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+    <Area Top="196" Left="60" Width="36" Height="36">
+      <Tooltip ID="">Lamp Check</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click Kind="LeftSingle+LeftRelease+Leave">
+        (M:Event) 'LeftSingle' scmp 0 == if{ 1 (>L:AnnCheck,bool) }
+        (M:Event) 'LeftRelease' scmp 0 == if{ 0 (>L:AnnCheck,bool) }
+        (M:Event) 'Leave' scmp 0 == if{ 0 (>L:AnnCheck,bool) }
+      </Click>
+     </Area>
+   </Mouse>
+</Gauge>

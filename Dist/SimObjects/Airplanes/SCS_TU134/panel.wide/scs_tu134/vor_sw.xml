@@ -1,0 +1,18 @@
+<Gauge Name="VOR soft switch" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:VOR soft,bool)</Value> 
+         <Case Value="0">
+            <Image Name="sw_l.bmp" ImageSizes="103,36,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_r.bmp" ImageSizes="103,36,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>(L:VOR soft,bool) ! (>L:VOR soft,bool) 1 (>L:TumblerPressed)
+      (L:VOR soft,bool) if{ 40 (>L:VorKP,number) 30 (>L:VorKD,number) } els{ 20 (>L:VorKP,number) 15 (>L:VorKD,number) }</Click> 
+   </Mouse>
+</Gauge>

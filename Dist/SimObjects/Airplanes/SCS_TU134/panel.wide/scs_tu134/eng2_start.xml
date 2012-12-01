@@ -1,0 +1,19 @@
+<Gauge Name="Eng2 Start" Version="1.0">
+   <Image Name="dummy.bmp" ImageSizes="10,10"/>
+   <Element>
+      <Position X="0" Y="0"/>
+      <Select>
+         <Value>(L:Eng2 Start,bool) if{ 0 (&gt;K:TOGGLE_STARTER2) (A:Eng2 N2 RPM, percent) 40 &gt; if{ 0 (>L:Eng2 Start,bool) } (L:Eng2 mode ,enum) 1 &lt; (A:Eng2 N2 RPM, percent) 16 &gt; &amp;&amp; if{ 0 (>L:Eng2 Start,bool) } } </Value>
+         <Case Value="1">
+            <Image Name="dummy.bmp" ImageSizes="10,10,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+
+   <Mouse>
+      <Tooltip ID="">Eng1 Start</Tooltip>
+      <Cursor Type="Hand"/>
+      <Click>1 (>L:ButtonPressed) (L:APU RPM, enum) 300 &gt; (L:APU air,bool) &amp;&amp; (A:Eng1 N2 RPM, percent) 50 &gt; || (L:Eng Selector,enum) 2 == &amp;&amp; (A:Eng2 N2 RPM, percent) 1 &lt; &amp;&amp; 
+                   if{ 1 (>L:Eng2 Start,bool) 0 (&gt;K:TOGGLE_STARTER2) } </Click>
+   </Mouse>
+</Gauge>

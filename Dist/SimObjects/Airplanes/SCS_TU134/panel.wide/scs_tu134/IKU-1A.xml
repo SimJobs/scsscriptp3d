@@ -1,0 +1,112 @@
+<Gauge Name="IKU-1A" Version="1.0">
+   <Image Name="IKU_back.bmp" Luminous="Yes" ImageSizes="220,254,0,0"/>
+
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="IKU_sc2.bmp" Luminous="Yes" ImageSizes="155,155,0,0">
+         <Axis X="77.5" Y="77.5"/>
+      </Image>
+      <Rotate>
+         <Value>(L:KS8 Secondary Course Signal, radians) /-/ </Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+            <GAUGE_GYRO_HEADING Action="Freeze"/>
+         </Failures>
+      <Delay DegreesPerSecond="45"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="IKU_n2.bmp" Luminous="Yes" ImageSizes="28,156,0,0">
+         <Axis X="14" Y="78"/>
+      </Image>
+      <Rotate>
+         <Value>
+                      (L:PO4500,enum) 0 == (L:PT1500,enum) 0 == || if{ 0 } els{
+                      (G:Var2,bool) 0 == if{ (L:ARK2 Radial, radians) } 
+                      (G:Var2,bool) 1 == if{ (L:ARK1 Radial, radians) } 
+                      (G:Var2,bool) 2 == if{ (L:KMP2 power,bool) if{ (A:NAV1 Radial,radians) (A:Plane heading degrees gyro,radians) - pi + } }
+                      (G:Var2,bool) 3 == if{ (L:KMP2 power,bool) if{ (A:NAV2 Radial,radians) (A:Plane heading degrees gyro,radians) - pi + } } }
+         </Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+            <SYSTEM_ELECTRICAL_AVIONICS Action="Freeze"/>
+            <GAUGE_GYRO_HEADING Action="Freeze"/>
+            <GAUGE_ADF Action="Freeze"/>
+         </Failures>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="110" Y="110"/>
+      <Image Name="IKU_n1.bmp" Luminous="Yes" ImageSizes="20,155,0,0">
+         <Axis X="10" Y="78"/>
+      </Image>
+      <Rotate>
+         <Value>(L:PO4500,enum) 0 == (L:PT1500,enum) 0 == || if{ 0 } els{
+                      (G:Var1,bool) 0 == if{ (L:ARK1 Radial, radians) } 
+                      (G:Var1,bool) 1 == if{ (L:ARK2 Radial, radians) } 
+                      (G:Var1,bool) 2 == if{ (L:KMP2 power,bool) if{ (A:NAV2 Radial,radians) (A:Plane heading degrees gyro,radians) - pi + } }
+                      (G:Var1,bool) 3 == if{ (L:KMP1 power,bool) if{ (A:NAV1 Radial,radians) (A:Plane heading degrees gyro,radians) - pi + } } }
+         </Value>
+         <Failures>
+            <SYSTEM_ELECTRICAL_PANELS Action="Freeze"/>
+            <SYSTEM_ELECTRICAL_AVIONICS Action="Freeze"/>
+            <GAUGE_GYRO_HEADING Action="Freeze"/>
+            <GAUGE_ADF Action="Freeze"/>
+         </Failures>
+         <Delay DegreesPerSecond="90"/>
+      </Rotate>
+   </Element>
+   <Element>
+      <Position X="22" Y="178"/>
+      <Select>
+         <Value>(G:Var1)</Value>
+         <Case Value="0">
+            <Image Name="IKU_Ark1_1.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="IKU_Ark2_1.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="2">
+            <Image Name="IKU_vor2_1.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="3">
+            <Image Name="IKU_vor1_1.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Element>
+      <Position X="116" Y="178"/>
+      <Select>
+         <Value>(G:Var2)</Value>
+         <Case Value="0">
+            <Image Name="IKU_Ark2_2.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="IKU_Ark1_2.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="2">
+            <Image Name="IKU_vor1_2.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+         <Case Value="3">
+            <Image Name="IKU_vor2_2.bmp" Luminous="Yes" ImageSizes="82,64,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Help ID="HELPID_GAUGE_RMI"/>
+     <Tooltip>%((L:KS8 Secondary Course Signal, degrees))%!03.0f!</Tooltip>
+      <Area Left="22" Top="178" Width="45" Height="45">
+         <Help ID="VOR Select"/>
+            <Cursor Type="Hand"/>
+            <Click>(G:Var1,bool) ++ (>G:Var1,bool) (G:Var1,bool) 4 == if{ 0 (>G:Var1,bool) }</Click>
+         </Area>
+      <Area Left="161" Top="178" Width="45" Height="45">
+         <Help ID="VOR Select"/>
+            <Cursor Type="Hand"/>
+            <Click>(G:Var2,bool) ++ (>G:Var2,bool) (G:Var2,bool) 4 == if{ 0 (>G:Var2,bool) }</Click>
+         </Area>
+   </Mouse>
+</Gauge>
+

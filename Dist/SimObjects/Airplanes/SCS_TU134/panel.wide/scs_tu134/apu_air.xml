@@ -1,0 +1,17 @@
+<Gauge Name="APU Air" Version="1.0">
+   <Element>
+      <Select>
+         <Value>(L:APU air,bool)</Value>
+         <Case Value="0">
+            <Image Name="sw_d.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+         <Case Value="1">
+            <Image Name="sw_u.bmp" ImageSizes="36,103,0,0"/>
+         </Case>
+      </Select>
+   </Element>
+   <Mouse>
+      <Cursor Type="Hand"/>
+      <Click>(L:APU air,bool) ! (>L:APU air,bool) 1 (>L:TumblerPressed)</Click>
+   </Mouse>
+</Gauge>
