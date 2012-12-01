@@ -360,7 +360,11 @@ void SimConnect::fnSimConnectDispatch(SIMCONNECT_RECV *pData,DWORD cbData)
 					double curTick18=GetC(TICK18);
 					if(curTick18>simTick18) {
 						if(GetC(ELAPSED_SECONDS)>timeoutBeforeStartUpdate) {
+#ifdef FSX
+							application->Update();
+#else
 							Update();
+#endif
 						}
 					}
 					simTick18=curTick18;
