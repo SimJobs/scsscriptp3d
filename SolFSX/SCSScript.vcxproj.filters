@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ext">
+      <UniqueIdentifier>{bf82ac3e-6357-48b0-a677-65775da6942b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ext\AS">
+      <UniqueIdentifier>{7ece7329-e5c9-43f0-ba42-1aadbe085a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{187fae30-2564-42bd-b129-b1a30948d5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{58cf6bb8-213d-4d97-8446-d8d80e10f9dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Lib">
+      <UniqueIdentifier>{ad734bd4-07b9-466a-934a-53e14dffdeed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\SoundEngine">
+      <UniqueIdentifier>{7b0e1496-bdc4-40c8-b5eb-cdd1c47d8b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\ScriptEngine">
+      <UniqueIdentifier>{e4116fb2-f513-48dc-9900-8a1a5ab400da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\SaveLoadEngine">
+      <UniqueIdentifier>{aadabe0a-269a-4e83-876b-094f2ef5c4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\AutopilotEngine">
+      <UniqueIdentifier>{198f09e1-8ba4-443d-99b6-c9d1b191d107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ext\FSX">
+      <UniqueIdentifier>{d0b9455e-5122-460c-af57-c4540ebfcc5c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Res\resource.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Res\VersionNo.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\DateTime.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Exception.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Helpers.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\IniFile.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Logger.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\Types.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\VersionInfo.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Lib\WriterASCII.h">
+      <Filter>Src\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PCH.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SoundEngine\SoundEngine.h">
+      <Filter>Src\SoundEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SoundEngine\SoundEngineSound.h">
+      <Filter>Src\SoundEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SoundEngine\SoundEngineWavReader.h">
+      <Filter>Src\SoundEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ScriptEngine\ScriptEngine.h">
+      <Filter>Src\ScriptEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\scriptstring.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\scriptstdstring.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\scriptbuilder.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_variablescope.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_typeinfo.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_tokenizer.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_tokendef.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_thread.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_texts.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_string_util.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_string.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_scriptstruct.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_scriptnode.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_scriptfunction.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_scriptengine.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_scriptcode.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_restore.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_property.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_parser.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_outputbuffer.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_objecttype.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_module.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_memory.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_map.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_generic.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_gc.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_debug.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_datatype.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_criticalsection.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_context.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_configgroup.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_config.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_compiler.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_callfunc.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_bytecodedef.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_bytecode.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_builder.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_atomic.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_arrayobject.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\as_array.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\AS\angelscript.h">
+      <Filter>Ext\AS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Application.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SimConnectWrapper.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SimVars.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SimHelpers.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SimKey.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SaveLoadEngine\SaveLoadEngine.h">
+      <Filter>Src\SaveLoadEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\AutopilotEngine\AutopilotEngine.h">
+      <Filter>Src\AutopilotEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ScripEngineFunctions.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\FSX\gauges.h">
+      <Filter>Ext\FSX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Ext\FSX\SimConnect.h">
+      <Filter>Ext\FSX</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Lib\DateTime.cpp">
+      <Filter>Src\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\IniFile.cpp">
+      <Filter>Src\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\Logger.cpp">
+      <Filter>Src\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\VersionInfo.cpp">
+      <Filter>Src\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Lib\WriterASCII.cpp">
+      <Filter>Src\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PCH.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SoundEngine\SoundEngine.cpp">
+      <Filter>Src\SoundEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SoundEngine\SoundEngineSound.cpp">
+      <Filter>Src\SoundEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SoundEngine\SoundEngineWavReader.cpp">
+      <Filter>Src\SoundEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ScriptEngine\ScriptEngine.cpp">
+      <Filter>Src\ScriptEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\scriptstring_utils.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\scriptstring.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\scriptstdstring.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\scriptbuilder.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_variablescope.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_typeinfo.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_tokenizer.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_thread.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_string_util.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_string.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_scriptstruct.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_scriptnode.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_scriptfunction.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_scriptengine.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_scriptcode.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_restore.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_parser.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_outputbuffer.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_objecttype.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_module.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_memory.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_generic.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_gc.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_datatype.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_context.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_configgroup.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_compiler.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_xenon.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_x86.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_x64_gcc.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_sh4.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_ppc_64.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_ppc.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc_mips.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_callfunc.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_bytecode.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_builder.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_atomic.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Ext\AS\as_arrayobject.cpp">
+      <Filter>Ext\AS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Gauge.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Application.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SimConnectWrapper.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SimVars.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SimKey.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SaveLoadEngine\SaveLoadEngine.cpp">
+      <Filter>Src\SaveLoadEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\AutopilotEngine\AutopilotEngine.cpp">
+      <Filter>Src\AutopilotEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Res\SCSScript.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Res\SCSScript.rc2">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="..\Ext\FSX\SimConnectForSCSScript.dll">
+      <Filter>Ext\FSX</Filter>
+    </None>
+  </ItemGroup>
+</Project>
